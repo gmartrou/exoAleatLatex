@@ -4,42 +4,49 @@ from math import *
 from fonctionsSupplementaires import *
 
 
-def pythagore1(fichierExos, fichierCorrections, correction=False, separes=False):
-    main = ''
-    mainC = ''
-    main += r'\exo{Théorème de Pythagore}%' + '\n'
+def pythagore1(fichierExos, fichierCorrections):
     a = randint(1, 10)
     b = randint(a + 1, 15)
-    main += r'\begin{minipage}{0.6\textwidth}%' + '\n'
-    main += r'ABC est le triangle ci-contre.\\%' + '\n'
-    main += r'AC = ' + str(a) + r' cm.\\%' + '\n'
-    main += r'BC = ' + str(b) + r' cm.\\%' + '\n'
-    main += r'Combien mesure AB ?%' + '\n'
-    main += r'\end{minipage}%' + '\n'
-    main += r'\begin{minipage}{0.3\textwidth}%' + '\n'
-    main += r'\includegraphics[width = \textwidth]{imagesQuatrieme/triangle_rectangle1.png}%' + '\n'
-    main += r'\end{minipage}%' + '\n'
-    main += '\n'
-    if correction:
-        mainC += r'\cor{Théorème de Pythagore}%' + '\n'
-        mainC += r'ABC est un triangle rectangle en A.\\%' + '\n'
-        mainC += r"Donc, d'après le théorème de Pythagore :\\%" + '\n'
-        mainC += r'BC$^2$ = AB$^2$ + AC$^2$\\%' + '\n'
-        mainC += str(b ** 2) + r' = ' + r'AB$^2 + $ ' + str(a ** 2) + r'\\%' + '\n'
-        mainC += r'AB$^2$ = ' + str(b ** 2) + r' - ' + str(a ** 2) + r'\\%' + '\n'
-        mainC += r'AB$^2$ = ' + str(b ** 2 - a ** 2) + r'\\%' + '\n'
-        mainC += r'AB = $\sqrt{' + str(b ** 2 - a ** 2) + r'}$ cm\\%' + '\n'
-        if sqrt(b ** 2 - a ** 2) == round(sqrt(b ** 2 - a ** 2), 2):
-            mainC += r'AB = ' + str(sqrt(b ** 2 - a ** 2)) + r' cm\\%' + '\n'
-        else:
-            mainC += r'AB $\simeq$ ' + str(round(sqrt(b ** 2 - a ** 2), 2)) + r' cm\\%' + '\n'
-        mainC += '\n'
-    
-    fichierExos += main
-    if separes:
-        fichierCorrections += mainC
+    ac = a ** 2
+    bc = b ** 2
+    di = bc - ac
+    ro = round(sqrt(di), 2)
+
+    main = r'''
+\exo{Théorème de Pythagore}
+\begin{minipage}{0.6\textwidth}%
+ABC est le triangle ci-contre.\\%
+AC = \{a} cm.\\%
+BC = \{b} cm.\\%
+Combien mesure AB ?%
+\end{minipage}%
+\begin{minipage}{0.3\textwidth}%
+\includegraphics[width = \textwidth]{imagesQuatrieme/triangle_rectangle1.png}%
+\end{minipage}%
+'''
+
+    mainC = r'''
+\cor{Théorème de Pythagore}%
+ABC est un triangle rectangle en A.\\%
+Donc, d'après le théorème de Pythagore :\\%
+BC$^2$ = AB$^2$ + AC$^2$\\%
+\{bc} = AB$^2$ + \{ac}\\%
+AB$^2$ = \{bc} - \{ac}\\%
+AB$^2$ = \{di}\\%
+AB = $\sqrt{\{di}}$ cm\\%
+'''
+    if di == ro:
+        mainC += r'''AB = \{di} cm\\%
+'''
     else:
-        fichierExos += mainC
+        mainC += r'''AB $\simeq$ \{ro} cm\\%
+'''
+    main += '\n'
+    mainC += '\n'
+    main = remplacement(main, locals())
+    mainC = remplacement(mainC, locals())
+    fichierExos += main
+    fichierCorrections += mainC
     return fichierExos, fichierCorrections
 
 
@@ -631,15 +638,15 @@ def fraction1(fichierExos, fichierCorrections, correction=False, separes=False):
     main = ''
     mainC = ''
     main += r'\exo{Addition de fractions}%' + '\n'
-    
+
     nums = []
     dens = []
     signs = []
-    
+
     main += r'Faites le calcul suivant (le résultat doit être sous forme de fraction).\\%' + '\n'
     main += r'\begin{center}%' + '\n'
     main += r'$A='
-    
+
     nbrTerms = randint(3, 4)
     for i in range(nbrTerms):
         aa = randint(1, 30)
@@ -649,7 +656,7 @@ def fraction1(fichierExos, fichierCorrections, correction=False, separes=False):
         bb = randint(-30, -1)
         dens.append(np.random.choice([ba, bb]))
         signs.append(np.random.choice([r' + ', r' - ']))
-    
+
     for i in range(nbrTerms):
         if i == 0 and (signs[i] == r' + '):
             main += r'\dfrac{' + str(nums[i]) + r'}{' + str(dens[i]) + r'}'
@@ -710,7 +717,7 @@ def fraction1(fichierExos, fichierCorrections, correction=False, separes=False):
             else:
                 mainC += signs[i] + r'\dfrac{' + str(int(nums[i] * ppcmVal / dens[i])) + r'}{' + \
                          str(int(ppcmVal)) + r'}'
-        
+
         mainC += r'$%' + '\n'
         mainC += r'\end{center}%' + '\n'
         mainC += r'\begin{center}%' + '\n'
@@ -760,40 +767,7 @@ def fraction1(fichierExos, fichierCorrections, correction=False, separes=False):
     return fichierExos, fichierCorrections
 
 
-def pythagore1F(fichierExos, fichierCorrections, correction=False, separes=False):
-    main = ''
-    mainC = ''
-    main += r'\exo{Théorème de Pythagore}%' + '\n'
-    a = randint(1, 10)
-    b = randint(a + 1, 15)
-    main += fr'\begin{minipage}{0.6\textwidth}%
-    ABC est le triangle ci-contre.\\%
-    AC = {a} cm.\\%
-    BC = ' + str(b) + r' cm.\\%
-    Combien mesure AB ?%
-    \end{minipage}
-    \begin{minipage}{0.3\textwidth}%
-    \includegraphics[width = \textwidth]{imagesQuatrieme/triangle_rectangle1.png}%
-    \end{minipage}%
-    \n'''
-    if correction:
-        mainC += r'\cor{Théorème de Pythagore}%' + '\n'
-        mainC += r'ABC est un triangle rectangle en A.\\%' + '\n'
-        mainC += r"Donc, d'après le théorème de Pythagore :\\%" + '\n'
-        mainC += r'BC$^2$ = AB$^2$ + AC$^2$\\%' + '\n'
-        mainC += str(b ** 2) + r' = ' + r'AB$^2 + $ ' + str(a ** 2) + r'\\%' + '\n'
-        mainC += r'AB$^2$ = ' + str(b ** 2) + r' - ' + str(a ** 2) + r'\\%' + '\n'
-        mainC += r'AB$^2$ = ' + str(b ** 2 - a ** 2) + r'\\%' + '\n'
-        mainC += r'AB = $\sqrt{' + str(b ** 2 - a ** 2) + r'}$ cm\\%' + '\n'
-        if sqrt(b ** 2 - a ** 2) == round(sqrt(b ** 2 - a ** 2), 2):
-            mainC += r'AB = ' + str(sqrt(b ** 2 - a ** 2)) + r' cm\\%' + '\n'
-        else:
-            mainC += r'AB $\simeq$ ' + str(round(sqrt(b ** 2 - a ** 2), 2)) + r' cm\\%' + '\n'
-        mainC += '\n'
-    
-    fichierExos += main
-    if separes:
-        fichierCorrections += mainC
-    else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+
+
+
+

@@ -29,3 +29,8 @@ def repereFin(main):
     \end{adjustbox}\\
     '''
     return main
+
+def remplacement(texte, tableau):
+    for element in tableau:
+        texte = texte.replace('\{' + element + '}', str(tableau[element]))
+    return texte
