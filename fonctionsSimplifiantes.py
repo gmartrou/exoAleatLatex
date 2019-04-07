@@ -23,6 +23,7 @@ def repereDebut(main, xmin, ymin, xmax, ymax):
     '''
     return main
 
+
 def repereFin(main):
     main += r'''\end{axis}
     \end{tikzpicture}
@@ -30,7 +31,18 @@ def repereFin(main):
     '''
     return main
 
-def remplacement(texte, tableau):
+
+def varReplacer(texte, tableau):
     for element in tableau:
         texte = texte.replace('\{' + element + '}', str(tableau[element]))
     return texte
+
+
+def endExercice(main, mainC, fileExercices, fileCorrections, localV):
+    main += '\n'
+    mainC += '\n'
+    main = varReplacer(main, localV)
+    mainC = varReplacer(mainC, localV)
+    fileExercices += main
+    fileCorrections += mainC
+    return fileExercices, fileCorrections

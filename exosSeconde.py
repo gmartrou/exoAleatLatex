@@ -3,7 +3,7 @@ import numpy as np
 from fonctionsSimplifiantes import *
 
 
-def fonctionAffine1(fichierExos, fichierCorrections, correction=True, separes=True):
+def fonctionAffine1(fileExercices, fileCorrections):
     main = ''
     mainC = ''
     main += r'\exo{Intersection de fonctions affines}'
@@ -81,16 +81,16 @@ def fonctionAffine1(fichierExos, fichierCorrections, correction=True, separes=Tr
             yA) + r'''$\\
         Le point d'intersection est donc le point A(''' + str(xA) + r''',''' + str(yA) + r''').
         \end{enumerate}'''
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
 # Tableau de signe simple avec une seule expression du premier degré
-def tableauDeSigneUn1(fichierExos, fichierCorrections, correction=False, separes=False):
+def tableauDeSigneUn1(fileExercices, fileCorrections, correction=False, separes=False):
     main = ''
     mainC = ''
     main += r'\exo{Tableau de Signe}%' + '\n'
@@ -145,15 +145,15 @@ def tableauDeSigneUn1(fichierExos, fichierCorrections, correction=False, separes
                 VAnnul) + r'}{+\infty}$  %' + '\n'
         mainC += r'\end{enumerate}%' + '\n'
         mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
-def tableauDeSigneUn2(fichierExos, fichierCorrections, correction=False, separes=False):
+def tableauDeSigneUn2(fileExercices, fileCorrections, correction=False, separes=False):
     main = ''
     mainC = ''
     main += r'\exo{Tableau de Signe}%' + '\n'
@@ -208,16 +208,16 @@ def tableauDeSigneUn2(fichierExos, fichierCorrections, correction=False, separes
                 VAnnul) + r'}{+\infty}$  %' + '\n'
         mainC += r'\end{enumerate}%' + '\n'
         mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
 # Tableau de signe simple avec une seule expression du premier degré
-def tableauDeSigneUn3(fichierExos, fichierCorrections, correction=False, separes=False):
+def tableauDeSigneUn3(fileExercices, fileCorrections, correction=False, separes=False):
     main = ''
     mainC = ''
     main += r'\exo{Tableau de Signe}%' + '\n'
@@ -272,15 +272,15 @@ def tableauDeSigneUn3(fichierExos, fichierCorrections, correction=False, separes
                 VAnnul) + r'}{+\infty}$  %' + '\n'
         mainC += r'\end{enumerate}%' + '\n'
         mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
-def tableauDeSigneUn4(fichierExos, fichierCorrections, correction=False, separes=False):
+def tableauDeSigneUn4(fileExercices, fileCorrections, correction=False, separes=False):
     main = ''
     mainC = ''
     main += r'\exo{Tableau de Signe}%' + '\n'
@@ -335,16 +335,16 @@ def tableauDeSigneUn4(fichierExos, fichierCorrections, correction=False, separes
                 VAnnul) + r'}{+\infty}$  %' + '\n'
         mainC += r'\end{enumerate}%' + '\n'
         mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
 # Tableau de signe pour une expression du second degré (produit de deux expressions du premier degré). f(x)<=0
-def tableauDeSigne2(fichierExos, fichierCorrections, correction=False, separes=False):
+def tableauDeSigne2(fileExercices, fileCorrections, correction=False, separes=False):
     main = ''
     mainC = ''
     main += r'\exo{Tableau de Signe}%' + '\n'
@@ -471,16 +471,16 @@ def tableauDeSigne2(fichierExos, fichierCorrections, correction=False, separes=F
                 mainC += r'\item On peut en déduire que $f(x) \leq 0$ pour $x=' + str(VAnnul1) + r'$%' + '\n'
         mainC += r'\end{enumerate}%' + '\n'
         mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
 # Tableau de signe pour une expression du second degré (produit de deux expressions du premier degré). f(x)>=0
-def tableauDeSigne3(fichierExos, fichierCorrections, correction=False, separes=False):
+def tableauDeSigne3(fileExercices, fileCorrections, correction=False, separes=False):
     main = ''
     mainC = ''
     main += r'\exo{Tableau de Signe}%' + '\n'
@@ -608,16 +608,16 @@ def tableauDeSigne3(fichierExos, fichierCorrections, correction=False, separes=F
                 mainC += r'\item On peut en déduire que $f(x) \geq 0$ pour $x=' + str(VAnnul1) + r'$%' + '\n'
         mainC += r'\end{enumerate}%' + '\n'
         mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
 # Tableau de signe pour une expression du second degré (produit de deux expressions du premier degré). f(x)<0
-def tableauDeSigne4(fichierExos, fichierCorrections, correction=False, separes=False):
+def tableauDeSigne4(fileExercices, fileCorrections, correction=False, separes=False):
     main = ''
     mainC = ''
     main += r'\exo{Tableau de Signe}%' + '\n'
@@ -745,16 +745,16 @@ def tableauDeSigne4(fichierExos, fichierCorrections, correction=False, separes=F
                 mainC += r'\item On peut en déduire que $f(x) < 0$ pour $x\in \emptyset $%' + '\n'
         mainC += r'\end{enumerate}%' + '\n'
         mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
 # Tableau de signe pour une expression du second degré (produit de deux expressions du premier degré). f(x)>0
-def tableauDeSigne5(fichierExos, fichierCorrections, correction=False, separes=False):
+def tableauDeSigne5(fileExercices, fileCorrections, correction=False, separes=False):
     main = ''
     mainC = ''
     main += r'\exo{Tableau de Signe}%' + '\n'
@@ -882,16 +882,16 @@ def tableauDeSigne5(fichierExos, fichierCorrections, correction=False, separes=F
                 mainC += r'\item On peut en déduire que $f(x) > 0$ pour $x\in \emptyset $%' + '\n'
         mainC += r'\end{enumerate}%' + '\n'
         mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
 # Exo vecteur (prouver qu'il s'agit d'un parallèlogramme)
-def vecteurs1(fichierExos, fichierCorrections, correction=False, separes=False):
+def vecteurs1(fileExercices, fileCorrections, correction=False, separes=False):
     main = ''
     mainC = ''
     main += r"\exo{Vecteurs et parallèlogrammes.}%" + '\n'
@@ -930,16 +930,16 @@ def vecteurs1(fichierExos, fichierCorrections, correction=False, separes=False):
         mainC += '\n'
         mainC += r"$\vv{BA}=\vv{CD}$, donc, ABCD est un parallèlogramme.%" + '\n'
         mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
 # Exo vecteur (prouver qu'il ne s'agit pas d'un parallèlogramme)
-def vecteurs2(fichierExos, fichierCorrections, correction=False, separes=False):
+def vecteurs2(fileExercices, fileCorrections, correction=False, separes=False):
     main = ''
     mainC = ''
     main += r"\exo{Vecteurs et parallèlogrammes.}%" + '\n'
@@ -981,16 +981,16 @@ def vecteurs2(fichierExos, fichierCorrections, correction=False, separes=False):
         mainC += '\n'
         mainC += r"$\vv{BA} \neq \vv{CD}$, donc, ABCD n'est pas un parallèlogramme.%" + '\n'
         mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
 # Exo vecteur (Calculer les coordonnées d'un point à partir d'une expression vectorielle)
-def vecteurs3(fichierExos, fichierCorrections, correction=False, separes=False):
+def vecteurs3(fileExercices, fileCorrections, correction=False, separes=False):
     main = ''
     mainC = ''
     main += r"\exo{Vecteurs et coordonnées.}%" + '\n'
@@ -1063,16 +1063,16 @@ def vecteurs3(fichierExos, fichierCorrections, correction=False, separes=False):
         mainC += r"Et, finalement, $\coord{D}{" + str(xB + bdx) + r"}{" + str(yB + bdy) + r"}$%" + '\n'
         mainC += r"\end{enumerate}%" + '\n'
         mainC += '\n'
-        fichierExos += main
+        fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
 # Exo vecteur (vérifier que 2 droites sont, ou non, colinéaires).
-def vecteurs4(fichierExos, fichierCorrections, correction=False, separes=False):
+def vecteurs4(fileExercices, fileCorrections, correction=False, separes=False):
     main = ''
     mainC = ''
     main += r"\exo{Vecteurs et colinéarité.}%" + '\n'
@@ -1152,14 +1152,14 @@ def vecteurs4(fichierExos, fichierCorrections, correction=False, separes=False):
         mainC += r"Le déterminant de ces deux vecteurs étant nul, ils sont colinéaires.%" + '\n'
         mainC += r"\end{enumerate}%" + '\n'
         mainC += '\n'
-        fichierExos += main
+        fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
-def test(fichierExos, fichierCorrections, correction=False, separes=False):
+def test(fileExercices, fileCorrections, correction=False, separes=False):
     main = ''
     mainC = ''
     main += r"\exo{Développement}%" + '\n'
@@ -1169,25 +1169,25 @@ def test(fichierExos, fichierCorrections, correction=False, separes=False):
     if correction:
         mainC += r"\cor{Développement}%" + '\n'
         mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
 # Exercice (base)
-def exercice(fichierExos, fichierCorrections, correction=False, separes=False):
+def exercice(fileExercices, fileCorrections, correction=False, separes=False):
     main = ''
     mainC = ''
     main += r"\exo{Nom de l'exercice}%" + '\n'
     if correction:
         mainC += r"\cor{Nom de l'exercice}%" + '\n'
         mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections

@@ -103,8 +103,8 @@ for j in range(nombreDevoirs):
     #        (main, mainC) = exo(main, mainC, correction = True, separes = True)
 
     for i in range(5):
-        exo = np.random.choice([pythagore1F])
-        (main, mainC) = exo(main, mainC, correction=True, separes=True)
+        exo = np.random.choice([pythagore3])
+        (main, mainC) = exo(main, mainC)
 
     contentExercices = header + main + footer
 

@@ -2,18 +2,17 @@ from random import *
 import numpy as np
 from math import *
 from fonctionsSupplementaires import *
+from fonctionsSimplifiantes import *
 
-
-def pythagore1(fichierExos, fichierCorrections):
+def pythagore1(fileExercices, fileCorrections):
     a = randint(1, 10)
     b = randint(a + 1, 15)
     ac = a ** 2
     bc = b ** 2
-    di = bc - ac
+    di = sqrt(bc - ac)
     ro = round(sqrt(di), 2)
 
-    main = r'''
-\exo{Théorème de Pythagore}
+    main = r'''\exo{Théorème de Pythagore}%
 \begin{minipage}{0.6\textwidth}%
 ABC est le triangle ci-contre.\\%
 AC = \{a} cm.\\%
@@ -25,8 +24,7 @@ Combien mesure AB ?%
 \end{minipage}%
 '''
 
-    mainC = r'''
-\cor{Théorème de Pythagore}%
+    mainC = r'''\cor{Théorème de Pythagore}%
 ABC est un triangle rectangle en A.\\%
 Donc, d'après le théorème de Pythagore :\\%
 BC$^2$ = AB$^2$ + AC$^2$\\%
@@ -41,91 +39,90 @@ AB = $\sqrt{\{di}}$ cm\\%
     else:
         mainC += r'''AB $\simeq$ \{ro} cm\\%
 '''
-    main += '\n'
-    mainC += '\n'
-    main = remplacement(main, locals())
-    mainC = remplacement(mainC, locals())
-    fichierExos += main
-    fichierCorrections += mainC
-    return fichierExos, fichierCorrections
+    localV = locals()
+    return endExercice(main, mainC, fileExercices, fileCorrections, localV)
 
 
-def pythagore2(fichierExos, fichierCorrections, correction=False, separes=False):
-    main = ''
-    mainC = ''
+def pythagore2(fileExercices, fileCorrections):
     a = randint(1, 15)
     b = randint(1, 15)
-    main += r'\exo{Théorème de Pythagore}%' + '\n'
-    main += r'\begin{minipage}{0.6\textwidth}%' + '\n'
-    main += r'ABC est le triangle ci-contre.\\%' + '\n'
-    main += r'AB = ' + str(a) + r' cm.\\%' + '\n'
-    main += r'AC = ' + str(b) + r' cm.\\%' + '\n'
-    main += r'Combien mesure BC ?%' + '\n'
-    main += r'\end{minipage}%' + '\n'
-    main += r'\begin{minipage}{0.3\textwidth}%' + '\n'
-    main += r'\includegraphics[width = \textwidth]{imagesQuatrieme/triangle_rectangle1.png}%' + '\n'
-    main += r'\end{minipage}%' + '\n'
-    main += '\n'
-    if correction:
-        mainC += r'\cor{Théorème de Pythagore}%' + '\n'
-        mainC += r'ABC est un triangle rectangle en A.\\%' + '\n'
-        mainC += r"Donc, d'après le théorème de Pythagore :\\%" + '\n'
-        mainC += r'BC$^2$ = AB$^2$ + AC$^2$\\%' + '\n'
-        mainC += r'BC$^2$ = ' + str(a ** 2) + r' + ' + str(b ** 2) + r'\\%' + '\n'
-        mainC += r'BC$^2$ = ' + str(b ** 2 + a ** 2) + r'\\%' + '\n'
-        mainC += r'BC = $\sqrt{' + str(b ** 2 + a ** 2) + r'}$ cm\\%' + '\n'
-        if sqrt(b ** 2 + a ** 2) == round(sqrt(b ** 2 + a ** 2), 2):
-            mainC += r'BC = ' + str(sqrt(b ** 2 + a ** 2)) + r' cm\\%' + '\n'
-        else:
-            mainC += r'BC $\simeq$ ' + str(round(sqrt(b ** 2 + a ** 2), 2)) + r' cm\\%' + '\n'
-        mainC += '\n'
-    fichierExos += main
-    if separes:
-        fichierCorrections += mainC
+    ac = a**2
+    bc = b**2
+    sum = ac + bc
+    sqSum = sqrt(sum)
+    ro = round(sqSum, 2)
+
+    main = r'''\exo{Théorème de Pythagore}%
+\begin{minipage}{0.6\textwidth}%
+ABC est le triangle ci-contre.\\%
+AB = \{a} cm.\\%
+AC = \{b} cm.\\%
+Combien mesure BC ?%
+\end{minipage}%
+\begin{minipage}{0.3\textwidth}%
+\includegraphics[width = \textwidth]{imagesQuatrieme/triangle_rectangle1.png}%
+\end{minipage}%
+'''
+
+    mainC = r'''\cor{Théorème de Pythagore}%
+ABC est un triangle rectangle en A.\\%
+Donc, d'après le théorème de Pythagore :\\%
+BC$^2$ = AB$^2$ + AC$^2$\\%
+BC$^2$ = \{ac} + \{bc}\\%
+BC$^2$ = \{sum}\\%
+BC = $\sqrt{\{sum}}$ cm\\%
+'''
+    if sum == ro:
+        mainC += r'''BC = \{sqSum} cm\\%
+'''
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        mainC += r'''BC $\simeq$ \{sqSum} cm\\%
+'''
+    localV = locals()
+    return endExercice(main, mainC, fileExercices, fileCorrections, localV)
 
 
-def pythagore3(fichierExos, fichierCorrections, correction=False, separes=False):
-    main = ''
-    mainC = ''
+def pythagore3(fileExercices, fileCorrections):
     a = randint(1, 10)
     b = randint(a + 1, 15)
-    main += r'\exo{Théorème de Pythagore}%' + '\n'
-    main += r'\begin{minipage}{0.6\textwidth}%' + '\n'
-    main += r'ABC est le triangle ci-contre.\\%' + '\n'
-    main += r'AB = ' + str(a) + r' cm\\%' + '\n'
-    main += r'BC = ' + str(b) + r' cm.\\%' + '\n'
-    main += r'Combien mesure AC ?\\%' + '\n'
-    main += r'\end{minipage}%' + '\n'
-    main += r'\begin{minipage}{0.3\textwidth}%' + '\n'
-    main += r'\includegraphics[width = \textwidth]{imagesQuatrieme/triangle_rectangle1.png}%' + '\n'
-    main += r'\end{minipage}%' + '\n'
-    main += '\n'
-    if correction:
-        mainC += r'\cor{Théorème de Pythagore}%' + '\n'
-        mainC += r'ABC est un triangle rectangle en A.\\%' + '\n'
-        mainC += r"Donc, d'après le théorème de Pythagore :\\%" + '\n'
-        mainC += r'BC$^2$ = AB$^2$ + AC$^2$\\%' + '\n'
-        mainC += str(b ** 2) + r' = ' + str(a ** 2) + r' + ' + r'AC$^2$\\%' + '\n'
-        mainC += r'AC$^2$ = ' + str(b ** 2) + r' - ' + str(a ** 2) + r'\\%' + '\n'
-        mainC += r'AC$^2$ = ' + str(b ** 2 - a ** 2) + r'\\%' + '\n'
-        mainC += r'AC = $\sqrt{' + str(b ** 2 - a ** 2) + r'}$ cm\\%' + '\n'
-        if sqrt(b ** 2 - a ** 2) == round(sqrt(b ** 2 - a ** 2), 2):
-            mainC += r'AC = ' + str(sqrt(b ** 2 - a ** 2)) + r' cm\\%' + '\n'
-        else:
-            mainC += r'AC $\simeq$ ' + str(round(sqrt(b ** 2 - a ** 2), 2)) + r' cm\\%' + '\n'
-        mainC += '\n'
-    fichierExos += main
-    if separes:
-        fichierCorrections += mainC
+    ac = a**2
+    bc = b**2
+    di = bc - ac
+    sqDi = sqrt(di)
+    ro = round(sqDi, 2)
+
+    main = r'''\exo{Théorème de Pythagore}%
+\begin{minipage}{0.6\textwidth}%
+ABC est le triangle ci-contre.\\%
+AB = \{a} cm\\%
+BC = \{b} cm.\\%
+Combien mesure AC ?\\%
+\end{minipage}%
+\begin{minipage}{0.3\textwidth}%
+\includegraphics[width = \textwidth]{imagesQuatrieme/triangle_rectangle1.png}%
+\end{minipage}%
+'''
+
+    mainC = r'''\cor{Théorème de Pythagore}%
+ABC est un triangle rectangle en A.\\%
+Donc, d'après le théorème de Pythagore :\\%
+BC$^2$ = AB$^2$ + AC$^2$\\%
+\{bc} = \{ac} + AC$^2$\\%
+AC$^2$ = \{bc} - \{ac}\\%
+AC$^2$ = \{di}\\%
+AC = $\sqrt{\{di}}$ cm\\%
+'''
+    if sqDi == ro:
+        mainC += r'''AC = \{di} cm
+'''
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        mainC += r'''AC $\simeq$ \{ro} cm\\%
+'''
+    localV = locals()
+    return endExercice(main, mainC, fileExercices, fileCorrections, localV)
 
 
-def pythagore4(fichierExos, fichierCorrections, correction=False, separes=False):
+def pythagore4(fileExercices, fileCorrections):
     main = ''
     mainC = ''
     main += r'\exo{Théorème de Pythagore}%' + '\n'
@@ -153,15 +150,15 @@ def pythagore4(fichierExos, fichierCorrections, correction=False, separes=False)
             mainC += r'BC$^2$ = AB$^2$ + AC$^2$\\%' + '\n'
         mainC += r"Donc, d'après la réciproque du théorème de Pythagore ABC est rectangle en B.\\%" + '\n'
         mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
-def pythagore5(fichierExos, fichierCorrections, correction=False, separes=False):
+def pythagore5(fileExercices, fileCorrections):
     main = ''
     mainC = ''
     main += r'\exo{Théorème de Pythagore}%' + '\n'
@@ -194,15 +191,15 @@ def pythagore5(fichierExos, fichierCorrections, correction=False, separes=False)
             mainC += r'BC$^2$ $\neq$ AB$^2$ + AC$^2$\\%' + '\n'
         mainC += r"Donc, d'après la contraposée du théorème de Pythagore ABC n'est pas rectangle.\\%" + '\n'
         mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
-def equation1(fichierExos, fichierCorrections, correction=False, separes=False):
+def equation1(fileExercices, fileCorrections):
     main = ''
     mainC = ''
     main += r'''\exo{Résolution d'équation}'''
@@ -259,15 +256,15 @@ def equation1(fichierExos, fichierCorrections, correction=False, separes=False):
                 else:
                     mainC += r'$x \simeq$ ' + str(round((b - d) / (c - a), 2)) + r'\\%' + '\n'
             mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
-def equation2(fichierExos, fichierCorrections, correction=False, separes=False):
+def equation2(fileExercices, fileCorrections):
     main = ''
     mainC = ''
     main += r'''\exo{Résolution d'équation}'''
@@ -348,15 +345,15 @@ def equation2(fichierExos, fichierCorrections, correction=False, separes=False):
             mainC += nomB + r' a ' + str(a) + r' ans.\\%' + '\n'
             mainC += r'Et donc, ' + nomA + r' a ' + str(b) + r' ans.\\%' + '\n'
         mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
-def equation3(fichierExos, fichierCorrections, correction=False, separes=False):
+def equation3(fileExercices, fileCorrections):
     main = ''
     mainC = ''
     main += r'''\exo{Résolution d'équation}%''' + '\n'
@@ -409,15 +406,15 @@ def equation3(fichierExos, fichierCorrections, correction=False, separes=False):
         mainC += r'$x =$ ' + str(int(nbrEnfants)) + r'\\%' + '\n'
         mainC += r'Il y avait, ' + str(nbrEnfants) + r' enfants présents.\\%' + '\n'
         mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
-def puissance1(fichierExos, fichierCorrections, correction=False, separes=False):
+def puissance1(fileExercices, fileCorrections):
     main = ''
     mainC = ''
     main += r'''\exo{Puissances}%''' + '\n'
@@ -441,15 +438,15 @@ def puissance1(fichierExos, fichierCorrections, correction=False, separes=False)
                      r'10^{' + str(a + b) + r'}$%' + '\n'
         mainC += r'\end{center}%' + '\n'
         mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
-def puissance2(fichierExos, fichierCorrections, correction=False, separes=False):
+def puissance2(fileExercices, fileCorrections):
     main = ''
     mainC = ''
     main += r'''\exo{Puissances}%''' + '\n'
@@ -473,15 +470,15 @@ def puissance2(fichierExos, fichierCorrections, correction=False, separes=False)
                      r'10^{' + str(a - b) + r'}$' + '\n'
         mainC += r'\end{center}%' + '\n'
         mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
-def puissance3(fichierExos, fichierCorrections, correction=False, separes=False):
+def puissance3(fileExercices, fileCorrections):
     main = ''
     mainC = ''
     main += r'\exo{Puissances}%' + '\n'
@@ -505,15 +502,15 @@ def puissance3(fichierExos, fichierCorrections, correction=False, separes=False)
                      r'10^{' + str(a * b) + r'}$' + '\n'
         mainC += r'\end{center}%' + '\n'
         mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
-def cosinus1(fichierExos, fichierCorrections, correction=False, separes=False):
+def cosinus1(fileExercices, fileCorrections):
     main = ''
     mainC = ''
     a = randint(5, 30)
@@ -535,15 +532,15 @@ def cosinus1(fichierExos, fichierCorrections, correction=False, separes=False):
         mainC += r'Donc, AC = AB $\times$ cos($\alpha$)\\%' + '\n'
         mainC += r'AC $\simeq$ ' + str(round(a * cos(br), 2)) + r' cm\\%' + '\n'
         mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
-def cosinus2(fichierExos, fichierCorrections, correction=False, separes=False):
+def cosinus2(fileExercices, fileCorrections):
     main = ''
     mainC = ''
     a = randint(5, 30)
@@ -565,15 +562,15 @@ def cosinus2(fichierExos, fichierCorrections, correction=False, separes=False):
         mainC += r'Donc, AC = $\dfrac{AB}{cos(\alpha)}$\\%' + '\n'
         mainC += r'AC $\simeq$ ' + str(round(a / cos(br), 2)) + r' cm\\%' + '\n'
         mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
-def cosinus3(fichierExos, fichierCorrections, correction=False, separes=False):
+def cosinus3(fileExercices, fileCorrections):
     main = ''
     mainC = ''
     a = randint(5, 30)
@@ -595,15 +592,15 @@ def cosinus3(fichierExos, fichierCorrections, correction=False, separes=False):
         mainC += r'Donc, BC = AB $\times$ cos($\beta$)\\%' + '\n'
         mainC += r'BC $\simeq$ ' + str(round(a * cos(br), 2)) + r' cm\\%' + '\n'
         mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
-def cosinus4(fichierExos, fichierCorrections, correction=False, separes=False):
+def cosinus4(fileExercices, fileCorrections):
     main = ''
     mainC = ''
     a = randint(5, 30)
@@ -625,16 +622,16 @@ def cosinus4(fichierExos, fichierCorrections, correction=False, separes=False):
         mainC += r'Donc, AB = $\dfrac{BC}{cos(\beta)}$\\%' + '\n'
         mainC += r'AB $\simeq$ ' + str(round(a / cos(br), 2)) + r' cm\\%' + '\n'
         mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
 # Addition de fractions#
-def fraction1(fichierExos, fichierCorrections, correction=False, separes=False):
+def fraction1(fileExercices, fileCorrections):
     main = ''
     mainC = ''
     main += r'\exo{Addition de fractions}%' + '\n'
@@ -759,12 +756,12 @@ def fraction1(fichierExos, fichierCorrections, correction=False, separes=False):
                 mainC += r'}{' + str(int(ppcmVal / pgcdVal)) + r'}$%' + '\n'
                 mainC += r'\end{center}%' + '\n'
         mainC += '\n'
-    fichierExos += main
+    fileExercices += main
     if separes:
-        fichierCorrections += mainC
+        fileCorrections += mainC
     else:
-        fichierExos += mainC
-    return fichierExos, fichierCorrections
+        fileExercices += mainC
+    return fileExercices, fileCorrections
 
 
 
