@@ -10,7 +10,7 @@ def pythagore1(fileExercices, fileCorrections):
     ac = a ** 2
     bc = b ** 2
     di = sqrt(bc - ac)
-    ro = round(sqrt(di), 2)
+    ro = round(di, 2)
 
     main = r'''\exo{Théorème de Pythagore}%
 \begin{minipage}{0.6\textwidth}%

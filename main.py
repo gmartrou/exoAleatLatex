@@ -54,8 +54,8 @@ headerBase += r'\begin{document}%' + '\n\n'
 
 header = headerBase
 headerC = headerBase
-header += r'''\enteteLSMI{\today}{Entrainement au contrôle sur les tableaux de signe}%''' + '\n\n'
-headerC += r'''\enteteLSMI{\today}{Correction de l'entrainement au contrôle sur les tableaux de signe}%''' + '\n\n'
+header += r'''\enteteLSMI{\today}{Interrogation n°10 : tableaux de signes : sujet A}%''' + '\n\n'
+headerC += r'''\enteteLSMI{\today}{Correction de l'interrogation n°10 : les tableaux de signes : sujet A}%''' + '\n\n'
 # \input{AlgoEntete}
 
 footer = r'''\end{document}'''
@@ -74,13 +74,13 @@ fractions = [fraction1]
 
 
 # Chapitre 2nd
-tableauDeSigne = [tableauDeSigneUn1, tableauDeSigneUn2, tableauDeSigneUn3, tableauDeSigneUn4, tableauDeSigne2,
-                  tableauDeSigne3, tableauDeSigne4, tableauDeSigne5]
-vecteurs = [vecteurs1, vecteurs2]
+#tableauDeSigne = [tableauDeSigneUn1, tableauDeSigneUn2, tableauDeSigneUn3, tableauDeSigneUn4, tableauDeSigne2,
+#                  tableauDeSigne3, tableauDeSigne4, tableauDeSigne5]
+#vecteurs = [vecteurs1, vecteurs2]
 
 # Niveaux
 quatrieme = [cosinus, pythagore, equations, puissances, fractions]
-seconde = [tableauDeSigne, vecteurs]
+#seconde = [tableauDeSigne, vecteurs]
 
 niveau = quatrieme
 
@@ -102,9 +102,17 @@ for j in range(nombreDevoirs):
     #            exo = tableauDeSigne2
     #        (main, mainC) = exo(main, mainC, correction = True, separes = True)
 
-    for i in range(5):
-        exo = np.random.choice([pythagore3])
-        (main, mainC) = exo(main, mainC)
+    for i in range(40):
+        exo = np.random.choice([vecteursCalculCoord1])
+        main, mainC = exo(main, mainC)
+
+    #exo = np.random.choice([tableauDeSigneUn1, tableauDeSigneUn2, tableauDeSigneUn3, tableauDeSigneUn4])
+    #(main, mainC) = exo(main, mainC)
+    #for i in range(3):
+    #    main += r'\vspace{10cm}'
+    #    exo = np.random.choice([tableauDeSigneDeux1, tableauDeSigneDeux2, tableauDeSigneDeux3, tableauDeSigneDeux4])
+    #    (main, mainC) = exo(main, mainC)
+
 
     contentExercices = header + main + footer
 
