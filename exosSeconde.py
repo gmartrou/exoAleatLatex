@@ -124,7 +124,7 @@ def tableauDeSigneUn1(fileExercices, fileCorrections):
 
     main = r'''\exo{Tableau de Signe}%
 \begin{enumerate}%' + '\n'
-\item Tracez le tableau de variation de la fonction $f$ définie par : $f(x) = \{a}x \{signB} \{bAbs}$%
+\item Tracez le tableau de signes de la fonction $f$ définie par : $f(x) = \{a}x \{signB} \{bAbs}$%
 \item En déduire les valeurs pour lesquelles $f(x) \leq 0$%
 \end{enumerate}%
 '''
@@ -187,7 +187,7 @@ def tableauDeSigneUn2(fileExercices, fileCorrections):
 
     main = r'''\exo{Tableau de Signe}%
 \begin{enumerate}%' + '\n'
-\item Tracez le tableau de variation de la fonction $f$ définie par : $f(x) = \{a}x \{signB} \{bAbs}$%
+\item Tracez le tableau de signes de la fonction $f$ définie par : $f(x) = \{a}x \{signB} \{bAbs}$%
 \item En déduire les valeurs pour lesquelles $f(x) < 0$%
 \end{enumerate}%
 '''
@@ -250,7 +250,7 @@ def tableauDeSigneUn3(fileExercices, fileCorrections):
 
     main = r'''\exo{Tableau de Signe}%
 \begin{enumerate}%' + '\n'
-\item Tracez le tableau de variation de la fonction $f$ définie par : $f(x) = \{a}x \{signB} \{bAbs}$%
+\item Tracez le tableau de signes de la fonction $f$ définie par : $f(x) = \{a}x \{signB} \{bAbs}$%
 \item En déduire les valeurs pour lesquelles $f(x) \geq 0$%
 \end{enumerate}%
 '''
@@ -313,7 +313,7 @@ def tableauDeSigneUn4(fileExercices, fileCorrections):
 
     main = r'''\exo{Tableau de Signe}%
 \begin{enumerate}%' + '\n'
-\item Tracez le tableau de variation de la fonction $f$ définie par : $f(x) = \{a}x \{signB} \{bAbs}$%
+\item Tracez le tableau de signes de la fonction $f$ définie par : $f(x) = \{a}x \{signB} \{bAbs}$%
 \item En déduire les valeurs pour lesquelles $f(x) > 0$%
 \end{enumerate}%
 '''
@@ -406,7 +406,7 @@ def tableauDeSigneDeux1(fileExercices, fileCorrections):
 
     main = r'''\exo{Tableau de Signe}%
 \begin{enumerate}%
-\item Tracez le tableau de variation de la fonction $f$ définie par : $f(x) = (\{a}x \{signB} \{absB})(\{c} x \{signD} 
+\item Tracez le tableau de signes de la fonction $f$ définie par : $f(x) = (\{a}x \{signB} \{absB})(\{c} x \{signD} 
 \{absD})$%
 \item En déduire les valeurs pour lesquelles $f(x) \leq 0$%
 \end{enumerate}%
@@ -544,7 +544,7 @@ def tableauDeSigneDeux2(fileExercices, fileCorrections):
 
     main = r'''\exo{Tableau de Signe}%
 \begin{enumerate}%
-\item Tracez le tableau de variation de la fonction $f$ définie par : $f(x) = (\{a}x \{signB} \{absB})(\{c} x \{signD} 
+\item Tracez le tableau de signes de la fonction $f$ définie par : $f(x) = (\{a}x \{signB} \{absB})(\{c} x \{signD} 
 \{absD})$%
 \item En déduire les valeurs pour lesquelles $f(x) < 0$%
 \end{enumerate}%
@@ -682,7 +682,7 @@ def tableauDeSigneDeux3(fileExercices, fileCorrections):
 
     main = r'''\exo{Tableau de Signe}%
 \begin{enumerate}%
-\item Tracez le tableau de variation de la fonction $f$ définie par : $f(x) = (\{a}x \{signB} \{absB})(\{c} x \{signD} 
+\item Tracez le tableau de signes de la fonction $f$ définie par : $f(x) = (\{a}x \{signB} \{absB})(\{c} x \{signD} 
 \{absD})$%
 \item En déduire les valeurs pour lesquelles $f(x) \geq 0$%
 \end{enumerate}%
@@ -820,7 +820,7 @@ def tableauDeSigneDeux4(fileExercices, fileCorrections):
 
     main = r'''\exo{Tableau de Signe}%
 \begin{enumerate}%
-\item Tracez le tableau de variation de la fonction $f$ définie par : $f(x) = (\{a}x \{signB} \{absB})(\{c} x \{signD} 
+\item Tracez le tableau de signes de la fonction $f$ définie par : $f(x) = (\{a}x \{signB} \{absB})(\{c} x \{signD} 
 \{absD})$%
 \item En déduire les valeurs pour lesquelles $f(x) > 0$%
 \end{enumerate}%
