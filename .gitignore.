@@ -1,0 +1,3 @@
+*.tex
+*.pfg
+__pycache__
