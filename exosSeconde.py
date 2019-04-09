@@ -6,7 +6,9 @@ import numpy as np
 from fonctionsSimplifiantes import *
 
 
-def fonctionAffineIntersection(fileExercices, fileCorrections):
+def fonctionsAffineIntersection(fileExercices, fileCorrections):
+    """Calcul du point d'intersection de deux fonctions affines."""
+    
     a, b, c, d = 0, 0, 0, 0
     while b == d or a == c:
         a1 = randint(2, 6)
@@ -91,8 +93,9 @@ Le point d'intersection est donc le point A(\{xA}, \{yA}).
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
-# Tableau de signe simple avec une seule expression du premier degré ax+b <= 0
 def tableauDeSigneUn1(fileExercices, fileCorrections):
+    """Tableau de signe simple avec une seule expression du premier degré ax+b <= 0"""
+    
     VAnnul = 1 / 3
     a, b = 0, 0
 
@@ -155,8 +158,9 @@ On a donc le tableau de signes suivant :\\%
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
-# Tableau de signe simple avec une seule expression du premier degré ax+b < 0
 def tableauDeSigneUn2(fileExercices, fileCorrections):
+    """Tableau de signe simple avec une seule expression du premier degré ax+b < 0"""
+    
     VAnnul = 1 / 3
     a, b = 0, 0
 
@@ -219,8 +223,9 @@ On a donc le tableau de signes suivant :\\%
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
-# Tableau de signe simple avec une seule expression du premier degré ax+b >= 0
 def tableauDeSigneUn3(fileExercices, fileCorrections):
+    """Tableau de signe simple avec une seule expression du premier degré ax+b >= 0"""
+    
     VAnnul = 1 / 3
     a, b = 0, 0
 
@@ -283,8 +288,9 @@ On a donc le tableau de signes suivant :\\%
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
-# Tableau de signe simple avec une seule expression du premier degré ax+b > 0
 def tableauDeSigneUn4(fileExercices, fileCorrections):
+    """Tableau de signe simple avec une seule expression du premier degré ax+b > 0"""
+    
     VAnnul = 1 / 3
     a, b = 0, 0
 
@@ -347,8 +353,10 @@ On a donc le tableau de signes suivant :\\%
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
-# Tableau de signe pour une expression du second degré (produit de deux expressions du premier degré). f(x)<=0
 def tableauDeSigneDeux1(fileExercices, fileCorrections):
+    """Tableau de signe pour une expression du second degré
+    (produit de deux expressions du premier degré). f(x)<=0"""
+    
     VAnnul1 = 1 / 3
     VAnnul2 = 1 / 3
     a, b, c, d = 0, 0, 0, 0
@@ -486,8 +494,10 @@ $\{c}x\{signD}\{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul1}$, $+\infty$}%
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
-# Tableau de signe pour une expression du second degré (produit de deux expressions du premier degré). f(x)<0
 def tableauDeSigneDeux2(fileExercices, fileCorrections):
+    """Tableau de signe pour une expression du second degré
+    (produit de deux expressions du premier degré). f(x)<0"""
+    
     VAnnul1 = 1 / 3
     VAnnul2 = 1 / 3
     a, b, c, d = 0, 0, 0, 0
@@ -602,7 +612,7 @@ $\{c} x \{signD} \{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul2}$, $\{VAnnul1}$,
 $x\in\interval[open]{-\infty}{\{VAnnul2}} \cup \interval[open]{\{VAnnul1}}{+\infty}$%
 '''
         else:
-            mainC += r'''\item On peut en déduire que $f(x) < 0$ pour $x\in\interval[open]{\{VAnnul1}}{\{VAnnul2}}$%
+            mainC += r'''\item On peut en déduire que $f(x) < 0$ pour $x\in\interval[open]{\{VAnnul2}}{\{VAnnul1}}$%
 '''
 
     else:
@@ -625,8 +635,10 @@ $\{c}x\{signD}\{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul1}$, $+\infty$}%
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
-# Tableau de signe pour une expression du second degré (produit de deux expressions du premier degré). f(x)>=0
 def tableauDeSigneDeux3(fileExercices, fileCorrections):
+    """Tableau de signe pour une expression du second degré
+    (produit de deux expressions du premier degré). f(x)>=0"""
+
     VAnnul1 = 1 / 3
     VAnnul2 = 1 / 3
     a, b, c, d = 0, 0, 0, 0
@@ -764,8 +776,10 @@ $\{c}x\{signD}\{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul1}$, $+\infty$}%
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
-# Tableau de signe pour une expression du second degré (produit de deux expressions du premier degré). f(x)>0
 def tableauDeSigneDeux4(fileExercices, fileCorrections):
+    """Tableau de signe pour une expression du second degré
+    produit de deux expressions du premier degré). f(x)>0"""
+    
     VAnnul1 = 1 / 3
     VAnnul2 = 1 / 3
     a, b, c, d = 0, 0, 0, 0
@@ -903,8 +917,9 @@ $\{c}x\{signD}\{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul1}$, $+\infty$}%
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
-# Exo vecteur (prouver qu'il s'agit d'un parallèlogramme)
 def vecteursParall1(fileExercices, fileCorrections):
+    """Exo vecteur (prouver qu'il s'agit d'un parallèlogramme)"""
+    
     xA = randint(-5, -1)
     yA = randint(-5, -1)
     xB = randint(-5, -1)
@@ -943,8 +958,9 @@ $\vv{BA}=\vv{CD}$, donc, ABCD est un parallèlogramme.
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
-# Exo vecteur (prouver qu'il ne s'agit pas d'un parallèlogramme)
 def vecteursParall2(fileExercices, fileCorrections):
+    """Exo vecteur (prouver qu'il ne s'agit pas d'un parallèlogramme)"""
+    
     xA = randint(-5, -1)
     yA = randint(-5, -1)
     xB = randint(-5, -1)
@@ -988,9 +1004,9 @@ $\vv{BA} \neq \vv{CD}$, donc, ABCD n'est pas un parallèlogramme.%
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
-# Exo vecteur (Calculer les coordonnées d'un point à partir d'une expression vectorielle)
 def vecteursCalculCoord1(fileExercices, fileCorrections):
-
+    """Exo vecteur (Calculer les coordonnées d'un point à partir d'une expression vectorielle)"""
+    
     xA = randint(-5, -1)
     yA = randint(-5, -1)
     xB = randint(-5, -1)
@@ -1070,8 +1086,9 @@ Et, finalement, $\coord{D}{\{xD}}{\{yD}}$%
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
-# Exo vecteur (vérifier que 2 droites sont colinéaires).
 def vecteursDroitesColineaires(fileExercices, fileCorrections):
+    """Exercice sur les vecteurs, le but est de vérifier que les deux droites sont colinéaires."""
+    
     xA, yA, xB, yB, xC, yC, xAB, yAB = 0, 0, 0, 0, 100, 100, 0, 0
     while xC > 8 or yC > 8:
         xA = randint(-5, -1)

@@ -615,7 +615,8 @@ def fraction1(fileExercices, fileCorrections):
     nums = []
     dens = []
     signs = []
-    nbrTerms = random.randint(3, 4)
+    # nbrTerms = random.randint(3, 4)
+    nbrTerms = 3
     for i in range(nbrTerms):
         aa = random.randint(1, 30)
         ab = random.randint(-30, -1)
@@ -733,4 +734,87 @@ $A='''
             mainC += r'\end{center}%' + '\n'
     mainC += '\n'
     
+    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+
+
+def doubleDeveloppement(fileExercices, fileCorrections):
+    """Exercice type de calcul litteral. Développer et réduire (ax + b)(cx + d)"""
+
+    a1 = random.randint(2, 6)
+    a2 = random.randint(-6, -2)
+    a = np.random.choice([a1, a2])
+    b1 = random.randint(1, 6)
+    b2 = random.randint(-6, -1)
+    b = np.random.choice([b1, b2])
+    c1 = random.randint(2, 6)
+    c2 = random.randint(-6, -2)
+    c = np.random.choice([c1, c2])
+    d1 = random.randint(1, 6)
+    d2 = random.randint(-6, -1)
+    d = np.random.choice([d1, d2])
+    
+    signA, signB, signC, signD = ' + ', ' + ', ' + ', ' + '
+    aText = r'\textcolor{red}{' + str(a) + 'x}'
+    bText = r'\textcolor{blue}{' + str(b) + '}'
+    cText = r'\textcolor{brown}{' + str(c) + '}'
+    dText = r'\textcolor{violet}{' + str(d) + 'x}'
+    absA, absB, absC, absD = a, b, c, d
+    if a < 0:
+        aText = r'(\textcolor{red}{' + str(a) + r'x})'
+        absA = abs(a)
+        signA = ' - '
+    if b < 0:
+        bText = r'(\textcolor{blue}{' + str(b) + r'})'
+        absB = abs(b)
+        signB = ' - '
+    if c < 0:
+        cText = r'(\textcolor{brown}{' + str(c) + r'})'
+        absC = abs(c)
+        signC = ' - '
+    if d < 0:
+        dText = r'(\textcolor{violet}{' + str(d) + r'x})'
+        absD = abs(d)
+        signD = ' - '
+    ac = a*c
+    ad = a*d
+    bc = b*c
+    bd = b*d
+
+    signAC, signAD, signBC, signBD = ' + ', ' + ', ' + ', ' + '
+    absAC, absAD, absBC, absBD = ac, ad, bc, bd
+    if ac < 0:
+        signAC = ' - '
+        absAC = abs(ac)
+    if ad < 0:
+        signAD = ' - '
+        absAD = abs(ad)
+    if bc < 0:
+        signBC = ' - '
+        absBC = abs(bc)
+    if bd < 0:
+        signBD = ' - '
+        absBD = abs(bd)
+    acPbd = ac + bd
+    signAcpbd = ' + '
+    absAcpbd = acPbd
+    if acPbd < 0:
+        signAcpbd = ' - '
+        absAcpbd = abs(acPbd)
+        
+    main = r'''\exo{Double développement}%
+Développer et réduire l'expression suivante.\\
+\begin{center}%
+$A = (\{a} x \{signB} \{absB})(\{c}  \{signD} \{absD} x)$\\%
+\end{center}%
+'''
+    mainC = r'''\cor{Double développement}%
+\begin{center}%
+$A = (\textcolor{red}{\{a} x} \textcolor{blue}{\{signB} \{absB}})
+(\textcolor{brown}{\{c}} \textcolor{violet}{\{signD} \{absD} x})$\\%
+$A = \{aText} \times \{cText} + \{aText} \times \{dText} +
+\{bText} \times \{cText} + \{bText} \times \{dText}$\\
+$A = \{ac}x \{signAD} \{absAD} x^2 \{signBC} \{absBC} \{signBD} \{absBD} x$\\
+$A = \{ad} x^2 \{signAcpbd} \{absAcpbd} x \{signBC} \{absBC}$\\
+\end{center}%
+'''
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())

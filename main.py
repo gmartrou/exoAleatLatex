@@ -1,13 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-
 import os
 import subprocess
-import numpy
+import numpy as np
 
-from exosQuatrieme import *
-from exosSeconde import *
+import exosQuatrieme
+import exosSeconde
 
 headerBase = r'''\documentclass[10pt, a4paper]{article}
 \usepackage[utf8x]{inputenc}
@@ -56,9 +55,8 @@ headerBase += r'\begin{document}%' + '\n\n'
 
 header = headerBase
 headerC = headerBase
-header += r'''\enteteLSMI{\today}{Interrogation n°10 : tableaux de signes : sujet A}%''' + '\n\n'
-headerC += r'''\enteteLSMI{\today}{Correction de l'interrogation n°10 : les tableaux de signes : sujet A}%''' + '\n\n'
-# \input{AlgoEntete}
+# header += r'''\enteteLSMI{\today}{Interrogation n°10 : tableaux de signes : sujet A}%''' + '\n\n'
+# headerC += r'''\enteteLSMI{\today}{Correction de l'interrogation n°10 : les tableaux de signes : sujet A}%''' + '\n\n'
 
 footer = r'''\end{document}'''
 main = ''
@@ -66,55 +64,92 @@ main = ''
 footerC = r'''\end{document}'''
 mainC = ''
 
-
 # Chapitres 4ème
-cosinus = [cosinus1, cosinus2, cosinus3, cosinus4]
-puissances = [puissance1, puissance2, puissance3]
-equations = [equation1, equation2, equation3]
-pythagore = [pythagore1, pythagore2, pythagore3, pythagore4, pythagore5]
-fractions = [fraction1]
+cosinus = [exosQuatrieme.cosinus1,
+           exosQuatrieme.cosinus2,
+           exosQuatrieme.cosinus3,
+           exosQuatrieme.cosinus4,
+           ]
+puissances = [exosQuatrieme.puissance1,
+              exosQuatrieme.puissance2,
+              exosQuatrieme.puissance3,
+              ]
+equations = [exosQuatrieme.equation1,
+             exosQuatrieme.equation2,
+             exosQuatrieme.equation3]
+pythagore = [exosQuatrieme.pythagore1,
+             exosQuatrieme.pythagore2,
+             exosQuatrieme.pythagore3,
+             exosQuatrieme.pythagore4,
+             exosQuatrieme.pythagore5,
+             ]
+fractions = [exosQuatrieme.fraction1,
+             ]
+
+calculLitteral = [exosQuatrieme.doubleDeveloppement,
+                  ]
 
 
-# Chapitre 2nd
-#tableauDeSigne = [tableauDeSigneUn1, tableauDeSigneUn2, tableauDeSigneUn3, tableauDeSigneUn4, tableauDeSigne2,
-#                  tableauDeSigne3, tableauDeSigne4, tableauDeSigne5]
-#vecteurs = [vecteurs1, vecteurs2]
+# Chapitres 2nd
+
+fonctionsAffines = [exosSeconde.fonctionsAffineIntersection,
+                    ]
+
+tableauDeSigne = [exosSeconde.tableauDeSigneUn1,
+                  exosSeconde.tableauDeSigneUn2,
+                  exosSeconde.tableauDeSigneUn3,
+                  exosSeconde.tableauDeSigneUn4,
+                  exosSeconde.tableauDeSigneDeux1,
+                  exosSeconde.tableauDeSigneDeux2,
+                  exosSeconde.tableauDeSigneDeux3,
+                  exosSeconde.tableauDeSigneDeux4,
+                  ]
+vecteurs = [exosSeconde.vecteursParall1,
+            exosSeconde.vecteursParall2,
+            exosSeconde.vecteursCalculCoord1,
+            exosSeconde.vecteursDroitesColineaires,
+            ]
 
 # Niveaux
-quatrieme = [cosinus, pythagore, equations, puissances, fractions]
-#seconde = [tableauDeSigne, vecteurs]
+quatrieme = [cosinus,
+             pythagore,
+             equations,
+             puissances,
+             fractions,
+             calculLitteral,
+             ]
+
+seconde = [tableauDeSigne,
+           vecteurs,
+           fonctionsAffines,
+           ]
 
 niveau = quatrieme
 
-nombreExercices = 20
+#nombreExercices = 6
 nombreDevoirs = 1
 
-for j in range(nombreDevoirs):
+for j in range(1,nombreDevoirs+1):
     if j < 10:
         j = str(0) + str(j)
+    else:
+        j = str(j)
+    header = headerBase
+    headerC = headerBase
+    main = ''
+    mainC = ''
+    header += r'''\enteteLSMI{}{Interrogation Surprise : sujet n°''' + j + '''}%''' + '\n\n'
+    headerC += r'''\enteteLSMI{}{Correction de l'interrogation Surprise : sujet n°''' + j + '''}%''' + '\n\n'
+    
     nomFichierExo = 'exercices' + str(j)
     nomFichierCor = 'corrections' + str(j)
-    # for i in range(nombreExercices):
-    # for chapitre in chapitres:
-    #    for i in range(nombreExercices):
-    #        chapitre = np.random.choice(niveau)
-    #        exo = np.random.choice(chapitre)
-    #        for exo in tableauDeSigne:
-    #            chapitre = pythagore
-    #            exo = tableauDeSigne2
-    #        (main, mainC) = exo(main, mainC, correction = True, separes = True)
-
-    for i in range(40):
-        exo = np.random.choice([equation2])
+    for chapitre in niveau:
+        exo = np.random.choice(chapitre)
         main, mainC = exo(main, mainC)
 
-    #exo = np.random.choice([tableauDeSigneUn1, tableauDeSigneUn2, tableauDeSigneUn3, tableauDeSigneUn4])
-    #(main, mainC) = exo(main, mainC)
-    #for i in range(3):
-    #    main += r'\vspace{10cm}'
-    #    exo = np.random.choice([tableauDeSigneDeux1, tableauDeSigneDeux2, tableauDeSigneDeux3, tableauDeSigneDeux4])
-    #    (main, mainC) = exo(main, mainC)
-
+    # for i in range(40):
+    #     exo = np.random.choice([exosQuatrieme.calculLitteral])
+    #     main, mainC = exo(main, mainC)
 
     contentExercices = header + main + footer
 
