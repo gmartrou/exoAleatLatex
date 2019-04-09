@@ -177,101 +177,135 @@ def pythagore5(fileExercices, fileCorrections):
     else:
         c = sqrt(a ** 2 + b ** 2) - random.random()
     c = round(c, 3)
-
-    main += r'\exo{Théorème de Pythagore}%' + '\n'
-    main += r'ABC est un triangle.\\%' + '\n'
-    main += r'AB = ' + str(a) + r' cm.\\%' + '\n'
-    main += r'AC = ' + str(b) + r' cm.\\%' + '\n'
-    main += r'BC = ' + str(c) + r' cm.\\%' + '\n'
-    main += r"ABC est-il rectangle ? (Si les valeurs sont juste \`{a} 1 chiffre après la virgule, c'est bon)\\%" + '\n'
-    main += '\n'
-    if correction:
-        mainC += r'\cor{Théorème de Pythagore}\\%' + '\n'
-        mainC += r'BC est le plus grand côté.\\%' + '\n'
-        mainC += r'BC$^2$ = ' + str(c) + r'$^2$\\%' + '\n'
-        mainC += r'BC$^2$ = ' + str(c ** 2) + r'\\%' + '\n'
-        mainC += r'AB$^2$ + AC$^2 = $ ' + str(a ** 2) + r' + ' + str(b ** 2) + r'\\%' + '\n'
-        mainC += r'AB$^2$ + AC$^2 = $ ' + str(a ** 2 + b ** 2) + r'\\%' + '\n'
-        if (a ** 2 + b ** 2) == c ** 2:
-            mainC += r'\`{A} 1 chiffre après la virgule près, on a :\\%' + '\n'
-            mainC += r'BC$^2$ = AB$^2$ + AC$^2$\\%' + '\n'
-            mainC += r"Donc, d'après la réciproque du théorème de Pythagore ABC est rectangle en B.\\%" + '\n'
-        else:
-            mainC += r'On a :\\%' + '\n'
-            mainC += r'BC$^2$ $\neq$ AB$^2$ + AC$^2$\\%' + '\n'
-        mainC += r"Donc, d'après la contraposée du théorème de Pythagore ABC n'est pas rectangle.\\%" + '\n'
-        mainC += '\n'
-    fileExercices += main
-    if separes:
-        fileCorrections += mainC
+    ac = a**2
+    bc = b**2
+    cc = c**2
+    sumSq = ac + bc
+    
+    main = r'''\exo{Théorème de Pythagore}%
+ABC est un triangle.\\%
+AB = \{a} cm.\\%
+AC = \{b} cm.\\%
+BC = \{c} cm.\\%
+ABC est-il rectangle ? (Si les valeurs sont juste \`{a} 1 chiffre après la virgule, c'est bon)\\%
+'''
+    mainC = r'''\cor{Théorème de Pythagore}%
+    BC est le plus grand côté.\\%
+    BC$^2$ = \{c}$^2$\\%
+    BC$^2$ = \{cc}\\%
+    AB$^2$ + AC$^2$ = \{ac} + \{bc}\\%
+    AB$^2$ + AC$^2$ = \{sumSq}\\%
+    '''
+    
+    if sumSq == c**2:
+        mainC += r'''\`{A} 1 chiffre après la virgule près, on a :\\%
+BC$^2$ = AB$^2$ + AC$^2$\\%
+Donc, d'après la réciproque du théorème de Pythagore ABC est rectangle en B.\\%
+'''
     else:
-        fileExercices += mainC
-    return fileExercices, fileCorrections
-
+        mainC += r'''On a :\\%
+BC$^2$ $\neq$ AB$^2$ + AC$^2$\\%
+Donc, d'après la contraposée du théorème de Pythagore ABC n'est pas rectangle.\\%
+'''
+    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    
 
 def equation1(fileExercices, fileCorrections):
-    main = ''
-    mainC = ''
-    main += r'''\exo{Résolution d'équation}'''
-    a = random.randint(2, 15)
-    b = random.randint(1, 15)
-    c = random.randint(2, 15)
-    d = random.randint(1, 15)
-    main += r'Trouver la valeur de $x$ vérifiant :\\%' + '\n'
-    main += str(a) + r'$x$ + ' + str(b) + ' $=$ ' + str(c) + r'$x$ + ' + str(d) + r'\\%' + '\n'
-    main += '\n'
-    if correction:
-        mainC += r'''\cor{Résolution d'équation}'''
-        mainC += str(a) + r'$x$ + ' + str(b) + ' $=$ ' + str(c) + r'$x$ + ' + str(d) + r'\\%' + '\n'
-        if a < c:
-            mainC += r'On retire ' + str(a) + r'$x$ de chaque côté : %'
-            if a == c:
-                mainC += str(b) + ' $=$ ' + str(d) + r'\\%' + '\n'
-                if b == d:
-                    mainC += r'Cela est vrai pour toutes les valeurs de $x$\\%' + '\n'
-                else:
-                    mainC += r"Cela n'est vrai pour aucune valeur de $x$\\%" + '\n'
+    """Résolution d'équation du type ax + b = cx + d"""
+    
+    aa = random.randint(2, 15)
+    ab = random.randint(-15, -2)
+    a = np.random.choice([aa, ab])
+    ba = random.randint(1, 15)
+    bb = random.randint(-15, -1)
+    b = np.random.choice([ba, bb])
+    ca = random.randint(2, 15)
+    cb = random.randint(-15, -2)
+    c = np.random.choice([ca, cb])
+    da = random.randint(1, 15)
+    db = random.randint(-15, -1)
+    d = np.random.choice([da, db])
+    signB = ' + '
+    signD = ' + '
+    absB = b
+    absD = d
+    retireAjouteB = 'retire'
+    retireAjouteD = 'retire'
+    if b < 0:
+        signB = ' - '
+        absB = abs(b)
+        retireAjouteB = 'ajoute'
+    if d < 0:
+        signD = ' - '
+        absD = abs(d)
+        retireAjouteD = 'ajoute'
+    absA = a
+    retireAjouteA = 'retire'
+    if a < 0:
+        absA = abs(a)
+        retireAjouteA = 'ajoute'
+
+    absC = c
+    retireAjouteC = 'retire'
+    if c < 0:
+        absC = abs(c)
+        retireAjouteC = 'ajoute'
+        
+    cMa = c - a
+    bMd = b - d
+    aMc = a - c
+    dMb = d - b
+    
+    solution = (b - d) / (c - a)
+    roSolution = round(solution, 2)
+    
+    valeurExacte = False
+    if roSolution == solution:
+        valeurExacte = True
+        
+    main = r'''\exo{Résolution d'équation}%
+Trouver la valeur de $x$ vérifiant :\\%
+$\{a} x \{signB} \{absB} = \{c} x \{signD} \{absD}$\\%
+'''
+    
+    mainC = r'''\cor{Résolution d'équation}%
+$\{a} x \{signB} \{absB} = \{c} x \{signD} \{absD}$\\%
+'''
+    if a <= c:
+        mainC += r'''On \{retireAjouteA} $\{absA} x$ de chaque côté : %
+'''
+        if a == c:
+            mainC += r'''$\{b} = \{d}$\\%
+'''
+            if b == d:
+                mainC += r'''Cela est vrai pour toutes les valeurs de $x$\\%
+'''
             else:
-                mainC += str(b) + ' $=$ ' + str(c - a) + r'$x$ + ' + str(d) + r'\\%' + '\n'
-                mainC += r'On retire ' + str(d) + r' de chaque côté : '
-                mainC += str(b - d) + ' $=$ ' + str(c - a) + r'$x$\\%' + '\n'
-                mainC += r'On divise par ' + str(c - a) + r' de chaque côté : '
-                mainC += r'$\dfrac{' + str(b - d) + r'}{' + str(c - a) + r'}=x$\\%' + '\n'
-                if round((b - d) / (c - a), 2) == ((b - d) / (c - a)):
-                    if b == d:
-                        mainC += r'$x = 0$\\%' + '\n'
-                    else:
-                        mainC += r'$x = $ ' + str((b - d) / (c - a)) + r'\\%' + '\n'
-                else:
-                    mainC += r'$x \simeq$ ' + str(round((b - d) / (c - a), 2)) + r'\\%' + '\n'
+                mainC += r'''Cela n'est vrai pour aucune valeur de $x$\\%
+'''
         else:
-            mainC += r'On retire ' + str(c) + r'$x$ de chaque côté : '
-            if a == c:
-                mainC += str(b) + ' $=$ ' + str(d) + r'\\%' + '\n'
-                if b == d:
-                    mainC += r'Cela est vrai pour toutes les valeurs de $x$\\%' + '\n'
-                else:
-                    mainC += r"Cela n'est vrai pour aucune valeur de $x$\\%" + '\n'
-            else:
-                mainC += str(a - c) + r'$x$ + ' + str(b) + ' $=$ ' + str(d) + r'\\%' + '\n'
-                mainC += r'On retire ' + str(b) + r' de chaque côté : '
-                mainC += str(a - c) + r'$x =$ ' + str(d - b) + r'\\%' + '\n'
-                mainC += r'On divise par ' + str(a - c) + r' de chaque côté : '
-                mainC += r'$x = \dfrac{' + str(d - b) + r'}{' + str(a - c) + r'}$\\%' + '\n'
-                if round((b - d) / (c - a), 2) == ((b - d) / (c - a)):
-                    if b == d:
-                        mainC += r'$x = 0$\\%' + '\n'
-                    else:
-                        mainC += r'$x = $ ' + str((b - d) / (c - a)) + r'\\%' + '\n'
-                else:
-                    mainC += r'$x \simeq$ ' + str(round((b - d) / (c - a), 2)) + r'\\%' + '\n'
-            mainC += '\n'
-    fileExercices += main
-    if separes:
-        fileCorrections += mainC
+            mainC += r'''$\{b} = \{cMa} x \{signD} \{absD}$\\%
+On \{retireAjouteD} \{absD} de chaque côté : $\{bMd} = \{cMa} x$\\%
+On divise par \{cMa} de chaque côté : $\dfrac{\{bMd}}{\{cMa}}=x$\\%
+'''
     else:
-        fileExercices += mainC
-    return fileExercices, fileCorrections
+        mainC += r'''On \{retireAjouteC} $\{absC} x$ de chaque côté : %
+$\{aMc} x \{signB} \{absB} = \{d}$\\%
+On \{retireAjouteB} \{absB} de chaque côté : $\{aMc} x = \{dMb}$\\%
+On divise par \{aMc} de chaque côté : $x = \dfrac{\{dMb}}{\{aMc}}$\\%'
+'''
+    if a != c and valeurExacte:
+        if b == d:
+            mainC += r'''$x = 0$\\%
+'''
+        else:
+            mainC += r'''$x = \{solution}$\\%
+'''
+    else:
+        if a != c:
+            mainC += r'''$x \simeq \{roSolution}$\\%
+'''
+    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def equation2(fileExercices, fileCorrections):
@@ -521,139 +555,124 @@ def puissance3(fileExercices, fileCorrections):
 
 
 def cosinus1(fileExercices, fileCorrections):
-    main = ''
-    mainC = ''
+    """Calcul du côté adjacent d'un triangle en connaissant l'angle (alpha) et l'hypoténuse."""
+    
     a = random.randint(5, 30)
     b = random.randint(10, 80)
     br = b * 2 * pi / 360
-    main += r'\exo{Cosinus}%' + '\n'
-    main += r'\begin{minipage}{0.6\textwidth}%' + '\n'
-    main += r'ABC est le triangle ci-contre.\\%' + '\n'
-    main += r'AB = ' + str(a) + r" cm et l'angle $\alpha$ mesure " + str(b) + r'\textdegree\\%' + '\n'
-    main += r'Combien mesure AC ?\\%' + '\n'
-    main += r'\end{minipage}%' + '\n'
-    main += r'\begin{minipage}{0.3\textwidth}%' + '\n'
-    main += r'\includegraphics[width = \textwidth]{imagesQuatrieme/triangleRectangle.png}%' + '\n'
-    main += r'\end{minipage}\\%' + '\n'
-    main += '\n'
-    if correction:
-        mainC += r'\cor{Cosinus}%' + '\n'
-        mainC += r'cos($\alpha$)=$\dfrac{AC}{AB}$\\%' + '\n'
-        mainC += r'Donc, AC = AB $\times$ cos($\alpha$)\\%' + '\n'
-        mainC += r'AC $\simeq$ ' + str(round(a * cos(br), 2)) + r' cm\\%' + '\n'
-        mainC += '\n'
-    fileExercices += main
-    if separes:
-        fileCorrections += mainC
-    else:
-        fileExercices += mainC
-    return fileExercices, fileCorrections
+    
+    c = round(a * cos(br), 2)
+    
+    main = r'''
+\exo{Cosinus}%
+\begin{minipage}{0.6\textwidth}%
+ABC est le triangle ci-contre.\\%
+AB = \{a} cm et l'angle $\alpha$ mesure \{b}\textdegree\\%
+Combien mesure AC ?\\%
+\end{minipage}%
+\begin{minipage}{0.3\textwidth}%
+\includegraphics[width = \textwidth]{imagesQuatrieme/triangleRectangle.png}%
+\end{minipage}\\%
+'''
+    mainC = r'''\cor{Cosinus}%
+cos($\alpha$)=$\dfrac{AC}{AB}$\\%
+Donc, AC = AB $\times$ cos($\alpha$)\\%
+AC $\simeq$ \{c} cm\\%
+'''
+    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def cosinus2(fileExercices, fileCorrections):
-    main = ''
-    mainC = ''
+    """Calcul de la longueur de l'hypoténuse d'un triangle en connaissant l'angle (alpha) et le côté adjacent."""
+    
     a = random.randint(5, 30)
     b = random.randint(10, 80)
     br = b * 2 * pi / 360
-    main += r'\exo{Cosinus}%' + '\n'
-    main += r'\begin{minipage}{0.6\textwidth}%' + '\n'
-    main += r'ABC est le triangle ci-contre.\\%' + '\n'
-    main += r'AC = ' + str(a) + r" cm et l'angle $\alpha$ mesure " + str(b) + r'\textdegree\\%' + '\n'
-    main += r'Combien mesure AB ?\\%' + '\n'
-    main += r'\end{minipage}%' + '\n'
-    main += r'\begin{minipage}{0.3\textwidth}%' + '\n'
-    main += r'\includegraphics[width = \textwidth]{imagesQuatrieme/triangleRectangle.png}%' + '\n'
-    main += r'\end{minipage}\\%' + '\n'
-    main += '\n'
-    if correction:
-        mainC += r'\cor{Cosinus}%' + '\n'
-        mainC += r'cos($\alpha$)=$\dfrac{AC}{AB}$\\%' + '\n'
-        mainC += r'Donc, AC = $\dfrac{AB}{cos(\alpha)}$\\%' + '\n'
-        mainC += r'AC $\simeq$ ' + str(round(a / cos(br), 2)) + r' cm\\%' + '\n'
-        mainC += '\n'
-    fileExercices += main
-    if separes:
-        fileCorrections += mainC
-    else:
-        fileExercices += mainC
-    return fileExercices, fileCorrections
+    
+    c = round(a / cos(br), 2)
+    
+    main = r'''
+    \exo{Cosinus}%
+    \begin{minipage}{0.6\textwidth}%
+    ABC est le triangle ci-contre.\\%
+    AC = \{a} cm et l'angle $\alpha$ mesure \{b}\textdegree\\%
+    Combien mesure AB ?\\%
+    \end{minipage}%
+    \begin{minipage}{0.3\textwidth}%
+    \includegraphics[width = \textwidth]{imagesQuatrieme/triangleRectangle.png}%
+    \end{minipage}\\%
+    '''
+    mainC = r'''\cor{Cosinus}%
+    cos($\alpha$)=$\dfrac{AC}{AB}$\\%
+    Donc, AC = $\dfrac{AB}{cos(\alpha)}$\\%
+    AC $\simeq$ \{c} cm\\%
+    '''
+    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def cosinus3(fileExercices, fileCorrections):
-    main = ''
-    mainC = ''
+    """Calcul du côté adjacent d'un triangle en connaissant l'angle (beta) et l'hypoténuse."""
+    
     a = random.randint(5, 30)
     b = random.randint(10, 80)
     br = b * 2 * pi / 360
-    main += r'\exo{Cosinus}%' + '\n'
-    main += r'\begin{minipage}{0.6\textwidth}%' + '\n'
-    main += r'ABC est le triangle ci-contre.\\%' + '\n'
-    main += r'AB = ' + str(a) + r" cm et l'angle $\beta$ mesure " + str(b) + r'\textdegree\\%' + '\n'
-    main += r'Combien mesure BC ?\\%' + '\n'
-    main += r'\end{minipage}%' + '\n'
-    main += r'\begin{minipage}{0.3\textwidth}%' + '\n'
-    main += r'\includegraphics[width = \textwidth]{imagesQuatrieme/triangleRectangle.png}%' + '\n'
-    main += r'\end{minipage}\\%' + '\n'
-    main += '\n'
-    if correction:
-        mainC += r'\cor{Cosinus}%' + '\n'
-        mainC += r'cos($\beta$)=$\dfrac{BC}{AB}$\\%' + '\n'
-        mainC += r'Donc, BC = AB $\times$ cos($\beta$)\\%' + '\n'
-        mainC += r'BC $\simeq$ ' + str(round(a * cos(br), 2)) + r' cm\\%' + '\n'
-        mainC += '\n'
-    fileExercices += main
-    if separes:
-        fileCorrections += mainC
-    else:
-        fileExercices += mainC
-    return fileExercices, fileCorrections
+    
+    c = round(a * cos(br), 2)
+    
+    main = r'''
+    \exo{Cosinus}%
+    \begin{minipage}{0.6\textwidth}%
+    ABC est le triangle ci-contre.\\%
+    AB = \{a} cm et l'angle $\beta$ mesure \{b}\textdegree\\%
+    Combien mesure BC ?\\%
+    \end{minipage}%
+    \begin{minipage}{0.3\textwidth}%
+    \includegraphics[width = \textwidth]{imagesQuatrieme/triangleRectangle.png}%
+    \end{minipage}\\%
+    '''
+    mainC = r'''\cor{Cosinus}%
+    cos($\beta$)=$\dfrac{BC}{AB}$\\%
+    Donc, AC = AB $\times$ cos($\beta$)\\%
+    AC $\simeq$ \{c} cm\\%
+    '''
+    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def cosinus4(fileExercices, fileCorrections):
-    main = ''
-    mainC = ''
+    """Calcul de la longueur de l'hypoténuse d'un triangle en connaissant l'angle (beta) et le côté adjacent."""
+    
     a = random.randint(5, 30)
     b = random.randint(10, 80)
     br = b * 2 * pi / 360
-    main += r'\exo{Cosinus}%' + '\n'
-    main += r'\begin{minipage}{0.6\textwidth}%' + '\n'
-    main += r'ABC est le triangle ci-contre.\\%' + '\n'
-    main += r'BC = ' + str(a) + r" cm et l'angle $\beta$ mesure " + str(b) + r'\textdegree\\%' + '\n'
-    main += r'Combien mesure AB ?\\%' + '\n'
-    main += r'\end{minipage}%' + '\n'
-    main += r'\begin{minipage}{0.3\textwidth}%' + '\n'
-    main += r'\includegraphics[width = \textwidth]{imagesQuatrieme/triangleRectangle.png}%' + '\n'
-    main += r'\end{minipage}\\%' + '\n'
-    main += '\n'
-    if correction:
-        mainC += r'\cor{Cosinus}%' + '\n'
-        mainC += r'cos($\beta$)=$\dfrac{BC}{AB}$\\%' + '\n'
-        mainC += r'Donc, AB = $\dfrac{BC}{cos(\beta)}$\\%' + '\n'
-        mainC += r'AB $\simeq$ ' + str(round(a / cos(br), 2)) + r' cm\\%' + '\n'
-        mainC += '\n'
-    fileExercices += main
-    if separes:
-        fileCorrections += mainC
-    else:
-        fileExercices += mainC
-    return fileExercices, fileCorrections
+    
+    c = round(a / cos(br), 2)
+    
+    main = r'''
+        \exo{Cosinus}%
+        \begin{minipage}{0.6\textwidth}%
+        ABC est le triangle ci-contre.\\%
+        BC = \{a} cm et l'angle $\beta$ mesure \{b}\textdegree\\%
+        Combien mesure AB ?\\%
+        \end{minipage}%
+        \begin{minipage}{0.3\textwidth}%
+        \includegraphics[width = \textwidth]{imagesQuatrieme/triangleRectangle.png}%
+        \end{minipage}\\%
+        '''
+    mainC = r'''\cor{Cosinus}%
+        cos($\beta$)=$\dfrac{BC}{AB}$\\%
+        Donc, AC = $\dfrac{AB}{cos(\beta)}$\\%
+        AC $\simeq$ \{c} cm\\%
+        '''
+    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 # Addition de fractions#
 def fraction1(fileExercices, fileCorrections):
-    main = ''
-    mainC = ''
-    main += r'\exo{Addition de fractions}%' + '\n'
+    """Addition d'un nombre quelconque de fractions (à fixer dans l'énoncé)."""
 
     nums = []
     dens = []
     signs = []
-
-    main += r'Faites le calcul suivant (le résultat doit être sous forme de fraction).\\%' + '\n'
-    main += r'\begin{center}%' + '\n'
-    main += r'$A='
-
     nbrTerms = random.randint(3, 4)
     for i in range(nbrTerms):
         aa = random.randint(1, 30)
@@ -663,7 +682,12 @@ def fraction1(fileExercices, fileCorrections):
         bb = random.randint(-30, -1)
         dens.append(np.random.choice([ba, bb]))
         signs.append(np.random.choice([r' + ', r' - ']))
-
+    
+    main = r'''\exo{Addition de fractions}%
+Faites le calcul suivant (le résultat doit être sous forme de fraction).\\%
+\begin{center}%
+$A='''
+    
     for i in range(nbrTerms):
         if i == 0 and (signs[i] == r' + '):
             main += r'\dfrac{' + str(nums[i]) + r'}{' + str(dens[i]) + r'}'
@@ -672,107 +696,102 @@ def fraction1(fileExercices, fileCorrections):
     main += r'$%' + '\n'
     main += r'\end{center}%' + '\n'
     main += '\n'
-    if correction:
-        mainC += r'\cor{Addition de fractions}%' + '\n'
-        mainC += r'\begin{center}%' + '\n'
-        mainC += r'$A = '
-        for i in range(nbrTerms):
-            if i == 0 and (signs[i] == r' + '):
-                mainC += r'\dfrac{' + str(nums[i]) + r'}{' + str(dens[i]) + r'}'
-            else:
-                mainC += signs[i] + r'\dfrac{' + str(nums[i]) + r'}{' + str(dens[i]) + r'}'
-        mainC += r'$%' + '\n'
-        mainC += r'\end{center}%' + '\n'
-        for i in range(nbrTerms):
-            if signs[i] == r' + ':
-                if dens[i] / nums[i] < 0:
-                    signs[i] = r' - '
-            else:
-                if dens[i] / nums[i] < 0:
-                    signs[i] = r' + '
-            dens[i] = abs(dens[i])
-            nums[i] = abs(nums[i])
-        ppcmVal = PPCM(dens)
-        mainC += r'\begin{center}%' + '\n'
-        mainC += r'$A = '
-        for i in range(nbrTerms):
-            if i == 0 and (signs[i] == r' + '):
-                mainC += r'\dfrac{' + str(nums[i]) + r'}{' + str(dens[i]) + r'}'
-            else:
-                mainC += signs[i] + r'\dfrac{' + str(nums[i]) + r'}{' + str(dens[i]) + r'}'
-        mainC += r'$%' + '\n'
-        mainC += r'\end{center}%' + '\n'
-        mainC += r'\begin{center}%' + '\n'
-        mainC += r'$A = '
-        for i in range(nbrTerms):
-            if i == 0 and (signs[i] == r' + '):
-                mainC += r'\dfrac{' + str(nums[i]) + r'\textcolor{red}{\times ' + \
-                         str(int(ppcmVal / dens[i])) + r'}}{' + str(dens[i]) + r'\textcolor{red}{\times ' + \
-                         str(int(ppcmVal / dens[i])) + r'}}'
-            else:
-                mainC += signs[i] + r'\dfrac{' + str(nums[i]) + r'\textcolor{red}{\times ' + \
-                         str(int(ppcmVal / dens[i])) + r'}}{' + str(dens[i]) + r'\textcolor{red}{\times ' + \
-                         str(int(ppcmVal / dens[i])) + r'}}'
-        mainC += r'$%' + '\n'
-        mainC += r'\end{center}%' + '\n'
-        mainC += r'\begin{center}%' + '\n'
-        mainC += r'$A = '
-        for i in range(nbrTerms):
-            if i == 0 and (signs[i] == r' + '):
-                mainC += r'\dfrac{' + str(int(nums[i] * ppcmVal / dens[i])) + r'}{' + \
-                         str(int(ppcmVal)) + r'}'
-            else:
-                mainC += signs[i] + r'\dfrac{' + str(int(nums[i] * ppcmVal / dens[i])) + r'}{' + \
-                         str(int(ppcmVal)) + r'}'
 
-        mainC += r'$%' + '\n'
-        mainC += r'\end{center}%' + '\n'
-        mainC += r'\begin{center}%' + '\n'
-        mainC += r'$A = \dfrac{'
-        for i in range(nbrTerms):
-            if i == 0 and (signs[i] == r' + '):
-                mainC += str(int(nums[i] * ppcmVal / dens[i]))
-            else:
-                mainC += signs[i] + str(int(nums[i] * ppcmVal / dens[i]))
-        mainC += r'}{' + str(int(ppcmVal)) + r'}%' + '\n'
-        mainC += r'$%' + '\n'
-        mainC += r'\end{center}%' + '\n'
-        numerator = 0
-        for i in range(nbrTerms):
-            if signs[i] == r' + ':
-                numerator += nums[i]
-            else:
-                numerator -= nums[i]
-        mainC += r'\begin{center}%' + '\n'
-        mainC += r'$A = \dfrac{' + str(int(numerator))
-        mainC += r'}{' + str(int(ppcmVal)) + r'}$%' + '\n'
-        mainC += r'\end{center}%' + '\n'
-        pgcdVal = PGCD([numerator, ppcmVal])
-        if pgcdVal == 1:
-            if numerator < 0:
-                mainC += r'\begin{center}%' + '\n'
-                mainC += r'$A=-\dfrac{' + str(int(abs(numerator / pgcdVal)))
-                mainC += r'}{' + str(int(ppcmVal / pgcdVal)) + r'}$%' + '\n'
-                mainC += r'\end{center}%' + '\n'
+    mainC = r'\cor{Addition de fractions}%' + '\n'
+    mainC += r'\begin{center}%' + '\n'
+    mainC += r'$A = '
+    for i in range(nbrTerms):
+        if i == 0 and (signs[i] == r' + '):
+            mainC += r'\dfrac{' + str(nums[i]) + r'}{' + str(dens[i]) + r'}'
         else:
-            if numerator < 0:
-                mainC += r'\begin{center}%' + '\n'
-                mainC += r'$A=-\dfrac{' + str(int(abs(numerator / pgcdVal)))
-                mainC += r'}{' + str(int(ppcmVal / pgcdVal)) + r'}$%' + '\n'
-                mainC += r'\end{center}%' + '\n'
-            else:
-                mainC += r'\begin{center}%' + '\n'
-                mainC += r'$A=\dfrac{' + str(int(numerator / pgcdVal))
-                mainC += r'}{' + str(int(ppcmVal / pgcdVal)) + r'}$%' + '\n'
-                mainC += r'\end{center}%' + '\n'
-        mainC += '\n'
-    fileExercices += main
-    if separes:
-        fileCorrections += mainC
-    else:
-        fileExercices += mainC
-    return fileExercices, fileCorrections
+            mainC += signs[i] + r'\dfrac{' + str(nums[i]) + r'}{' + str(dens[i]) + r'}'
+    mainC += r'$%' + '\n'
+    mainC += r'\end{center}%' + '\n'
+    for i in range(nbrTerms):
+        if signs[i] == r' + ':
+            if dens[i] / nums[i] < 0:
+                signs[i] = r' - '
+        else:
+            if dens[i] / nums[i] < 0:
+                signs[i] = r' + '
+        dens[i] = abs(dens[i])
+        nums[i] = abs(nums[i])
+    ppcmVal = PPCM(dens)
+    mainC += r'\begin{center}%' + '\n'
+    mainC += r'$A = '
+    for i in range(nbrTerms):
+        if i == 0 and (signs[i] == r' + '):
+            mainC += r'\dfrac{' + str(nums[i]) + r'}{' + str(dens[i]) + r'}'
+        else:
+            mainC += signs[i] + r'\dfrac{' + str(nums[i]) + r'}{' + str(dens[i]) + r'}'
+    mainC += r'$%' + '\n'
+    mainC += r'\end{center}%' + '\n'
+    mainC += r'\begin{center}%' + '\n'
+    mainC += r'$A = '
+    for i in range(nbrTerms):
+        if i == 0 and (signs[i] == r' + '):
+            mainC += r'\dfrac{' + str(nums[i]) + r'\textcolor{red}{\times ' + \
+                     str(int(ppcmVal / dens[i])) + r'}}{' + str(dens[i]) + r'\textcolor{red}{\times ' + \
+                     str(int(ppcmVal / dens[i])) + r'}}'
+        else:
+            mainC += signs[i] + r'\dfrac{' + str(nums[i]) + r'\textcolor{red}{\times ' + \
+                     str(int(ppcmVal / dens[i])) + r'}}{' + str(dens[i]) + r'\textcolor{red}{\times ' + \
+                     str(int(ppcmVal / dens[i])) + r'}}'
+    mainC += r'$%' + '\n'
+    mainC += r'\end{center}%' + '\n'
+    mainC += r'\begin{center}%' + '\n'
+    mainC += r'$A = '
+    for i in range(nbrTerms):
+        if i == 0 and (signs[i] == r' + '):
+            mainC += r'\dfrac{' + str(int(nums[i] * ppcmVal / dens[i])) + r'}{' + \
+                     str(int(ppcmVal)) + r'}'
+        else:
+            mainC += signs[i] + r'\dfrac{' + str(int(nums[i] * ppcmVal / dens[i])) + r'}{' + \
+                     str(int(ppcmVal)) + r'}'
 
+    mainC += r'$%' + '\n'
+    mainC += r'\end{center}%' + '\n'
+    mainC += r'\begin{center}%' + '\n'
+    mainC += r'$A = \dfrac{'
+    for i in range(nbrTerms):
+        if i == 0 and (signs[i] == r' + '):
+            mainC += str(int(nums[i] * ppcmVal / dens[i]))
+        else:
+            mainC += signs[i] + str(int(nums[i] * ppcmVal / dens[i]))
+    mainC += r'}{' + str(int(ppcmVal)) + r'}%' + '\n'
+    mainC += r'$%' + '\n'
+    mainC += r'\end{center}%' + '\n'
+    numerator = 0
+    for i in range(nbrTerms):
+        if signs[i] == r' + ':
+            numerator += nums[i]
+        else:
+            numerator -= nums[i]
+    mainC += r'\begin{center}%' + '\n'
+    mainC += r'$A = \dfrac{' + str(int(numerator))
+    mainC += r'}{' + str(int(ppcmVal)) + r'}$%' + '\n'
+    mainC += r'\end{center}%' + '\n'
+    pgcdVal = PGCD([numerator, ppcmVal])
+    if pgcdVal == 1:
+        if numerator < 0:
+            mainC += r'\begin{center}%' + '\n'
+            mainC += r'$A=-\dfrac{' + str(int(abs(numerator / pgcdVal)))
+            mainC += r'}{' + str(int(ppcmVal / pgcdVal)) + r'}$%' + '\n'
+            mainC += r'\end{center}%' + '\n'
+    else:
+        if numerator < 0:
+            mainC += r'\begin{center}%' + '\n'
+            mainC += r'$A=-\dfrac{' + str(int(abs(numerator / pgcdVal)))
+            mainC += r'}{' + str(int(ppcmVal / pgcdVal)) + r'}$%' + '\n'
+            mainC += r'\end{center}%' + '\n'
+        else:
+            mainC += r'\begin{center}%' + '\n'
+            mainC += r'$A=\dfrac{' + str(int(numerator / pgcdVal))
+            mainC += r'}{' + str(int(ppcmVal / pgcdVal)) + r'}$%' + '\n'
+            mainC += r'\end{center}%' + '\n'
+    mainC += '\n'
+    
+    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 

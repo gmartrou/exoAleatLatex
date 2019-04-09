@@ -105,7 +105,7 @@ for j in range(nombreDevoirs):
     #        (main, mainC) = exo(main, mainC, correction = True, separes = True)
 
     for i in range(40):
-        exo = np.random.choice([pythagore4])
+        exo = np.random.choice([fraction1])
         main, mainC = exo(main, mainC)
 
     #exo = np.random.choice([tableauDeSigneUn1, tableauDeSigneUn2, tableauDeSigneUn3, tableauDeSigneUn4])
