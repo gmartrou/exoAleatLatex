@@ -129,7 +129,7 @@ niveau = quatrieme
 #nombreExercices = 6
 nombreDevoirs = 1
 
-for j in range(1,nombreDevoirs+1):
+for j in range(1, nombreDevoirs+1):
     if j < 10:
         j = str(0) + str(j)
     else:
@@ -138,17 +138,23 @@ for j in range(1,nombreDevoirs+1):
     headerC = headerBase
     main = ''
     mainC = ''
-    header += r'''\enteteLSMI{}{Interrogation Surprise : sujet n°''' + j + '''}%''' + '\n\n'
-    headerC += r'''\enteteLSMI{}{Correction de l'interrogation Surprise : sujet n°''' + j + '''}%''' + '\n\n'
+    header += r'''\enteteLSMI{10 Avril 2019}{Interrogation sur le cosinus : sujet A}%''' + '\n\n'
+    headerC += r'''\enteteLSMI{10 Avril 2019}{Correction de l'interrogation sur le cosinus : sujet A}%''' + '\n\n'
     
     nomFichierExo = 'exercices' + str(j)
     nomFichierCor = 'corrections' + str(j)
-    for chapitre in niveau:
-        exo = np.random.choice(chapitre)
+    # for chapitre in niveau:
+    #     exo = np.random.choice(chapitre)
+    #     main, mainC = exo(main, mainC)
+    for exo in [exosQuatrieme.cosinus2,
+                exosQuatrieme.cosinus3,
+                exosQuatrieme.cosinus4,
+                exosQuatrieme.cosinus6]:
+        #exo = np.random.choice([exosQuatrieme.cosinus6])
         main, mainC = exo(main, mainC)
-
+        main += r'\vspace{3 cm}'
     # for i in range(40):
-    #     exo = np.random.choice([exosQuatrieme.calculLitteral])
+    #     exo = np.random.choice([exosQuatrieme.cosinus6])
     #     main, mainC = exo(main, mainC)
 
     contentExercices = header + main + footer

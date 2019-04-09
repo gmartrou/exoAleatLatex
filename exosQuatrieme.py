@@ -609,6 +609,77 @@ def cosinus4(fileExercices, fileCorrections):
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
+def cosinus5(fileExercices, fileCorrections):
+    """Calculez les mesures manquantes à partir de deux mesures données."""
+    
+    a = random.randint(5, 30)
+    beta = random.randint(10, 80)
+    alpha = 90 - beta
+    betaR = beta * 2 * pi / 360
+    alphaR = pi/2 - betaR
+    CH = a*cos(alphaR)
+    c = round(a / cos(betaR), 2)
+    AC = CH / cos(betaR)
+    AH = AC*cos(alphaR)
+    
+    main = r'''
+\exo{Longueur à trouver}%
+\begin{minipage}{0.6\textwidth}%
+ABC est le triangle ci-contre.\\%
+BC = \{a} cm et l'angle $\theta$ mesure \{beta}°\\%
+Combien mesure AH ?\\%
+\end{minipage}%
+\begin{minipage}{0.3\textwidth}%
+\includegraphics[width = \textwidth]{imagesQuatrieme/PythagoreDoubleTriangleA.png}%
+\end{minipage}\\%
+'''
+    mainC = r'''\cor{Longueur à trouver}%
+La somme des angles dans un triangle mesurant 180°, l'angle $\alpha$ mesure \{alpha}°\\%
+cos($\alpha$)=$\dfrac{CH}{BC}$\\%
+Donc, CH = AB $\times$ cos($\alpha$) $\simeq$ \{CH} cm\\%
+cos($\theta$)=$\dfrac{CH}{AC}$\\%
+Donc, AC = $\dfrac{CH}{cos(\theta)} \simeq$ \{AC} cm\\%
+cos($\alpha$)=$\dfrac{AH}{AC}$\\%
+Donc, AH = AC $\times$ cos($\alpha$) $\simeq$ \{AH} cm\\%
+'''
+    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+
+
+def cosinus6(fileExercices, fileCorrections):
+    """Calculez les mesures manquantes à partir de deux mesures données."""
+    
+    AC = random.randint(5, 30)
+    theta = random.randint(10, 80)
+    alpha = 90 - theta
+    thetaR = theta * 2 * pi / 360
+    alphaR = pi / 2 - thetaR
+    CH = AC * cos(thetaR)
+    BC = round(CH / cos(alphaR), 2)
+    BH = BC * cos(thetaR)
+    
+    main = r'''
+\exo{Longueur à trouver}%
+\begin{minipage}{0.6\textwidth}%
+ABC est le triangle ci-contre.\\%
+AC = \{AC} cm et l'angle $\alpha$ mesure \{alpha}°\\%
+Combien mesure BH ?\\%
+\end{minipage}%
+\begin{minipage}{0.3\textwidth}%
+\includegraphics[width = \textwidth]{imagesQuatrieme/PythagoreDoubleTriangleA.png}%
+\end{minipage}\\%
+'''
+    mainC = r'''\cor{Longueur à trouver}%
+La somme des angles dans un triangle mesurant 180°, l'angle $\theta$ mesure \{theta}°\\%
+cos($\theta$)=$\dfrac{CH}{AC}$\\%
+Donc, CH = AC $\times$ cos($\theta$) $\simeq$ \{CH} cm\\%
+cos($\alpha$)=$\dfrac{CB}{CH}$\\%
+Donc, BC = $\dfrac{CH}{cos(\theta)} \simeq$ \{BC} cm\\%
+cos($\theta$)=$\dfrac{BC}{BH}$\\%
+Donc, BH = $\dfrac{BC}{cos(\theta)} \simeq$ \{BH} cm\\%
+'''
+    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+
+
 def fraction1(fileExercices, fileCorrections):
     """Addition d'un nombre quelconque de fractions (à fixer dans l'énoncé)."""
 
