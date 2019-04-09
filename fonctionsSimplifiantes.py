@@ -1,3 +1,7 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+
 def repereDebut(main, xmin, ymin, xmax, ymax):
     taille = 0.4*(xmax - xmin)/(ymax - ymin)
     main += r'''\begin{adjustbox}{width='''+str(taille)+r'''\textwidth,center}

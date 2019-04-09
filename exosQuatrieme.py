@@ -1,12 +1,17 @@
-from random import *
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+
+import random
 import numpy as np
 from math import *
 from fonctionsSupplementaires import *
 from fonctionsSimplifiantes import *
 
+
 def pythagore1(fileExercices, fileCorrections):
-    a = randint(1, 10)
-    b = randint(a + 1, 15)
+    a = random.randint(1, 10)
+    b = random.randint(a + 1, 15)
     ac = a ** 2
     bc = b ** 2
     di = sqrt(bc - ac)
@@ -44,12 +49,12 @@ AB = $\sqrt{\{di}}$ cm\\%
 
 
 def pythagore2(fileExercices, fileCorrections):
-    a = randint(1, 15)
-    b = randint(1, 15)
+    a = random.randint(1, 15)
+    b = random.randint(1, 15)
     ac = a**2
     bc = b**2
-    sum = ac + bc
-    sqSum = sqrt(sum)
+    sumSq = ac + bc
+    sqSum = sqrt(sumSq)
     ro = round(sqSum, 2)
 
     main = r'''\exo{Théorème de Pythagore}%
@@ -69,10 +74,10 @@ ABC est un triangle rectangle en A.\\%
 Donc, d'après le théorème de Pythagore :\\%
 BC$^2$ = AB$^2$ + AC$^2$\\%
 BC$^2$ = \{ac} + \{bc}\\%
-BC$^2$ = \{sum}\\%
-BC = $\sqrt{\{sum}}$ cm\\%
+BC$^2$ = \{sumSq}\\%
+BC = $\sqrt{\{sumSq}}$ cm\\%
 '''
-    if sum == ro:
+    if sumSq == ro:
         mainC += r'''BC = \{sqSum} cm\\%
 '''
     else:
@@ -83,8 +88,8 @@ BC = $\sqrt{\{sum}}$ cm\\%
 
 
 def pythagore3(fileExercices, fileCorrections):
-    a = randint(1, 10)
-    b = randint(a + 1, 15)
+    a = random.randint(1, 10)
+    b = random.randint(a + 1, 15)
     ac = a**2
     bc = b**2
     di = bc - ac
@@ -118,44 +123,44 @@ AC = $\sqrt{\{di}}$ cm\\%
     else:
         mainC += r'''AC $\simeq$ \{ro} cm\\%
 '''
-    localV = locals()
-    return endExercice(main, mainC, fileExercices, fileCorrections, localV)
+
+    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def pythagore4(fileExercices, fileCorrections):
-    main = ''
-    mainC = ''
-    main += r'\exo{Théorème de Pythagore}%' + '\n'
-    main += r'ABC est un triangle.\\%' + '\n'
-    a = randint(1, 15)
-    b = randint(1, 15)
+
+    a = random.randint(1, 15)
+    b = random.randint(1, 15)
     c = sqrt(a ** 2 + b ** 2)
+    ac = a**2
+    bc = b**2
+    cc = c**2
+    sumSq = ac + bc
+
     c = round(c, 3)
-    main += r'AB = ' + str(a) + r' cm.\\%' + '\n'
-    main += r'AC = ' + str(b) + r' cm.\\%' + '\n'
-    main += r'BC = ' + str(c) + r' cm.\\%' + '\n'
-    main += r"ABC est-il rectangle ? (Si les valeurs sont juste à 1 chiffre après la virgule, c'est bon)\\%" + '\n'
-    main += '\n'
-    if correction:
-        mainC += r'\cor{Théorème de Pythagore}%' + '\n'
-        mainC += r'BC est le plus grand côté.\\%' + '\n'
-        mainC += r'BC$^2$ = ' + str(c) + r'$^2$\\%' + '\n'
-        mainC += r'BC$^2$ = ' + str(c ** 2) + r'\\%' + '\n'
-        mainC += r'AB$^2$ + AC$^2 = $' + str(a ** 2) + r' + ' + str(b ** 2) + r'\\%' + '\n'
-        mainC += r'AB$^2$ + AC$^2 = $' + str(a ** 2 + b ** 2) + r'\\%' + '\n'
-        if (a ** 2 + b ** 2) == c ** 2:
-            mainC += r'BC$^2$ = AB$^2$ + AC$^2$\\%' + '\n'
-        else:
-            mainC += r'\`{A} 1 chiffre après la virgule près, on a :\\%' + '\n'
-            mainC += r'BC$^2$ = AB$^2$ + AC$^2$\\%' + '\n'
-        mainC += r"Donc, d'après la réciproque du théorème de Pythagore ABC est rectangle en B.\\%" + '\n'
-        mainC += '\n'
-    fileExercices += main
-    if separes:
-        fileCorrections += mainC
-    else:
-        fileExercices += mainC
-    return fileExercices, fileCorrections
+
+    main = r'''\exo{Théorème de Pythagore}%
+ABC est un triangle.\\%
+AB = \{a} cm.\\%
+AC = \{b} cm.\\%
+BC = \{c} cm.\\%
+ABC est-il rectangle ? (Si les valeurs sont juste à 1 chiffre après la virgule, cela sera suffisant).\\%
+'''
+    mainC = r'''\cor{Théorème de Pythagore}%
+BC est le plus grand côté.\\%
+BC$^2$ = \{c}$^2$\\%
+BC$^2$ = \{cc}\\%
+AB$^2$ + AC$^2$ = \{ac} + \{bc}\\%
+AB$^2$ + AC$^2$ = \{sumSq}\\%
+'''
+    if sumSq != cc:
+        mainC += r'''\`{A} 1 chiffre après la virgule près, on a :\\%
+'''
+    mainC += r'''BC$^2$ = AB$^2$ + AC$^2$\\%
+Donc, d'après la réciproque du théorème de Pythagore ABC est rectangle en B.\\%
+'''
+    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+
 
 
 def pythagore5(fileExercices, fileCorrections):
@@ -163,12 +168,12 @@ def pythagore5(fileExercices, fileCorrections):
     mainC = ''
     main += r'\exo{Théorème de Pythagore}%' + '\n'
     main += r'ABC est un triangle.\\%' + '\n'
-    a = randint(1, 15)
-    b = randint(1, 15)
-    if random() > 0.5:
-        c = sqrt(a ** 2 + b ** 2) + random()
+    a = random.randint(1, 15)
+    b = random.randint(1, 15)
+    if random.random() > 0.5:
+        c = sqrt(a ** 2 + b ** 2) + random.random()
     else:
-        c = sqrt(a ** 2 + b ** 2) - random()
+        c = sqrt(a ** 2 + b ** 2) - random.random()
     c = round(c, 3)
     main += r'AB = ' + str(a) + r' cm.\\%' + '\n'
     main += r'AC = ' + str(b) + r' cm.\\%' + '\n'
@@ -203,10 +208,10 @@ def equation1(fileExercices, fileCorrections):
     main = ''
     mainC = ''
     main += r'''\exo{Résolution d'équation}'''
-    a = randint(2, 15)
-    b = randint(1, 15)
-    c = randint(2, 15)
-    d = randint(1, 15)
+    a = random.randint(2, 15)
+    b = random.randint(1, 15)
+    c = random.randint(2, 15)
+    d = random.randint(1, 15)
     main += r'Trouver la valeur de $x$ vérifiant :\\%' + '\n'
     main += str(a) + r'$x$ + ' + str(b) + ' $=$ ' + str(c) + r'$x$ + ' + str(d) + r'\\%' + '\n'
     main += '\n'
@@ -273,9 +278,9 @@ def equation2(fileExercices, fileCorrections):
                     'Jean', 'Julie', 'Adrien', 'Thomas', 'Suzanne', 'Philippe']
     a, b, c, ans = 0, 0, 0, 0
     while pasBon:
-        a = randint(1, 30)
-        b = randint(31, 60)
-        c = randint(2, 4)
+        a = random.randint(1, 30)
+        b = random.randint(31, 60)
+        c = random.randint(2, 4)
         ans = (b - c * a) / (c - 1)
         if (ans == int(ans)) and ((b - a) > 1):
             ans = int(ans)
@@ -357,11 +362,11 @@ def equation3(fileExercices, fileCorrections):
     main = ''
     mainC = ''
     main += r'''\exo{Résolution d'équation}%''' + '\n'
-    nbrPersonnes = randint(100, 400)
-    nbrAdultes = randint(1, nbrPersonnes)
+    nbrPersonnes = random.randint(100, 400)
+    nbrAdultes = random.randint(1, nbrPersonnes)
     nbrEnfants = nbrPersonnes - nbrAdultes
-    prxEnfant = randint(2, 7)
-    prxAdulte = randint(8, 13)
+    prxEnfant = random.randint(2, 7)
+    prxAdulte = random.randint(8, 13)
     nbr = nbrAdultes + nbrEnfants
     tot = prxEnfant * nbrEnfants + prxAdulte * nbrAdultes
     main += str(nbrPersonnes) + r" personnes vont \`{a} un spectacle.\\%" + '\n'
@@ -418,8 +423,8 @@ def puissance1(fileExercices, fileCorrections):
     main = ''
     mainC = ''
     main += r'''\exo{Puissances}%''' + '\n'
-    a = randint(-30, 30)
-    b = randint(-30, 30)
+    a = random.randint(-30, 30)
+    b = random.randint(-30, 30)
     main += r"Faites le calcul suivant (le résultat doit être sous forme d'une puissance de 10).\\%" + '\n'
     main += r'\begin{center}%' + '\n'
     main += r'$10^{' + str(a) + r'}\times 10^{' + str(b) + r'}=$\\%' + '\n'
@@ -450,8 +455,8 @@ def puissance2(fileExercices, fileCorrections):
     main = ''
     mainC = ''
     main += r'''\exo{Puissances}%''' + '\n'
-    a = randint(-30, 30)
-    b = randint(-30, 30)
+    a = random.randint(-30, 30)
+    b = random.randint(-30, 30)
     main += r"Faites le calcul suivant (le résultat doit être sous forme d'une puissance de 10).\\%" + '\n'
     main += r'\begin{center}%' + '\n'
     main += r'$\dfrac{10^{' + str(a) + r'}}{10^{' + str(b) + r'}}=$\\%' + '\n'
@@ -482,8 +487,8 @@ def puissance3(fileExercices, fileCorrections):
     main = ''
     mainC = ''
     main += r'\exo{Puissances}%' + '\n'
-    a = randint(-30, 30)
-    b = randint(-30, 30)
+    a = random.randint(-30, 30)
+    b = random.randint(-30, 30)
     main += r"Faites le calcul suivant (le résultat doit être sous forme d'une puissance de 10).\\%" + '\n'
     main += r'\begin{center}%' + '\n'
     main += r'$(10^{' + str(a) + r'})^{' + str(b) + r'}=$\\%' + '\n'
@@ -513,8 +518,8 @@ def puissance3(fileExercices, fileCorrections):
 def cosinus1(fileExercices, fileCorrections):
     main = ''
     mainC = ''
-    a = randint(5, 30)
-    b = randint(10, 80)
+    a = random.randint(5, 30)
+    b = random.randint(10, 80)
     br = b * 2 * pi / 360
     main += r'\exo{Cosinus}%' + '\n'
     main += r'\begin{minipage}{0.6\textwidth}%' + '\n'
@@ -543,8 +548,8 @@ def cosinus1(fileExercices, fileCorrections):
 def cosinus2(fileExercices, fileCorrections):
     main = ''
     mainC = ''
-    a = randint(5, 30)
-    b = randint(10, 80)
+    a = random.randint(5, 30)
+    b = random.randint(10, 80)
     br = b * 2 * pi / 360
     main += r'\exo{Cosinus}%' + '\n'
     main += r'\begin{minipage}{0.6\textwidth}%' + '\n'
@@ -573,8 +578,8 @@ def cosinus2(fileExercices, fileCorrections):
 def cosinus3(fileExercices, fileCorrections):
     main = ''
     mainC = ''
-    a = randint(5, 30)
-    b = randint(10, 80)
+    a = random.randint(5, 30)
+    b = random.randint(10, 80)
     br = b * 2 * pi / 360
     main += r'\exo{Cosinus}%' + '\n'
     main += r'\begin{minipage}{0.6\textwidth}%' + '\n'
@@ -603,8 +608,8 @@ def cosinus3(fileExercices, fileCorrections):
 def cosinus4(fileExercices, fileCorrections):
     main = ''
     mainC = ''
-    a = randint(5, 30)
-    b = randint(10, 80)
+    a = random.randint(5, 30)
+    b = random.randint(10, 80)
     br = b * 2 * pi / 360
     main += r'\exo{Cosinus}%' + '\n'
     main += r'\begin{minipage}{0.6\textwidth}%' + '\n'
@@ -644,13 +649,13 @@ def fraction1(fileExercices, fileCorrections):
     main += r'\begin{center}%' + '\n'
     main += r'$A='
 
-    nbrTerms = randint(3, 4)
+    nbrTerms = random.randint(3, 4)
     for i in range(nbrTerms):
-        aa = randint(1, 30)
-        ab = randint(-30, -1)
+        aa = random.randint(1, 30)
+        ab = random.randint(-30, -1)
         nums.append(np.random.choice([aa, ab]))
-        ba = randint(1, 30)
-        bb = randint(-30, -1)
+        ba = random.randint(1, 30)
+        bb = random.randint(-30, -1)
         dens.append(np.random.choice([ba, bb]))
         signs.append(np.random.choice([r' + ', r' - ']))
 

@@ -1,3 +1,7 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+
 def PGCD(N):
     A = N[:]
     if len(A) == 2:
