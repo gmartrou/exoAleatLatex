@@ -309,9 +309,9 @@ On divise par \{aMc} de chaque côté : $x = \dfrac{\{dMb}}{\{aMc}}$\\%'
 
 
 def equation2(fileExercices, fileCorrections):
-    main = ''
-    mainC = ''
-    main += r'''\exo{Résolution d'équation}'''
+    """Exercice type de calcul d'âge en connaisant la différence et quand un âge sera
+    le multiple de l'autre."""
+
     pasBon = True
     listePrenoms = ['Paul', 'Pierre', 'Marie', 'Margot', 'Fanny',
                     'Jean', 'Julie', 'Adrien', 'Thomas', 'Suzanne', 'Philippe']
@@ -327,231 +327,174 @@ def equation2(fileExercices, fileCorrections):
     nomA = np.random.choice(listePrenoms)
     listePrenoms.remove(nomA)
     nomB = np.random.choice(listePrenoms)
-    main += nomA + r' a ' + str(b - a) + r' ans de plus que ' + nomB + r'.\\%' + '\n'
+    bMa = b - a
+    an = 'ans'
+    if ans == 1 or ans == -1:
+        an = 'an'
+    DansIlYA = 'Dans'
+    avoir = 'aura'
     if b / a > c:
-        if ans == 1:
-            main += r'Dans ' + str(ans) + ' an ' + nomA + r' aura ' + str(c) + \
-                    r" fois l'âge de " + nomB + r'.\\%' + '\n'
-        else:
-            main += r'Dans ' + str(ans) + ' ans ' + nomA + r' aura ' + str(c) + \
-                    r" fois l'âge de " + nomB + r'.\\%' + '\n'
-    else:
-        if ans == 1:
-            main += r'Il y a ' + str(-ans) + ' an ' + nomA + r' avait ' + str(c) + \
-                    r" fois l'âge de " + nomB + r'.\\%' + '\n'
-        else:
-            main += r'Il y a ' + str(-ans) + ' ans ' + nomA + r' avait ' + str(c) + \
-                    r" fois l'âge de " + nomB + r'.\\%' + '\n'
-    main += r'Quels sont leurs âges respectifs actuellement ?\\%' + '\n'
-    main += '\n'
-    if correction:
-        mainC += r"\cor{Résolution d'équation}"
-        mainC += r'''Notons $x$:"L'âge de ''' + nomA + r'"\\%' + '\n'
-        mainC += r'''Notons $y$:"L'âge de ''' + nomB + r'"\\%' + '\n'
-        mainC += r'On a les deux équations suivantes : \\%' + '\n'
-        mainC += r'$x$ = $y$ + ' + str(b - a) + r'\\%' + '\n'
-        if ans > 0:
-            mainC += r'$x$ + ' + str(ans) + r' = ' + str(c) + r'($y + $' + str(ans) + r')\\%' + '\n'
-            mainC += r'On remplace $x$ par $y$ + ' + str(b - a) + r'\\%' + '\n'
-            mainC += r'$y$ + ' + str(b - a) + r' + ' + str(ans) + r' = ' + str(c) + r'($y$ + ' + \
-                     str(ans) + r')\\%' + '\n'
-            mainC += r'$y$ + ' + str(b - a + ans) + r' = ' + str(c) + r'($y$ + ' + str(ans) + r')\\%' + '\n'
-            mainC += r'On développe : %' + '\n'
-            mainC += r'$y$ + ' + str(b - a + ans) + r' = ' + str(c) + r'$y$ + ' + str(c) + r'$\times$' + \
-                     str(ans) + r'\\%' + '\n'
-            mainC += r'$y$ + ' + str(b - a + ans) + r' = ' + str(c) + r'$y$ + ' + str(c * ans) + r'\\%' + '\n'
-            mainC += r'On retire $y$ de chaque côté : '
-            mainC += str(b - a + ans) + r' = ' + str(c - 1) + r'$y$ + ' + str(c * ans) + r'\\%' + '\n'
-            mainC += r'On retire ' + str(c * ans) + r' de chaque côté : '
-            mainC += str(b - a + ans - c * ans) + r' = ' + str(c - 1) + r'$y$' + r'\\%' + '\n'
-            mainC += r'On divise par ' + str(c - 1) + r' de chaque côté : '
-            mainC += r'$y = \dfrac{' + str(b - a + ans - c * ans) + r'}{' + str(c - 1) + r'}$\\%' + '\n'
-            mainC += r'$y =$ ' + str(int(a)) + r'\\%' + '\n'
-            mainC += nomB + r' a ' + str(a) + r' ans.\\%' + '\n'
-            mainC += r'Et donc, ' + nomA + r' a ' + str(b) + r' ans.\\%' + '\n'
-        else:
-            mainC += r'$x$ - ' + str(-ans) + r' = ' + str(c) + r'($y$ - ' + str(-ans) + r')\\%' + '\n'
-            mainC += r'On remplace $x$ par $y$ + ' + str(b - a) + r'\\%' + '\n'
-            mainC += r'$y$ + ' + str(b - a) + r' - ' + str(-ans) + r' = ' + str(c) + r'($y$ - ' + \
-                     str(-ans) + r')\\%' + '\n'
-            mainC += r'$y$ + ' + str(b - a + ans) + r' = ' + str(c) + r'($y$ - ' + str(-ans) + r')\\%' + '\n'
-            mainC += r'On développe : '
-            mainC += r'$y$ + ' + str(b - a + ans) + r' = ' + str(c) + r'$y$ + ' + str(c) + r'$\times$(-' + \
-                     str(-ans) + r')\\%' + '\n'
-            mainC += r'$y$ + ' + str(b - a + ans) + r' = ' + str(c) + r'$y$ - ' + str(c * (-ans)) + r'\\%' + '\n'
-            mainC += r'On retire $y$ de chaque côté : '
-            mainC += str(b - a + ans) + r' = ' + str(c - 1) + r'$y$ - ' + str(c * (-ans)) + r'\\%' + '\n'
-            mainC += r'On ajoute ' + str(c * (-ans)) + r' de chaque côté : '
-            mainC += str(b - a + ans - c * ans) + r' = ' + str(c - 1) + r'$y$' + r'\\%' + '\n'
-            mainC += r'On divise par ' + str(c - 1) + r' de chaque côté : '
-            mainC += r'$y = \dfrac{' + str(b - a + ans - c * ans) + r'}{' + str(c - 1) + r'}$\\%' + '\n'
-            mainC += r'$y =$ ' + str(int(a)) + r'\\%' + '\n'
-            mainC += nomB + r' a ' + str(a) + r' ans.\\%' + '\n'
-            mainC += r'Et donc, ' + nomA + r' a ' + str(b) + r' ans.\\%' + '\n'
-        mainC += '\n'
-    fileExercices += main
-    if separes:
-        fileCorrections += mainC
-    else:
-        fileExercices += mainC
-    return fileExercices, fileCorrections
+        DansIlYA = 'Il y a'
+        avoir = 'avait'
+    signAns = ' + '
+    absAns = ans
+    ansText = str(ans)
+    cAns = c * ans
+    absCAns = cAns
+    if ans < 0:
+        signAns = ' - '
+        absAns = abs(ans)
+        ansText = '(' + str(ans) + ')'
+        absCAns = abs(cAns)
+    bMaPans = b - a + ans
+    cM1 = c - 1
+    bMaPansMcans = b - a + ans - c * ans
+    
+    main = r'''\exo{Résolution d'équation}
+\{nomA} a \{bMa} ans de plus que \{nomB}.\\%
+\{DansIlYA} \{ans) \{an} \{nomA} \{avoir} \{c} fois l'âge de \{nomB}.\\%
+Quels sont leurs âges respectifs actuellement ?\\%
+'''
+    
+    mainC = r'''\cor{Résolution d'équation}%
+Notons $x$ : "L'âge de \{nomA}"\\%
+Notons $y$ : "L'âge de \{nomB}"\\%
+On a les deux équations suivantes : \\%
+\begin{equation*}%
+\begin{cases}%
+$x = y + \{bMa}$\\%
+$x \{signAns} \{absAns} = \{c}(y \{signAns} \{absAns})$\\%
+\end{cases}%
+\end{equation*}%
+On remplace $x$ par $y + \{bMa}$ dans la deuxième équation.\\%
+$y + \{bMa} \{signAns} \{absAns} = \{c}(y \{signAns} \{absAns})$\\%
+$y + \{bMaPans} = \{c}(y \{signAns} \{absAns})$\\%
+On développe : $y + \{bMaPans} = \{c}y + \{c} \times \{ansText}$\\%
+$y + \{bMaPans} = \{c}y \{signAns} \{absCAns}$\\%
+On retire $y$ de chaque côté : $\{bMaPans} = \{cM1}y \{signAns} \{absCAns}$\\%
+On retire \{cAns} de chaque côté : $\{bMaPansMcans} = \{cM1}y$\\%
+On divise par \{cM1} de chaque côté : $y = \dfrac{\{bMaPansMcans}}{\{cM1}}$\\%
+$y = \{a}$\\%
+\{nomB} a \{a} ans.\\%
+Et donc, \{nomA} a \{b} ans.\\%
+'''
+    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def equation3(fileExercices, fileCorrections):
-    main = ''
-    mainC = ''
-    main += r'''\exo{Résolution d'équation}%''' + '\n'
-    nbrPersonnes = random.randint(100, 400)
-    nbrAdultes = random.randint(1, nbrPersonnes)
-    nbrEnfants = nbrPersonnes - nbrAdultes
-    prxEnfant = random.randint(2, 7)
-    prxAdulte = random.randint(8, 13)
-    nbr = nbrAdultes + nbrEnfants
-    tot = prxEnfant * nbrEnfants + prxAdulte * nbrAdultes
-    main += str(nbrPersonnes) + r" personnes vont \`{a} un spectacle.\\%" + '\n'
-    main += r'Les adultes payent ' + str(prxAdulte) + r'\euro~la place et les enfants ' + str(
-        prxEnfant) + r'\euro.\\%' + '\n'
-    main += r'La recette de la salle est de ' + str(tot) + r'\euro.\\%' + '\n'
-    main += r"Combien d'enfants étaient présents ?\\%" + '\n'
-    main += '\n'
-    if correction:
-        mainC += r"\cor{Résolution d'équation}"
-        mainC += r'''Notons $x$:"Le nombre d'enfants"\\%''' + '\n'
-        mainC += r'''Notons $y$:"Le nombre d'adultes"\\%''' + '\n'
-        mainC += r'On a les deux équations suivantes : \\%' + '\n'
-        mainC += r'$x$ + $y$ = ' + str(nbr) + r'\\%' + '\n'
-        mainC += \
-            str(prxEnfant) + r'$x$ + ' + \
-            str(prxAdulte) + r'$y$ = ' + \
-            str(tot) + r'\\%' + '\n'
-        mainC += r'On remplace $y$ par ' + str(nbr) + \
-                 r''' - $x$ (Cela permet de garder seulement l'inconnue que l'on cherche)\\'''
-        mainC += \
-            str(prxEnfant) + r'$x$ + ' + \
-            str(prxAdulte) + r'(' + \
-            str(nbr) + r' - $x$) = ' + \
-            str(tot) + r'\\%' + '\n'
-        mainC += r'On développe : '
-        mainC += \
-            str(prxEnfant) + r'$x$ + ' + \
-            str(prxAdulte) + r'$\times$' + str(nbr) + r' - ' + \
-            str(prxAdulte) + r'$x$ = ' + \
-            str(tot) + r'\\%' + '\n'
-        mainC += \
-            str(prxEnfant - prxAdulte) + r'$x$ + ' + \
-            str(prxAdulte * nbr) + ' = ' + \
-            str(tot) + r'\\%' + '\n'
-        mainC += r'On retire ' + str(prxAdulte * nbr) + ' de chaque côté : '
-        mainC += \
-            str(prxEnfant - prxAdulte) + r'$x$' + ' = ' + \
-            str(tot - prxAdulte * nbr) + r'\\%' + '\n'
-        mainC += r'On divise par ' + str(prxEnfant - prxAdulte) + r' de chaque côté : '
-        mainC += r'$x = \dfrac{' + str(tot - prxAdulte * nbr) + r'}{' + str(prxEnfant - prxAdulte) + r'}$\\%' + '\n'
-        mainC += r'$x =$ ' + str(int(nbrEnfants)) + r'\\%' + '\n'
-        mainC += r'Il y avait, ' + str(nbrEnfants) + r' enfants présents.\\%' + '\n'
-        mainC += '\n'
-    fileExercices += main
-    if separes:
-        fileCorrections += mainC
-    else:
-        fileExercices += mainC
-    return fileExercices, fileCorrections
+    """Exercice type de calcul du nombre d'enfants et d'adultes en fonction
+    de la recette d'une salle de spectacle."""
+    
+    nP = random.randint(100, 400)   # Nombre de personnes.
+    nA = random.randint(1, nP - 1)  # Nombre d'adultes.
+    nE = int(nP - nA)               # Nombre d'enfants.
+    pE = random.randint(2, 7)       # Prix de la place enfant.
+    pA = random.randint(8, 13)      # Prix de la place adulte.
+    rE = int(nE*pE)                 # Recette due aux enfants.
+    rA = int(nA*pA)                 # Recette due aux adultes.
+    tot = pE * nE + pA * nA         # Recette totale.
+    totA = pA * nP                  # Recette totale si seulement des adultes étaient présents.
+    peMpa = pE - pA
+    totMtota = tot - totA
+    
+    main = r'''\exo{Résolution d'équation}%
+\{nP} personnes vont à un spectacle.\\%
+Les adultes payent \{pA} € la place et les enfants \{pE} €.\\%
+La recette de la salle est de \{tot} €.\\%
+Combien d'enfants étaient présents ?\\%
+'''
+    mainC = r'''\cor{Résolution d'équation}%
+Notons $x$:"Le nombre d'enfants"\\%
+Notons $y$:"Le nombre d'adultes"\\%
+On a les deux équations suivantes : %
+\begin{equation*}%
+\begin{cases}%
+x + y = \{nP}\\%
+\{pE}x + \{pA} y = \{tot}%
+\end{cases}%
+\end{equation*}%
+On remplace $y$ par \{nP} - $x$ (Cela permet de garder seulement l'inconnue que l'on cherche)\\%
+$\{pE} x + \{pA}(\{nP} - x) = \{tot}$\\%
+On développe : $\{pE} x + \{pA} \times \{nP} - \{pA} x = \{tot}$\\%
+$\{peMpa} x + \{totA} = \{tot}$\\%
+On retire \{totA} de chaque côté : $\{peMpa} x = \{totMtota}$\\%
+On divise par \{peMpa} de chaque côté : $x = \dfrac{\{totMtota}}{\{peMpa}}$\\%
+$x = \{nE}$\\%
+Il y avait \{nE} enfants présents.\\%
+'''
+    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def puissance1(fileExercices, fileCorrections):
-    main = ''
-    mainC = ''
-    main += r'''\exo{Puissances}%''' + '\n'
+    """Calcul de puissance de puissances de 10."""
+    
     a = random.randint(-30, 30)
     b = random.randint(-30, 30)
-    main += r"Faites le calcul suivant (le résultat doit être sous forme d'une puissance de 10).\\%" + '\n'
-    main += r'\begin{center}%' + '\n'
-    main += r'$10^{' + str(a) + r'}\times 10^{' + str(b) + r'}=$\\%' + '\n'
-    main += r'\end{center}%' + '\n'
-    main += '\n'
-    if correction:
-        mainC += r'\cor{Puissances}%' + '\n'
-        mainC += r'\begin{center}%' + '\n'
-        if b < 0:
-            mainC += r'$10^{' + str(a) + r'}\times 10^{' + str(b) + r'}=' + \
-                     r'10^{' + str(a) + r' + (' + str(b) + r')}=' + \
-                     r'10^{' + str(a + b) + r'}$%' + '\n'
-        else:
-            mainC += r'$10^{' + str(a) + r'}\times 10^{' + str(b) + r'}=' + \
-                     r'10^{' + str(a) + r' + ' + str(b) + r'}=' + \
-                     r'10^{' + str(a + b) + r'}$%' + '\n'
-        mainC += r'\end{center}%' + '\n'
-        mainC += '\n'
-    fileExercices += main
-    if separes:
-        fileCorrections += mainC
-    else:
-        fileExercices += mainC
-    return fileExercices, fileCorrections
+    aTb = a*b
+    bText = str(b)
+    if b < 0:
+        bText = '(' + str(b) + r')'
+    
+    main = r'''\exo{Puissances}%
+Faites le calcul suivant (le résultat doit être sous forme d'une puissance de 10).\\
+\begin{center}%
+$(10^{\{a}})^{\{b}} =$\\%
+\end{center}%
+'''
+    mainC = r'''\cor{Puissances}%
+\begin{center}%
+$(10^{\{a}})^{\{b}} = 10^{\{a} \times \{bText}} = 10^{\{aTb}}$
+\end{center}%
+'''
+    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def puissance2(fileExercices, fileCorrections):
-    main = ''
-    mainC = ''
-    main += r'''\exo{Puissances}%''' + '\n'
+    """Calcul de multiplication de puissances de 10."""
+    
     a = random.randint(-30, 30)
     b = random.randint(-30, 30)
-    main += r"Faites le calcul suivant (le résultat doit être sous forme d'une puissance de 10).\\%" + '\n'
-    main += r'\begin{center}%' + '\n'
-    main += r'$\dfrac{10^{' + str(a) + r'}}{10^{' + str(b) + r'}}=$\\%' + '\n'
-    main += r'\end{center}%' + '\n'
-    main += '\n'
-    if correction:
-        mainC += r'\cor{Puissances}%' + '\n'
-        mainC += r'\begin{center}%' + '\n'
-        if b < 0:
-            mainC += r'$\dfrac{10^{' + str(a) + r'}}{10^{' + str(b) + r'}}=' + \
-                     r'10^{' + str(a) + r' - (' + str(b) + r')}=' + \
-                     r'10^{' + str(a - b) + r'}$' + '\n'
-        else:
-            mainC += r'$\dfrac{10^{' + str(a) + r'}}{10^{' + str(b) + r'}}=' + \
-                     r'10^{' + str(a) + r' - ' + str(b) + r'}=' + \
-                     r'10^{' + str(a - b) + r'}$' + '\n'
-        mainC += r'\end{center}%' + '\n'
-        mainC += '\n'
-    fileExercices += main
-    if separes:
-        fileCorrections += mainC
-    else:
-        fileExercices += mainC
-    return fileExercices, fileCorrections
+    aPb = a + b
+    bText = str(b)
+    if b < 0:
+        bText = '(' + str(b) + r')'
+    
+    main = r'''\exo{Puissances}%
+Faites le calcul suivant (le résultat doit être sous forme d'une puissance de 10).\\
+\begin{center}%
+$10^{\{a}} \times 10^{\{b}} =$\\%
+\end{center}%
+'''
+    mainC = r'''\cor{Puissances}%
+\begin{center}%
+$10^{\{a}} \times 10^{\{b}} = 10^{\{a} + \{bText}} = 10^{\{aPb}}$
+\end{center}%
+'''
+    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def puissance3(fileExercices, fileCorrections):
-    main = ''
-    mainC = ''
-    main += r'\exo{Puissances}%' + '\n'
+    """Calcul de division de puissances de 10."""
+    
     a = random.randint(-30, 30)
     b = random.randint(-30, 30)
-    main += r"Faites le calcul suivant (le résultat doit être sous forme d'une puissance de 10).\\%" + '\n'
-    main += r'\begin{center}%' + '\n'
-    main += r'$(10^{' + str(a) + r'})^{' + str(b) + r'}=$\\%' + '\n'
-    main += r'\end{center}%' + '\n'
-    main += '\n'
-    if correction:
-        mainC += r'\cor{Puissances}%' + '\n'
-        mainC += r'\begin{center}%' + '\n'
-        if b < 0:
-            mainC += r'$\dfrac{10^{' + str(a) + r'}}{10^{' + str(b) + r'}}=' + \
-                     r'10^{' + str(a) + r' \times (' + str(b) + r')}=' + \
-                     r'10^{' + str(a * b) + r'}$' + '\n'
-        else:
-            mainC += r'$\dfrac{10^{' + str(a) + r'}}{10^{' + str(b) + r'}}=' + \
-                     r'10^{' + str(a) + r' \times ' + str(b) + r'}=' + \
-                     r'10^{' + str(a * b) + r'}$' + '\n'
-        mainC += r'\end{center}%' + '\n'
-        mainC += '\n'
-    fileExercices += main
-    if separes:
-        fileCorrections += mainC
-    else:
-        fileExercices += mainC
-    return fileExercices, fileCorrections
+    aMb = a - b
+    bText = str(b)
+    if b < 0:
+        bText = '(' + str(b) + r')'
+    
+    main = r'''\exo{Puissances}%
+Faites le calcul suivant (le résultat doit être sous forme d'une puissance de 10).\\
+\begin{center}%
+$\dfrac{10^{\{a}}}{10^{\{b}}}=$\\%
+\end{center}%
+'''
+    mainC = r'''\cor{Puissances}%
+\begin{center}%
+$\dfrac{10^{\{a}}}{10^{\{b}}}= 10^{\{a} - \{bText}} = 10^{\{aMb}}$
+\end{center}%
+'''
+    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def cosinus1(fileExercices, fileCorrections):
@@ -666,7 +609,6 @@ def cosinus4(fileExercices, fileCorrections):
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
-# Addition de fractions#
 def fraction1(fileExercices, fileCorrections):
     """Addition d'un nombre quelconque de fractions (à fixer dans l'énoncé)."""
 
@@ -792,8 +734,3 @@ $A='''
     mainC += '\n'
     
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())
-
-
-
-
-
