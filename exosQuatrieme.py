@@ -10,6 +10,8 @@ from fonctionsSimplifiantes import *
 
 
 def pythagore1(fileExercices, fileCorrections):
+    """En connaissant la longueur de l'hypoténuse et d'un autre côté, trouver la longueur du troisième côté."""
+    
     a = random.randint(1, 10)
     b = random.randint(a + 1, 15)
     ac = a ** 2
@@ -44,11 +46,12 @@ AB = $\sqrt{\{di}}$ cm\\%
     else:
         mainC += r'''AB $\simeq$ \{ro} cm\\%
 '''
-    localV = locals()
-    return endExercice(main, mainC, fileExercices, fileCorrections, localV)
+    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def pythagore2(fileExercices, fileCorrections):
+    """Calculer la longueur de l'hypoténuse en connaissant les deux autres longueurs."""
+    
     a = random.randint(1, 15)
     b = random.randint(1, 15)
     ac = a**2
@@ -88,6 +91,8 @@ BC = $\sqrt{\{sumSq}}$ cm\\%
 
 
 def pythagore3(fileExercices, fileCorrections):
+    """En connaissant la longueur de l'hypoténuse et d'un autre côté, trouver la longueur du troisième côté."""
+    
     a = random.randint(1, 10)
     b = random.randint(a + 1, 15)
     ac = a**2
@@ -123,12 +128,12 @@ AC = $\sqrt{\{di}}$ cm\\%
     else:
         mainC += r'''AC $\simeq$ \{ro} cm\\%
 '''
-
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def pythagore4(fileExercices, fileCorrections):
-
+    """En connaissant les longueurs des 3 côtés d'un triangle, montrer qu'il est rectangle."""
+    
     a = random.randint(1, 15)
     b = random.randint(1, 15)
     c = sqrt(a ** 2 + b ** 2)
@@ -136,7 +141,6 @@ def pythagore4(fileExercices, fileCorrections):
     bc = b**2
     cc = c**2
     sumSq = ac + bc
-
     c = round(c, 3)
 
     main = r'''\exo{Théorème de Pythagore}%
@@ -162,12 +166,10 @@ Donc, d'après la réciproque du théorème de Pythagore ABC est rectangle en B.
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
-
 def pythagore5(fileExercices, fileCorrections):
-    main = ''
-    mainC = ''
-    main += r'\exo{Théorème de Pythagore}%' + '\n'
-    main += r'ABC est un triangle.\\%' + '\n'
+    """En connaissant les longueurs des 3 côtés d'un triangle, dire s'il est ou non rectangle (en
+    général, il ne l'est pas)."""
+    
     a = random.randint(1, 15)
     b = random.randint(1, 15)
     if random.random() > 0.5:
@@ -175,6 +177,9 @@ def pythagore5(fileExercices, fileCorrections):
     else:
         c = sqrt(a ** 2 + b ** 2) - random.random()
     c = round(c, 3)
+
+    main += r'\exo{Théorème de Pythagore}%' + '\n'
+    main += r'ABC est un triangle.\\%' + '\n'
     main += r'AB = ' + str(a) + r' cm.\\%' + '\n'
     main += r'AC = ' + str(b) + r' cm.\\%' + '\n'
     main += r'BC = ' + str(c) + r' cm.\\%' + '\n'
