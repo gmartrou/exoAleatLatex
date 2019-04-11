@@ -190,12 +190,12 @@ BC = \{c} cm.\\%
 ABC est-il rectangle ? (Si les valeurs sont juste \`{a} 1 chiffre après la virgule, c'est bon)\\%
 '''
     mainC = r'''\cor{Théorème de Pythagore}%
-    BC est le plus grand côté.\\%
-    BC$^2$ = \{c}$^2$\\%
-    BC$^2$ = \{cc}\\%
-    AB$^2$ + AC$^2$ = \{ac} + \{bc}\\%
-    AB$^2$ + AC$^2$ = \{sumSq}\\%
-    '''
+BC est le plus grand côté.\\%
+BC$^2$ = \{c}$^2$\\%
+BC$^2$ = \{cc}\\%
+AB$^2$ + AC$^2$ = \{ac} + \{bc}\\%
+AB$^2$ + AC$^2$ = \{sumSq}\\%
+'''
     
     if sumSq == c**2:
         mainC += r'''\`{A} 1 chiffre après la virgule près, on a :\\%
@@ -313,8 +313,6 @@ def equation2(fileExercices, fileCorrections):
     le multiple de l'autre."""
 
     pasBon = True
-    listePrenoms = ['Paul', 'Pierre', 'Marie', 'Margot', 'Fanny',
-                    'Jean', 'Julie', 'Adrien', 'Thomas', 'Suzanne', 'Philippe']
     a, b, c, ans = 0, 0, 0, 0
     while pasBon:
         a = random.randint(1, 30)
@@ -324,6 +322,8 @@ def equation2(fileExercices, fileCorrections):
         if (ans == int(ans)) and ((b - a) > 1):
             ans = int(ans)
             pasBon = False
+    listePrenoms = ['Paul', 'Pierre', 'Marie', 'Margot', 'Fanny',
+                    'Jean', 'Julie', 'Adrien', 'Thomas', 'Suzanne', 'Philippe']
     nomA = np.random.choice(listePrenoms)
     listePrenoms.remove(nomA)
     nomB = np.random.choice(listePrenoms)
@@ -535,21 +535,21 @@ def cosinus2(fileExercices, fileCorrections):
     c = round(a / cos(br), 2)
     
     main = r'''
-    \exo{Cosinus}%
-    \begin{minipage}{0.6\textwidth}%
-    ABC est le triangle ci-contre.\\%
-    AC = \{a} cm et l'angle $\alpha$ mesure \{b}\textdegree\\%
-    Combien mesure AB ?\\%
-    \end{minipage}%
-    \begin{minipage}{0.3\textwidth}%
-    \includegraphics[width = \textwidth]{imagesQuatrieme/triangleRectangle.png}%
-    \end{minipage}\\%
-    '''
+\exo{Cosinus}%
+\begin{minipage}{0.6\textwidth}%
+ABC est le triangle ci-contre.\\%
+AC = \{a} cm et l'angle $\alpha$ mesure \{b}\textdegree\\%
+Combien mesure AB ?\\%
+\end{minipage}%
+\begin{minipage}{0.3\textwidth}%
+\includegraphics[width = \textwidth]{imagesQuatrieme/triangleRectangle.png}%
+\end{minipage}\\%
+'''
     mainC = r'''\cor{Cosinus}%
-    cos($\alpha$)=$\dfrac{AC}{AB}$\\%
-    Donc, AC = $\dfrac{AB}{cos(\alpha)}$\\%
-    AC $\simeq$ \{c} cm\\%
-    '''
+cos($\alpha$)=$\dfrac{AC}{AB}$\\%
+Donc, AC = $\dfrac{AB}{cos(\alpha)}$\\%
+AC $\simeq$ \{c} cm\\%
+'''
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
@@ -563,21 +563,21 @@ def cosinus3(fileExercices, fileCorrections):
     c = round(a * cos(br), 2)
     
     main = r'''
-    \exo{Cosinus}%
-    \begin{minipage}{0.6\textwidth}%
-    ABC est le triangle ci-contre.\\%
-    AB = \{a} cm et l'angle $\beta$ mesure \{b}\textdegree\\%
-    Combien mesure BC ?\\%
-    \end{minipage}%
-    \begin{minipage}{0.3\textwidth}%
-    \includegraphics[width = \textwidth]{imagesQuatrieme/triangleRectangle.png}%
-    \end{minipage}\\%
-    '''
+\exo{Cosinus}%
+\begin{minipage}{0.6\textwidth}%
+ABC est le triangle ci-contre.\\%
+AB = \{a} cm et l'angle $\beta$ mesure \{b}\textdegree\\%
+Combien mesure BC ?\\%
+\end{minipage}%
+\begin{minipage}{0.3\textwidth}%
+\includegraphics[width = \textwidth]{imagesQuatrieme/triangleRectangle.png}%
+\end{minipage}\\%
+'''
     mainC = r'''\cor{Cosinus}%
-    cos($\beta$)=$\dfrac{BC}{AB}$\\%
-    Donc, AC = AB $\times$ cos($\beta$)\\%
-    AC $\simeq$ \{c} cm\\%
-    '''
+cos($\beta$)=$\dfrac{BC}{AB}$\\%
+Donc, AC = AB $\times$ cos($\beta$)\\%
+AC $\simeq$ \{c} cm\\%
+'''
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
@@ -591,21 +591,21 @@ def cosinus4(fileExercices, fileCorrections):
     c = round(a / cos(br), 2)
     
     main = r'''
-        \exo{Cosinus}%
-        \begin{minipage}{0.6\textwidth}%
-        ABC est le triangle ci-contre.\\%
-        BC = \{a} cm et l'angle $\beta$ mesure \{b}\textdegree\\%
-        Combien mesure AB ?\\%
-        \end{minipage}%
-        \begin{minipage}{0.3\textwidth}%
-        \includegraphics[width = \textwidth]{imagesQuatrieme/triangleRectangle.png}%
-        \end{minipage}\\%
-        '''
+\exo{Cosinus}%
+\begin{minipage}{0.6\textwidth}%
+ABC est le triangle ci-contre.\\%
+BC = \{a} cm et l'angle $\beta$ mesure \{b}\textdegree\\%
+Combien mesure AB ?\\%
+\end{minipage}%
+\begin{minipage}{0.3\textwidth}%
+\includegraphics[width = \textwidth]{imagesQuatrieme/triangleRectangle.png}%
+\end{minipage}\\%
+'''
     mainC = r'''\cor{Cosinus}%
-        cos($\beta$)=$\dfrac{BC}{AB}$\\%
-        Donc, AC = $\dfrac{AB}{cos(\beta)}$\\%
-        AC $\simeq$ \{c} cm\\%
-        '''
+cos($\beta$)=$\dfrac{BC}{AB}$\\%
+Donc, AC = $\dfrac{AB}{cos(\beta)}$\\%
+AC $\simeq$ \{c} cm\\%
+'''
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
@@ -886,6 +886,63 @@ $A = \{aText} \times \{cText} + \{aText} \times \{dText} +
 \{bText} \times \{cText} + \{bText} \times \{dText}$\\
 $A = \{ac}x \{signAD} \{absAD} x^2 \{signBC} \{absBC} \{signBD} \{absBD} x$\\
 $A = \{ad} x^2 \{signAcpbd} \{absAcpbd} x \{signBC} \{absBC}$\\
+\end{center}%
+'''
+    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+
+
+def pileOuFace(fileExercices, fileCorrections):
+    """Exercice type de calcul litteral. Développer et réduire (ax + b)(cx + d)"""
+
+    elPerLign = 10
+    n = random.randint(10, 50)
+    nLign = (n - 1) // elPerLign + 1
+    listePrenoms = ['Paul', 'Pierre', 'Marie', 'Margot', 'Fanny',
+                    'Jean', 'Julie', 'Adrien', 'Thomas', 'Suzanne', 'Philippe']
+    nomA = np.random.choice(listePrenoms)
+    listePrenoms.remove(nomA)
+    nomB = np.random.choice(listePrenoms)
+
+    nP = 0
+    nF = 0
+    compteur = 0
+
+    main = r'''\exo{Pile ou Face ?}%
+Deux amis, \{nomA} et \{nomB} jouent à "Pile ou Face". Ils ont effectué les \{n} lancers suivants :\\%
+\begin{center}
+\begin{tabular}{|*{10}{c|}}
+'''
+    for i in range(nLign):
+        main += r'''\hline
+'''
+        for j in range(i*10, min((i+1)*10, n)):
+            pOf = np.random.choice([r'pile', r'face'])
+            if pOf == 'pile':
+                nP += 1
+            else:
+                nF += 1
+            if (j+1) % 10 == 0:
+                pOf += r'''\\%
+'''
+            else:
+                pOf += r'&'
+            main += pOf
+        fP = nP/n   # Fréquence d'apparition des piles
+        fF = nF/n   # Fréquence d'apparition des faces
+    for j in range((10 - 1) - (n % 10)):
+        main += r'&'
+    main += r'''\\
+\hline%
+'''
+    main += r'''\end{tabular}
+\end{center}
+\{nomA} affirme que le fréquence statistique d'apparition des piles est plus importantes que la probabilité 
+théorique.
+'''
+
+    mainC = r'''\cor{Double développement}%
+\begin{center}%
+test
 \end{center}%
 '''
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())

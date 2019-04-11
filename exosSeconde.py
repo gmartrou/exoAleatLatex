@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from random import *
+import random
 import numpy as np
 from fonctionsSimplifiantes import *
 
@@ -11,17 +11,17 @@ def fonctionsAffineIntersection(fileExercices, fileCorrections):
     
     a, b, c, d = 0, 0, 0, 0
     while b == d or a == c:
-        a1 = randint(2, 6)
-        a2 = randint(-6, -2)
+        a1 = random.randint(2, 6)
+        a2 = random.randint(-6, -2)
         a = np.random.choice([a1, a2])
-        b1 = randint(1, 6)
-        b2 = randint(-6, -1)
+        b1 = random.randint(1, 6)
+        b2 = random.randint(-6, -1)
         b = np.random.choice([b1, b2])
-        c1 = randint(1, 6)
-        c2 = randint(-6, -2)
+        c1 = random.randint(1, 6)
+        c2 = random.randint(-6, -2)
         c = np.random.choice([c1, c2])
-        d1 = randint(2, 6)
-        d2 = randint(-6, -1)
+        d1 = random.randint(2, 6)
+        d2 = random.randint(-6, -1)
         d = np.random.choice([d1, d2])
     difBD = d - b
     difCA = a - c
@@ -100,11 +100,11 @@ def tableauDeSigneUn1(fileExercices, fileCorrections):
     a, b = 0, 0
 
     while VAnnul != round(VAnnul, 3):
-        a1 = randint(2, 6)
-        a2 = randint(-6, -2)
+        a1 = random.randint(2, 6)
+        a2 = random.randint(-6, -2)
         a = np.random.choice([a1, a2])
-        b1 = randint(1, 6)
-        b2 = randint(-6, -1)
+        b1 = random.randint(1, 6)
+        b2 = random.randint(-6, -1)
         b = np.random.choice([b1, b2])
         bAbs = abs(b)
         VAnnul = -b / a
@@ -165,11 +165,11 @@ def tableauDeSigneUn2(fileExercices, fileCorrections):
     a, b = 0, 0
 
     while VAnnul != round(VAnnul, 3):
-        a1 = randint(2, 6)
-        a2 = randint(-6, -2)
+        a1 = random.randint(2, 6)
+        a2 = random.randint(-6, -2)
         a = np.random.choice([a1, a2])
-        b1 = randint(1, 6)
-        b2 = randint(-6, -1)
+        b1 = random.randint(1, 6)
+        b2 = random.randint(-6, -1)
         b = np.random.choice([b1, b2])
         bAbs = abs(b)
         VAnnul = -b / a
@@ -230,11 +230,11 @@ def tableauDeSigneUn3(fileExercices, fileCorrections):
     a, b = 0, 0
 
     while VAnnul != round(VAnnul, 3):
-        a1 = randint(2, 6)
-        a2 = randint(-6, -2)
+        a1 = random.randint(2, 6)
+        a2 = random.randint(-6, -2)
         a = np.random.choice([a1, a2])
-        b1 = randint(1, 6)
-        b2 = randint(-6, -1)
+        b1 = random.randint(1, 6)
+        b2 = random.randint(-6, -1)
         b = np.random.choice([b1, b2])
         bAbs = abs(b)
         VAnnul = -b / a
@@ -295,11 +295,11 @@ def tableauDeSigneUn4(fileExercices, fileCorrections):
     a, b = 0, 0
 
     while VAnnul != round(VAnnul, 3):
-        a1 = randint(2, 6)
-        a2 = randint(-6, -2)
+        a1 = random.randint(2, 6)
+        a2 = random.randint(-6, -2)
         a = np.random.choice([a1, a2])
-        b1 = randint(1, 6)
-        b2 = randint(-6, -1)
+        b1 = random.randint(1, 6)
+        b2 = random.randint(-6, -1)
         b = np.random.choice([b1, b2])
         bAbs = abs(b)
         VAnnul = -b / a
@@ -362,18 +362,18 @@ def tableauDeSigneDeux1(fileExercices, fileCorrections):
     a, b, c, d = 0, 0, 0, 0
     signB, signD = ' - ', ' - '
     while VAnnul1 != round(VAnnul1, 3) or VAnnul2 != round(VAnnul2, 3):
-        a1 = randint(2, 6)
-        a2 = randint(-6, -2)
+        a1 = random.randint(2, 6)
+        a2 = random.randint(-6, -2)
         a = np.random.choice([a1, a2])
-        b1 = randint(1, 6)
-        b2 = randint(-6, -1)
+        b1 = random.randint(1, 6)
+        b2 = random.randint(-6, -1)
         b = np.random.choice([b1, b2])
         VAnnul1 = -b / a
-        c1 = randint(2, 6)
-        c2 = randint(-6, -2)
+        c1 = random.randint(2, 6)
+        c2 = random.randint(-6, -2)
         c = np.random.choice([c1, c2])
-        d1 = randint(1, 6)
-        d2 = randint(-6, -1)
+        d1 = random.randint(1, 6)
+        d2 = random.randint(-6, -1)
         d = np.random.choice([d1, d2])
         VAnnul2 = -d / c
     if b > 0:
@@ -503,18 +503,18 @@ def tableauDeSigneDeux2(fileExercices, fileCorrections):
     a, b, c, d = 0, 0, 0, 0
     signB, signD = ' - ', ' - '
     while VAnnul1 != round(VAnnul1, 3) or VAnnul2 != round(VAnnul2, 3):
-        a1 = randint(2, 6)
-        a2 = randint(-6, -2)
+        a1 = random.randint(2, 6)
+        a2 = random.randint(-6, -2)
         a = np.random.choice([a1, a2])
-        b1 = randint(1, 6)
-        b2 = randint(-6, -1)
+        b1 = random.randint(1, 6)
+        b2 = random.randint(-6, -1)
         b = np.random.choice([b1, b2])
         VAnnul1 = -b / a
-        c1 = randint(2, 6)
-        c2 = randint(-6, -2)
+        c1 = random.randint(2, 6)
+        c2 = random.randint(-6, -2)
         c = np.random.choice([c1, c2])
-        d1 = randint(1, 6)
-        d2 = randint(-6, -1)
+        d1 = random.randint(1, 6)
+        d2 = random.randint(-6, -1)
         d = np.random.choice([d1, d2])
         VAnnul2 = -d / c
     if b > 0:
@@ -644,18 +644,18 @@ def tableauDeSigneDeux3(fileExercices, fileCorrections):
     a, b, c, d = 0, 0, 0, 0
     signB, signD = ' - ', ' - '
     while VAnnul1 != round(VAnnul1, 3) or VAnnul2 != round(VAnnul2, 3):
-        a1 = randint(2, 6)
-        a2 = randint(-6, -2)
+        a1 = random.randint(2, 6)
+        a2 = random.randint(-6, -2)
         a = np.random.choice([a1, a2])
-        b1 = randint(1, 6)
-        b2 = randint(-6, -1)
+        b1 = random.randint(1, 6)
+        b2 = random.randint(-6, -1)
         b = np.random.choice([b1, b2])
         VAnnul1 = -b / a
-        c1 = randint(2, 6)
-        c2 = randint(-6, -2)
+        c1 = random.randint(2, 6)
+        c2 = random.randint(-6, -2)
         c = np.random.choice([c1, c2])
-        d1 = randint(1, 6)
-        d2 = randint(-6, -1)
+        d1 = random.randint(1, 6)
+        d2 = random.randint(-6, -1)
         d = np.random.choice([d1, d2])
         VAnnul2 = -d / c
     if b > 0:
@@ -785,18 +785,18 @@ def tableauDeSigneDeux4(fileExercices, fileCorrections):
     a, b, c, d = 0, 0, 0, 0
     signB, signD = ' - ', ' - '
     while VAnnul1 != round(VAnnul1, 3) or VAnnul2 != round(VAnnul2, 3):
-        a1 = randint(2, 6)
-        a2 = randint(-6, -2)
+        a1 = random.randint(2, 6)
+        a2 = random.randint(-6, -2)
         a = np.random.choice([a1, a2])
-        b1 = randint(1, 6)
-        b2 = randint(-6, -1)
+        b1 = random.randint(1, 6)
+        b2 = random.randint(-6, -1)
         b = np.random.choice([b1, b2])
         VAnnul1 = -b / a
-        c1 = randint(2, 6)
-        c2 = randint(-6, -2)
+        c1 = random.randint(2, 6)
+        c2 = random.randint(-6, -2)
         c = np.random.choice([c1, c2])
-        d1 = randint(1, 6)
-        d2 = randint(-6, -1)
+        d1 = random.randint(1, 6)
+        d2 = random.randint(-6, -1)
         d = np.random.choice([d1, d2])
         VAnnul2 = -d / c
     if b > 0:
@@ -920,12 +920,12 @@ $\{c}x\{signD}\{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul1}$, $+\infty$}%
 def vecteursParall1(fileExercices, fileCorrections):
     """Exo vecteur (prouver qu'il s'agit d'un parallèlogramme)"""
     
-    xA = randint(-5, -1)
-    yA = randint(-5, -1)
-    xB = randint(-5, -1)
-    yB = randint(1, 5)
-    xC = randint(1, 5)
-    yC = randint(1, 5)
+    xA = random.randint(-5, -1)
+    yA = random.randint(-5, -1)
+    xB = random.randint(-5, -1)
+    yB = random.randint(1, 5)
+    xC = random.randint(1, 5)
+    yC = random.randint(1, 5)
     xD = xA + xC - xB
     yD = yA + yC - yB
     xBA = xA - xB
@@ -961,12 +961,12 @@ $\vv{BA}=\vv{CD}$, donc, ABCD est un parallèlogramme.
 def vecteursParall2(fileExercices, fileCorrections):
     """Exo vecteur (prouver qu'il ne s'agit pas d'un parallèlogramme)"""
     
-    xA = randint(-5, -1)
-    yA = randint(-5, -1)
-    xB = randint(-5, -1)
-    yB = randint(1, 5)
-    xC = randint(1, 5)
-    yC = randint(1, 5)
+    xA = random.randint(-5, -1)
+    yA = random.randint(-5, -1)
+    xB = random.randint(-5, -1)
+    yB = random.randint(1, 5)
+    xC = random.randint(1, 5)
+    yC = random.randint(1, 5)
     xD = xA + xC - xB
     yD = yA + yC - yB
 
@@ -1007,17 +1007,17 @@ $\vv{BA} \neq \vv{CD}$, donc, ABCD n'est pas un parallèlogramme.%
 def vecteursCalculCoord1(fileExercices, fileCorrections):
     """Exo vecteur (Calculer les coordonnées d'un point à partir d'une expression vectorielle)"""
     
-    xA = randint(-5, -1)
-    yA = randint(-5, -1)
-    xB = randint(-5, -1)
-    yB = randint(1, 5)
-    xC = randint(1, 5)
-    yC = randint(1, 5)
+    xA = random.randint(-5, -1)
+    yA = random.randint(-5, -1)
+    xB = random.randint(-5, -1)
+    yB = random.randint(1, 5)
+    xC = random.randint(1, 5)
+    yC = random.randint(1, 5)
     coeff1, coeff2 = 0, 0
     signC2 = ' - '
     while coeff1 in [-1, 0, 1] or coeff2 in [-1, 0, 1]:
-        coeff1 = randint(-5, 5)
-        coeff2 = randint(-5, 5)
+        coeff1 = random.randint(-5, 5)
+        coeff2 = random.randint(-5, 5)
         if coeff2 >= 0:
             signC2 = ' + '
     absC2 = abs(coeff2)
@@ -1091,13 +1091,13 @@ def vecteursDroitesColineaires(fileExercices, fileCorrections):
     
     xA, yA, xB, yB, xC, yC, xAB, yAB = 0, 0, 0, 0, 100, 100, 0, 0
     while xC > 8 or yC > 8:
-        xA = randint(-5, -1)
-        yA = randint(-5, -1)
-        xB = randint(xA + 1, 1)
-        yB = randint(yA + 1, 1)
+        xA = random.randint(-5, -1)
+        yA = random.randint(-5, -1)
+        xB = random.randint(xA + 1, 1)
+        yB = random.randint(yA + 1, 1)
         xAB = xB - xA
         yAB = yB - yA
-        coeff = randint(2, 3)
+        coeff = random.randint(2, 3)
         xC = xB + coeff * xAB
         yC = yB + coeff * yAB
     xCB = xB - xC
@@ -1162,8 +1162,94 @@ Le déterminant de ces deux vecteurs étant nul, ils sont colinéaires.%
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
-# Exercice (base)
+def probasMaladies(fileExercices, fileCorrections):
+    """Description de l'exercice."""
+
+    # Définition des variables.
+    annee = random.randint(1700, 1850)
+    ville = np.random.choice(['Berlin', 'Pékin', 'Paris', 'Stokholm', 'Bucarest', 'Rome', 'Madrid',
+                              'Brest', 'Londres', 'Rouen', 'Gênes'])
+    listeMaladies = ['lèpre', 'peste', 'diphtérie', 'pneumonie', 'rage',
+                     'rougeole', 'tuberculose', 'méningite']
+    malA = np.random.choice(listeMaladies)
+    listeMaladies.remove(malA)
+    malB = np.random.choice(listeMaladies)
+    pApercent = pBpercent = 0
+    while pApercent == pBpercent:
+        pApercent = random.randint(3, 40)
+        pBpercent = random.randint(3, 40)
+    pTpercent = random.randint(1, min(pApercent, pBpercent) - 1)
+    pA = pApercent/100
+    pB = pBpercent/100
+    pAinterB = pTpercent/100
+    pAinterBBar = 1 - pAinterB
+    pAunionB = pA + pB - pAinterB
+    pAunionBBar = 1 - pAunionB
+    pAonly = pA - pAinterB
+    pAonlyBar = 1 - pAonly
+    pBonly = pB - pAinterB
+    pAxorB = pAunionB - pAinterB
+    # Fin des variables.
+
+    # Enoncé de l'exercice.
+    main = r'''\exo{Des maladies dangereuses}%
+En \{annee}, les habitants de \{ville} subissent une épidémie. Les deux maladies décimants la ville sont
+\{malA} et \{malB}.\\%
+
+On estime que  \{pApercent}\% des habitants sont atteints de \{malA}, \{pBpercent}\% 
+des animaux sont atteints de \{malB}
+et \{pTpercent}\% des animaux sont atteints des deux maladies à la fois.\\%
+
+On prend un habitant au hasard dans la ville.\\%
+
+\begin{enumerate}[label=\alph*)]%
+    \item Calculer la probabilité qu'il soit atteint seulement de \{malA}.%
+    \item Calculer la probabilité qu'il ne soit pas malade.%
+    \item Calculer la probabilité qu'il soit malade mais seulement atteint d'une des deux maladies%
+\end{enumerate}%
+'''
+    # Fin de l'énoncé.
+
+    # Fichier texte de la correction.
+    mainC = r'''\cor{Nom de l'exercice}%
+Notons A : "L'habitant de \{ville} est atteint de \{malA}"\\%
+Notons B : "L'habitant de \{ville} est atteint de \{malB}"\\%
+
+Les données de l'énoncé nous disent que :\\%
+p(A) = \{pA}\\%
+p(B) = \{pB}\\%
+p(A $\cap$ B) = \{pAinterB}\\%
+Afin de bien se représenter le problème, on peut faire les schémas suivants :\\%
+\begin{center}
+\begin{minipage}{0.3\textwidth}%
+\includegraphics[width = \textwidth]{imagesSecondes/proba13.png}%
+\end{minipage}%
+\begin{minipage}{0.32\textwidth}%
+\includegraphics[width = \textwidth]{imagesSecondes/proba23.png}%
+\end{minipage}%
+\begin{minipage}{0.32\textwidth}%
+\includegraphics[width = \textwidth]{imagesSecondes/proba3.png}%
+\end{minipage}%
+\end{center}
+\begin{enumerate}[label=\alph*)]%
+\item La probabilité que l'on cherche est la probabilité qu'il soit atteint de \{malA} ET pas de \{malB}.\\%
+On cherche donc p($A \cap \bar{B}$).\\%
+En observant les schémas on observe que p(A $\cap$ $\bar{B}$) = p(A) - p(A $\cap$ B) = 
+\{pA} - \{pAinterB} = \{pAonly}.\\%
+\item La probabilité cherchée est p($\overline{A \cup B}$) = 1 - p($A \cup B$).\\%
+Or, p($A \cup B$) = p(A) + p(B) - p($A \cap B$) = \{pA} + \{pB} - \{pAinterB} = \{pAunionB}.\\%
+Donc, p($\overline{A \cup \bar{B}}$) = 1 - \{pAunionB} = \{pAunionBBar}.\\%
+\item La probabilité recherchée est la probabilité qu'il soit malade moins la probabilité qu'il soit atteint 
+des deux à la fois soit p($A \cap \bar{B}$) + p($B \cap \bar{A}$) = p($A \cup B$) - p($A \cap B$) = 
+\{pAunionB} - \{pAinterB} = \{pAxorB}.\\%
+\end{enumerate}
+'''
+    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+
+
 def exercice(fileExercices, fileCorrections):
+    """Description de l'exercice."""
+
     # Définition des variables.
 
     # Fin des variables.

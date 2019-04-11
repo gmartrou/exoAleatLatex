@@ -126,7 +126,7 @@ seconde = [tableauDeSigne,
 
 niveau = quatrieme
 
-#nombreExercices = 6
+# nombreExercices = 6
 nombreDevoirs = 1
 
 for j in range(1, nombreDevoirs+1):
@@ -146,16 +146,16 @@ for j in range(1, nombreDevoirs+1):
     # for chapitre in niveau:
     #     exo = np.random.choice(chapitre)
     #     main, mainC = exo(main, mainC)
-    for exo in [exosQuatrieme.cosinus2,
-                exosQuatrieme.cosinus3,
-                exosQuatrieme.cosinus4,
-                exosQuatrieme.cosinus6]:
+    # for exo in [exosQuatrieme.cosinus2,
+    #             exosQuatrieme.cosinus3,
+    #             exosQuatrieme.cosinus4,
+    #             exosQuatrieme.cosinus6]:
         #exo = np.random.choice([exosQuatrieme.cosinus6])
+        # main, mainC = exo(main, mainC)
+        # main += r'\vspace{3 cm}'
+    for i in range(1):
+        exo = np.random.choice([exosSeconde.probasMaladies])
         main, mainC = exo(main, mainC)
-        main += r'\vspace{3 cm}'
-    # for i in range(40):
-    #     exo = np.random.choice([exosQuatrieme.cosinus6])
-    #     main, mainC = exo(main, mainC)
 
     contentExercices = header + main + footer
 
