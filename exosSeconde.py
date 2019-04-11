@@ -1240,9 +1240,56 @@ En observant les schémas on observe que p(A $\cap$ $\bar{B}$) = p(A) - p(A $\ca
 Or, p($A \cup B$) = p(A) + p(B) - p($A \cap B$) = \{pA} + \{pB} - \{pAinterB} = \{pAunionB}.\\%
 Donc, p($\overline{A \cup \bar{B}}$) = 1 - \{pAunionB} = \{pAunionBBar}.\\%
 \item La probabilité recherchée est la probabilité qu'il soit malade moins la probabilité qu'il soit atteint 
-des deux à la fois soit p($A \cap \bar{B}$) + p($B \cap \bar{A}$) = p($A \cup B$) - p($A \cap B$) = 
+des deux à la fois soit p($A \cup B$) - p($A \cap B$) = 
 \{pAunionB} - \{pAinterB} = \{pAxorB}.\\%
 \end{enumerate}
+'''
+    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+
+
+def probaGateaux(fileExercices, fileCorrections):
+    """Exercice sur les probabilités nécessitants un arbre. Basé sur une boulangerie."""
+
+    # Définition des variables.
+
+    # Fin des variables.
+
+    # Enoncé de l'exercice.
+    main = r'''\exo{Nom de l'exercice}
+Une grande entreprise produit deux types de produit à destination des grandes surfaces : 
+des charlottes aux fraises et des amandines aux poires.\\%
+Elle comporte deux unités de production. Lorsque un employé, décorant un de ces gâteaux, 
+constate un défaut, il a pour consigne de jeter l'article incriminé. (Malgré le gâchis que cela implique).
+
+On sait que 70 % de la production vient le l'unité A , le reste vient d'une unité B plus ancienne,
+
+En outre, on sait que 2 % des gâteaux venant de l'unité A ont un défaut, alors qu'il y en a 6 % parmi ceux venant de l'unité B .
+
+On choisit un gâteau au hasard dans la production .
+
+On considère les événements :
+'''
+    # Fin de l'énoncé.
+
+    # Fichier texte de la correction.
+    mainC = r'''\cor{Nom de l'exercice}
+    
+    
+\begin{center}
+\begin{tikzpicture}
+\tikzstyle{level 1}=[level distance=6cm, sibling distance=5cm]
+\tikzstyle{level 2}=[level distance=6cm, sibling distance=3.5cm]
+\node{}[grow=right]
+child{node{$A$}
+child{node{$A\cap S$}                     edge from parent node[below]{$p_A(S)=\cdots{}$}}
+child{node{$A\cap \overline S$}           edge from parent node[above]{$p_A(\overline S)=\cdots{}$}}
+edge from parent node[below]{$p( A)=\cdots{}$}}
+child{node{$\overline A$}
+child{node{$\overline A\cap S$}           edge from parent node[below]{$p_{\overline A}( S)=\cdots{}$}}
+child{node{$\overline A\cap \overline S$} edge from parent node[above]{$p_{\overline A}(\overline S)=\cdots{}$}}
+edge from parent node[above]{$p(\overline A)=\cdots{}$}};
+\end{tikzpicture}
+\end{center}
 '''
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
