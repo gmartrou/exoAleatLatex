@@ -110,6 +110,9 @@ vecteurs = [exosSeconde.vecteursParall1,
             exosSeconde.vecteursDroitesColineaires,
             ]
 
+probabilites = [exosSeconde.probasMaladies,
+                exosSeconde.probasViennoiseries]
+
 # Niveaux
 quatrieme = [cosinus,
              pythagore,
@@ -122,6 +125,7 @@ quatrieme = [cosinus,
 seconde = [tableauDeSigne,
            vecteurs,
            fonctionsAffines,
+           probabilites,
            ]
 
 niveau = quatrieme
@@ -138,8 +142,8 @@ for j in range(1, nombreDevoirs+1):
     headerC = headerBase
     main = ''
     mainC = ''
-    header += r'''\enteteLSMI{10 Avril 2019}{Interrogation sur le cosinus : sujet A}%''' + '\n\n'
-    headerC += r'''\enteteLSMI{10 Avril 2019}{Correction de l'interrogation sur le cosinus : sujet A}%''' + '\n\n'
+    header += r'''\enteteLSMI{\today}{Exercices d'entrainement sur les vecteurs}%''' + '\n\n'
+    headerC += r'''\enteteLSMI{\today}{Correction des exercices d'entrainement sur les vecteurs}%''' + '\n\n'
     
     nomFichierExo = 'exercices' + str(j)
     nomFichierCor = 'corrections' + str(j)
@@ -150,12 +154,14 @@ for j in range(1, nombreDevoirs+1):
     #             exosQuatrieme.cosinus3,
     #             exosQuatrieme.cosinus4,
     #             exosQuatrieme.cosinus6]:
-        #exo = np.random.choice([exosQuatrieme.cosinus6])
-        # main, mainC = exo(main, mainC)
-        # main += r'\vspace{3 cm}'
-    for i in range(1):
-        exo = np.random.choice([exosSeconde.probasMaladies])
-        main, mainC = exo(main, mainC)
+# exo = np.random.choice([exosQuatrieme.cosinus6])
+    # main, mainC = exo(main, mainC)
+    # main += r'\vspace{3 cm}'
+    for i in range(10):
+        chapitre = vecteurs
+        for exo in chapitre:
+            # exo = np.random.choice([exosSeconde.probaViennoiseries])
+            main, mainC = exo(main, mainC)
 
     contentExercices = header + main + footer
 

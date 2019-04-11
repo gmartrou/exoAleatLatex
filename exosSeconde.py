@@ -33,7 +33,7 @@ def fonctionsAffineIntersection(fileExercices, fileCorrections):
     if d < 0:
         signD = r' - '
         absD = abs(d)
-
+    
     xmin = -10
     ymin = -10
     xmax = 10
@@ -49,7 +49,7 @@ def fonctionsAffineIntersection(fileExercices, fileCorrections):
         xA = round(xA, 2)
     else:
         egOrAprX = '='
-
+    
     if yA == int(yA):
         yA = int(yA)
         egOrAprY = '='
@@ -57,7 +57,7 @@ def fonctionsAffineIntersection(fileExercices, fileCorrections):
         yA = round(yA, 2)
     else:
         egOrAprY = '='
-
+    
     main = r'''\exo{Intersection de fonctions affines}%
 Soit $f$ et $g$ les fonctions définies sur $\R$ par $f(x) = \{a} x \{signB} \{absB}$ et 
 $g(x) = \{c} x \{signD} \{absD}$.
@@ -98,7 +98,7 @@ def tableauDeSigneUn1(fileExercices, fileCorrections):
     
     VAnnul = 1 / 3
     a, b = 0, 0
-
+    
     while VAnnul != round(VAnnul, 3):
         a1 = random.randint(2, 6)
         a2 = random.randint(-6, -2)
@@ -108,7 +108,7 @@ def tableauDeSigneUn1(fileExercices, fileCorrections):
         b = np.random.choice([b1, b2])
         bAbs = abs(b)
         VAnnul = -b / a
-
+    
     posNeg = 'négative'
     negPos = 'positive'
     posNegM = 'négatif'
@@ -116,7 +116,7 @@ def tableauDeSigneUn1(fileExercices, fileCorrections):
         posNeg = 'positive'
         negPos = 'négative'
         posNegM = 'positif'
-
+    
     if b > 0:
         signB = ' + '
     else:
@@ -127,7 +127,7 @@ def tableauDeSigneUn1(fileExercices, fileCorrections):
     else:
         signA = ' - '
         signMA = ' + '
-
+    
     main = r'''\exo{Tableau de Signes}%
 \begin{enumerate}%' + '\n'
 \item Tracez le tableau de signes de la fonction $f$ définie par : $f(x) = \{a}x \{signB} \{bAbs}$%
@@ -163,7 +163,7 @@ def tableauDeSigneUn2(fileExercices, fileCorrections):
     
     VAnnul = 1 / 3
     a, b = 0, 0
-
+    
     while VAnnul != round(VAnnul, 3):
         a1 = random.randint(2, 6)
         a2 = random.randint(-6, -2)
@@ -173,7 +173,7 @@ def tableauDeSigneUn2(fileExercices, fileCorrections):
         b = np.random.choice([b1, b2])
         bAbs = abs(b)
         VAnnul = -b / a
-
+    
     posNeg = 'négative'
     negPos = 'positive'
     posNegM = 'négatif'
@@ -181,7 +181,7 @@ def tableauDeSigneUn2(fileExercices, fileCorrections):
         posNeg = 'positive'
         negPos = 'négative'
         posNegM = 'négatif'
-
+    
     if b > 0:
         signB = ' + '
     else:
@@ -192,7 +192,7 @@ def tableauDeSigneUn2(fileExercices, fileCorrections):
     else:
         signA = ' - '
         signMA = ' + '
-
+    
     main = r'''\exo{Tableau de Signes}%
 \begin{enumerate}%' + '\n'
 \item Tracez le tableau de signes de la fonction $f$ définie par : $f(x) = \{a}x \{signB} \{bAbs}$%
@@ -228,7 +228,7 @@ def tableauDeSigneUn3(fileExercices, fileCorrections):
     
     VAnnul = 1 / 3
     a, b = 0, 0
-
+    
     while VAnnul != round(VAnnul, 3):
         a1 = random.randint(2, 6)
         a2 = random.randint(-6, -2)
@@ -238,7 +238,7 @@ def tableauDeSigneUn3(fileExercices, fileCorrections):
         b = np.random.choice([b1, b2])
         bAbs = abs(b)
         VAnnul = -b / a
-
+    
     posNeg = 'négative'
     negPos = 'positive'
     posNegM = 'négatif'
@@ -246,7 +246,7 @@ def tableauDeSigneUn3(fileExercices, fileCorrections):
         posNeg = 'positive'
         negPos = 'négative'
         posNegM = 'positif'
-
+    
     if b > 0:
         signB = ' + '
     else:
@@ -257,7 +257,7 @@ def tableauDeSigneUn3(fileExercices, fileCorrections):
     else:
         signA = ' - '
         signMA = ' + '
-
+    
     main = r'''\exo{Tableau de Signes}%
 \begin{enumerate}%' + '\n'
 \item Tracez le tableau de signes de la fonction $f$ définie par : $f(x) = \{a}x \{signB} \{bAbs}$%
@@ -293,7 +293,7 @@ def tableauDeSigneUn4(fileExercices, fileCorrections):
     
     VAnnul = 1 / 3
     a, b = 0, 0
-
+    
     while VAnnul != round(VAnnul, 3):
         a1 = random.randint(2, 6)
         a2 = random.randint(-6, -2)
@@ -303,7 +303,7 @@ def tableauDeSigneUn4(fileExercices, fileCorrections):
         b = np.random.choice([b1, b2])
         bAbs = abs(b)
         VAnnul = -b / a
-
+    
     posNeg = 'négative'
     negPos = 'positive'
     posNegM = 'négatif'
@@ -311,7 +311,7 @@ def tableauDeSigneUn4(fileExercices, fileCorrections):
         posNeg = 'positive'
         negPos = 'négative'
         posNegM = 'positif'
-
+    
     if b > 0:
         signB = ' + '
     else:
@@ -322,7 +322,7 @@ def tableauDeSigneUn4(fileExercices, fileCorrections):
     else:
         signA = ' - '
         signMA = ' + '
-
+    
     main = r'''\exo{Tableau de Signes}%
 \begin{enumerate}%' + '\n'
 \item Tracez le tableau de signes de la fonction $f$ définie par : $f(x) = \{a}x \{signB} \{bAbs}$%
@@ -380,10 +380,10 @@ def tableauDeSigneDeux1(fileExercices, fileCorrections):
         signB = ' + '
     if d > 0:
         signD = ' + '
-
+    
     absB = abs(b)
     absD = abs(d)
-
+    
     posNegA = 'négative'
     negPosA = 'positive'
     posNegMA = 'négatif'
@@ -391,7 +391,7 @@ def tableauDeSigneDeux1(fileExercices, fileCorrections):
         posNegA = 'positive'
         negPosA = 'négative'
         posNegMA = 'positif'
-
+    
     posNegC = 'négative'
     negPosC = 'positive'
     posNegMC = 'négatif'
@@ -399,7 +399,7 @@ def tableauDeSigneDeux1(fileExercices, fileCorrections):
         posNegC = 'positive'
         negPosC = 'négative'
         posNegMC = 'positif'
-
+    
     if a > 0:
         signA = ' + '
         signMA = ' - '
@@ -418,7 +418,7 @@ def tableauDeSigneDeux1(fileExercices, fileCorrections):
     else:
         signFD = ' - '
         signFM = ' + '
-
+    
     main = r'''\exo{Tableau de Signes}%
 \begin{enumerate}%
 \item Tracez le tableau de signes de la fonction $f$ définie par : $f(x) = (\{a}x \{signB} \{absB})(\{c} x \{signD} 
@@ -449,7 +449,7 @@ $\{c} x \{signD} \{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul1}$, $\{VAnnul2}$,
 \end{tikzpicture}%
 \end{center}%
 '''
-        if a*c < 0:
+        if a * c < 0:
             mainC += r'''\item On peut en déduire que $f(x) \leq 0$ pour 
 $x\in\interval[open  left]{-\infty}{\{VAnnul1}} \cup \interval[open  right]{\{VAnnul2}}{+\infty}$%
 '''
@@ -466,14 +466,14 @@ $\{c} x \{signD} \{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul2}$, $\{VAnnul1}$,
 \end{tikzpicture}%
 \end{center}%
 '''
-        if a*c < 0:
+        if a * c < 0:
             mainC += r'''\item On peut en déduire que $f(x) \leq 0$ pour 
 $x\in\interval[open  left]{-\infty}{\{VAnnul2}} \cup \interval[open  right]{\{VAnnul1}}{+\infty}$%
 '''
         else:
             mainC += r'''\item On peut en déduire que $f(x) \leq 0$ pour $x\in\interval{\{VAnnul1}}{\{VAnnul2}}$%
 '''
-
+    
     else:
         mainC += r'''\tkzTabInit{$x$ / 1 , $\{a}x\{signB}\{absB}$ /1, 
 $\{c}x\{signD}\{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul1}$, $+\infty$}%
@@ -521,10 +521,10 @@ def tableauDeSigneDeux2(fileExercices, fileCorrections):
         signB = ' + '
     if d > 0:
         signD = ' + '
-
+    
     absB = abs(b)
     absD = abs(d)
-
+    
     posNegA = 'négative'
     negPosA = 'positive'
     posNegMA = 'négatif'
@@ -532,7 +532,7 @@ def tableauDeSigneDeux2(fileExercices, fileCorrections):
         posNegA = 'positive'
         negPosA = 'négative'
         posNegMA = 'positif'
-
+    
     posNegC = 'négative'
     negPosC = 'positive'
     posNegMC = 'négatif'
@@ -540,7 +540,7 @@ def tableauDeSigneDeux2(fileExercices, fileCorrections):
         posNegC = 'positive'
         negPosC = 'négative'
         posNegMC = 'positif'
-
+    
     if a > 0:
         signA = ' + '
         signMA = ' - '
@@ -559,7 +559,7 @@ def tableauDeSigneDeux2(fileExercices, fileCorrections):
     else:
         signFD = ' - '
         signFM = ' + '
-
+    
     main = r'''\exo{Tableau de Signes}%
 \begin{enumerate}%
 \item Tracez le tableau de signes de la fonction $f$ définie par : $f(x) = (\{a}x \{signB} \{absB})(\{c} x \{signD} 
@@ -590,7 +590,7 @@ $\{c} x \{signD} \{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul1}$, $\{VAnnul2}$,
 \end{tikzpicture}%
 \end{center}%
 '''
-        if a*c < 0:
+        if a * c < 0:
             mainC += r'''\item On peut en déduire que $f(x) < 0$ pour 
 $x\in\interval[open]{-\infty}{\{VAnnul1}} \cup \interval[open]{\{VAnnul2}}{+\infty}$%
 '''
@@ -607,14 +607,14 @@ $\{c} x \{signD} \{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul2}$, $\{VAnnul1}$,
 \end{tikzpicture}%
 \end{center}%
 '''
-        if a*c < 0:
+        if a * c < 0:
             mainC += r'''\item On peut en déduire que $f(x) < 0$ pour 
 $x\in\interval[open]{-\infty}{\{VAnnul2}} \cup \interval[open]{\{VAnnul1}}{+\infty}$%
 '''
         else:
             mainC += r'''\item On peut en déduire que $f(x) < 0$ pour $x\in\interval[open]{\{VAnnul2}}{\{VAnnul1}}$%
 '''
-
+    
     else:
         mainC += r'''\tkzTabInit{$x$ / 1 , $\{a}x\{signB}\{absB}$ /1, 
 $\{c}x\{signD}\{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul1}$, $+\infty$}%
@@ -638,7 +638,7 @@ $\{c}x\{signD}\{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul1}$, $+\infty$}%
 def tableauDeSigneDeux3(fileExercices, fileCorrections):
     """Tableau de signe pour une expression du second degré
     (produit de deux expressions du premier degré). f(x)>=0"""
-
+    
     VAnnul1 = 1 / 3
     VAnnul2 = 1 / 3
     a, b, c, d = 0, 0, 0, 0
@@ -662,10 +662,10 @@ def tableauDeSigneDeux3(fileExercices, fileCorrections):
         signB = ' + '
     if d > 0:
         signD = ' + '
-
+    
     absB = abs(b)
     absD = abs(d)
-
+    
     posNegA = 'négative'
     negPosA = 'positive'
     posNegMA = 'négatif'
@@ -673,7 +673,7 @@ def tableauDeSigneDeux3(fileExercices, fileCorrections):
         posNegA = 'positive'
         negPosA = 'négative'
         posNegMA = 'positif'
-
+    
     posNegC = 'négative'
     negPosC = 'positive'
     posNegMC = 'négatif'
@@ -681,7 +681,7 @@ def tableauDeSigneDeux3(fileExercices, fileCorrections):
         posNegC = 'positive'
         negPosC = 'négative'
         posNegMC = 'positif'
-
+    
     if a > 0:
         signA = ' + '
         signMA = ' - '
@@ -700,7 +700,7 @@ def tableauDeSigneDeux3(fileExercices, fileCorrections):
     else:
         signFD = ' - '
         signFM = ' + '
-
+    
     main = r'''\exo{Tableau de Signes}%
 \begin{enumerate}%
 \item Tracez le tableau de signes de la fonction $f$ définie par : $f(x) = (\{a}x \{signB} \{absB})(\{c} x \{signD} 
@@ -731,7 +731,7 @@ $\{c} x \{signD} \{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul1}$, $\{VAnnul2}$,
 \end{tikzpicture}%
 \end{center}%
 '''
-        if a*c > 0:
+        if a * c > 0:
             mainC += r'''\item On peut en déduire que $f(x) \geq 0$ pour 
 $x\in\interval[open  left]{-\infty}{\{VAnnul1}} \cup \interval[open  right]{\{VAnnul2}}{+\infty}$%
 '''
@@ -748,14 +748,14 @@ $\{c} x \{signD} \{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul2}$, $\{VAnnul1}$,
 \end{tikzpicture}%
 \end{center}%
 '''
-        if a*c > 0:
+        if a * c > 0:
             mainC += r'''\item On peut en déduire que $f(x) \geq 0$ pour 
 $x\in\interval[open  left]{-\infty}{\{VAnnul2}} \cup \interval[open  right]{\{VAnnul1}}{+\infty}$%
 '''
         else:
             mainC += r'''\item On peut en déduire que $f(x) \geq 0$ pour $x\in\interval{\{VAnnul1}}{\{VAnnul2}}$%
 '''
-
+    
     else:
         mainC += r'''\tkzTabInit{$x$ / 1 , $\{a}x\{signB}\{absB}$ /1, 
 $\{c}x\{signD}\{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul1}$, $+\infty$}%
@@ -765,7 +765,7 @@ $\{c}x\{signD}\{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul1}$, $+\infty$}%
 \end{tikzpicture}%
 \end{center}%
 '''
-        if a*c > 0:
+        if a * c > 0:
             mainC += r'''\item On peut en déduire que $f(x) \geq 0$ pour $x\in \R$%
 '''
         else:
@@ -803,10 +803,10 @@ def tableauDeSigneDeux4(fileExercices, fileCorrections):
         signB = ' + '
     if d > 0:
         signD = ' + '
-
+    
     absB = abs(b)
     absD = abs(d)
-
+    
     posNegA = 'négative'
     negPosA = 'positive'
     posNegMA = 'négatif'
@@ -814,7 +814,7 @@ def tableauDeSigneDeux4(fileExercices, fileCorrections):
         posNegA = 'positive'
         negPosA = 'négative'
         posNegMA = 'positif'
-
+    
     posNegC = 'négative'
     negPosC = 'positive'
     posNegMC = 'négatif'
@@ -822,7 +822,7 @@ def tableauDeSigneDeux4(fileExercices, fileCorrections):
         posNegC = 'positive'
         negPosC = 'négative'
         posNegMC = 'positif'
-
+    
     if a > 0:
         signA = ' + '
         signMA = ' - '
@@ -841,7 +841,7 @@ def tableauDeSigneDeux4(fileExercices, fileCorrections):
     else:
         signFD = ' - '
         signFM = ' + '
-
+    
     main = r'''\exo{Tableau de Signes}%
 \begin{enumerate}%
 \item Tracez le tableau de signes de la fonction $f$ définie par : $f(x) = (\{a}x \{signB} \{absB})(\{c} x \{signD} 
@@ -872,7 +872,7 @@ $\{c} x \{signD} \{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul1}$, $\{VAnnul2}$,
 \end{tikzpicture}%
 \end{center}%
 '''
-        if a*c > 0:
+        if a * c > 0:
             mainC += r'''\item On peut en déduire que $f(x) > 0$ pour 
 $x\in\interval[open]{-\infty}{\{VAnnul1}} \cup \interval[open]{\{VAnnul2}}{+\infty}$%
 '''
@@ -889,14 +889,14 @@ $\{c} x \{signD} \{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul2}$, $\{VAnnul1}$,
 \end{tikzpicture}%
 \end{center}%
 '''
-        if a*c > 0:
+        if a * c > 0:
             mainC += r'''\item On peut en déduire que $f(x) > 0$ pour 
 $x\in\interval[open]{-\infty}{\{VAnnul2}} \cup \interval[open]{\{VAnnul1}}{+\infty}$%
 '''
         else:
             mainC += r'''\item On peut en déduire que $f(x) > 0$ pour $x\in\interval[open]{\{VAnnul1}}{\{VAnnul2}}$%
 '''
-
+    
     else:
         mainC += r'''\tkzTabInit{$x$ / 1 , $\{a}x\{signB}\{absB}$ /1,  
 $\{c}x\{signD}\{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul1}$, $+\infty$}%
@@ -906,7 +906,7 @@ $\{c}x\{signD}\{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul1}$, $+\infty$}%
 \end{tikzpicture}%
 \end{center}%
 '''
-        if a*c > 0:
+        if a * c > 0:
             mainC += r'''\item On peut en déduire que $f(x) > 0$ pour $x\neq \{VAnnul1}$%
 '''
         else:
@@ -932,7 +932,7 @@ def vecteursParall1(fileExercices, fileCorrections):
     yBA = yA - yB
     xCD = xD - xC
     yCD = yD - yC
-
+    
     main = r'''\exo{Vecteurs et parallèlogrammes.}%
 Dans le plan muni d'un repère $\left( {{\mathrm{O}};\vec{\imath}, 
 \vec{\jmath}} \right)$, on considère les points $A\left(\{xA}; \{yA}\right)$, $B\left(\{xB}; \{yB}
@@ -969,16 +969,16 @@ def vecteursParall2(fileExercices, fileCorrections):
     yC = random.randint(1, 5)
     xD = xA + xC - xB
     yD = yA + yC - yB
-
+    
     perturbation = [-2, -1, 1, 2]
     xD += np.random.choice(perturbation)
     yD += np.random.choice(perturbation)
-
+    
     xBA = xA - xB
     yBA = yA - yB
     xCD = xD - xC
     yCD = yD - yC
-
+    
     main = r'''\exo{Vecteurs et parallèlogrammes.}%
 Dans le plan muni d'un repère $\left( {{\mathrm{O}};\vec{\imath}, 
 \vec{\jmath}} \right)$, on considère les points $A\left(\{xA}; \{yA}\right)$, $B\left(\{xB}; \{yB}
@@ -1021,30 +1021,30 @@ def vecteursCalculCoord1(fileExercices, fileCorrections):
         if coeff2 >= 0:
             signC2 = ' + '
     absC2 = abs(coeff2)
-
+    
     xAB = xB - xA
     yAB = yB - yA
-
+    
     xCA = xA - xC
     yCA = yA - yC
-
+    
     absC2 = abs(coeff2)
-
+    
     dX = coeff1 * (xB - xA) + coeff2 * (xA - xC)
     dY = coeff1 * (yB - yA) + coeff2 * (yA - yC)
     absdX = abs(dX)
     absdY = abs(dY)
-
+    
     signdX = ' - '
     signdY = ' - '
     if dX >= 0:
         signdX = ' + '
     if dY >= 0:
         signdY = ' + '
-
+    
     xD = xB + dX
     yD = yB + dY
-
+    
     main = r'''\exo{Vecteurs et coordonnées.}%
 Dans le plan muni d'un repère $\left( {{\mathrm{O}};\vec{\imath}, 
 \vec{\jmath}} \right)$, on considère les points $A\left(\{xA}; \{yA}\right)$, $B\left(\{xB}; \{yB}
@@ -1074,7 +1074,7 @@ $\vv{BD}=\{coeff1} \vv{AB} \{signC2} \{absC2} \vv{CA}$.
         mainC += r'''Donc, $\coordv{BD}{\{coeff1} \times \{xAB} \{signC2} \{absC2} \times\{xCA}}{
 \{coeff1} \times \{yAB} \{signC2} \{absC2} \times (\{yCA})}$. 
 '''
-
+    
     mainC += r'''Soit, $\coordv{BD}{\{dX}}{\{dY}}$.\\%
 \item À partir des coordonnées de B et $\vv{BD}$, on calcule ceux du point D.\\%
 On a $\coord{B}{\{xB}}{\{yB}}$ et $\coordv{BD}{\{dX}}{\{dY}}$. 
@@ -1118,7 +1118,7 @@ def vecteursDroitesColineaires(fileExercices, fileCorrections):
         yCtext = "(" + str(yC) + ")"
     else:
         yCtext = str(yC)
-
+    
     if yCB < 0:
         yCBtext = "(" + str(yCB) + ")"
     else:
@@ -1132,7 +1132,7 @@ def vecteursDroitesColineaires(fileExercices, fileCorrections):
     else:
         yABtext = str(yAB)
     det = xAB * yCB - yAB * xCB
-
+    
     main = r'''\exo{Vecteurs et colinéarité.}%
 Dans le plan muni d'un repère $\left( {{\mathrm{O}}; \vec{\imath},\vec{\jmath}} \right)$, 
 on considère les points $A\left(\{xA}; \{yA}\right)$, $B\left(\{xB}; \{yB}\right)$ 
@@ -1141,7 +1141,7 @@ Les points A, B et C sont-ils alignés ?%
 '''
     mainC = r'''\cor{Vecteurs et colinéarité.}%
 '''
-    mainC = repereDebut(mainC, xA-1, yA-1, max(xC+1, 1), max(yC+1, 1))
+    mainC = repereDebut(mainC, xA - 1, yA - 1, max(xC + 1, 1), max(yC + 1, 1))
     mainC += r'''\node[text=red, cross=3pt, label=right:\textcolor{red}{A}] at (\{xA}, \{yA}) {};\\
 \node[text=red, cross=3pt, label=right:\textcolor{red}{B}] at (\{xB}, \{yB}) {};\\
 \node[text=red, cross=3pt, label=right:\textcolor{red}{C}] at (\{xC}, \{yC}) {};\\
@@ -1163,8 +1163,8 @@ Le déterminant de ces deux vecteurs étant nul, ils sont colinéaires.%
 
 
 def probasMaladies(fileExercices, fileCorrections):
-    """Description de l'exercice."""
-
+    """Exercice de probabilité utilisant un schéma de probabilité afin de résoudre le problème."""
+    
     # Définition des variables.
     annee = random.randint(1700, 1850)
     ville = np.random.choice(['Berlin', 'Pékin', 'Paris', 'Stokholm', 'Bucarest', 'Rome', 'Madrid',
@@ -1179,18 +1179,18 @@ def probasMaladies(fileExercices, fileCorrections):
         pApercent = random.randint(3, 40)
         pBpercent = random.randint(3, 40)
     pTpercent = random.randint(1, min(pApercent, pBpercent) - 1)
-    pA = pApercent/100
-    pB = pBpercent/100
-    pAinterB = pTpercent/100
-    pAinterBBar = 1 - pAinterB
-    pAunionB = pA + pB - pAinterB
-    pAunionBBar = 1 - pAunionB
-    pAonly = pA - pAinterB
-    pAonlyBar = 1 - pAonly
-    pBonly = pB - pAinterB
-    pAxorB = pAunionB - pAinterB
+    pA = round(pApercent / 100, 2)
+    pB = round(pBpercent / 100, 2)
+    pAinterB = round(pTpercent / 100, 2)
+    pAinterBBar = round(1 - pAinterB, 2)
+    pAunionB = round(pA + pB - pAinterB, 2)
+    pAunionBBar = round(1 - pAunionB, 2)
+    pAonly = round(pA - pAinterB, 2)
+    pAonlyBar = round(1 - pAonly, 2)
+    pBonly = round(pB - pAinterB, 2)
+    pAxorB = round(pAunionB - pAinterB, 2)
     # Fin des variables.
-
+    
     # Enoncé de l'exercice.
     main = r'''\exo{Des maladies dangereuses}%
 En \{annee}, les habitants de \{ville} subissent une épidémie. Les deux maladies décimants la ville sont
@@ -1209,9 +1209,9 @@ On prend un habitant au hasard dans la ville.\\%
 \end{enumerate}%
 '''
     # Fin de l'énoncé.
-
+    
     # Fichier texte de la correction.
-    mainC = r'''\cor{Nom de l'exercice}%
+    mainC = r'''\cor{Des maladies dangereuses}%
 Notons A : "L'habitant de \{ville} est atteint de \{malA}"\\%
 Notons B : "L'habitant de \{ville} est atteint de \{malB}"\\%
 
@@ -1238,7 +1238,7 @@ En observant les schémas on observe que p(A $\cap$ $\bar{B}$) = p(A) - p(A $\ca
 \{pA} - \{pAinterB} = \{pAonly}.\\%
 \item La probabilité cherchée est p($\overline{A \cup B}$) = 1 - p($A \cup B$).\\%
 Or, p($A \cup B$) = p(A) + p(B) - p($A \cap B$) = \{pA} + \{pB} - \{pAinterB} = \{pAunionB}.\\%
-Donc, p($\overline{A \cup \bar{B}}$) = 1 - \{pAunionB} = \{pAunionBBar}.\\%
+Donc, p($\overline{A \cup B}$) = 1 - \{pAunionB} = \{pAunionBBar}.\\%
 \item La probabilité recherchée est la probabilité qu'il soit malade moins la probabilité qu'il soit atteint 
 des deux à la fois soit p($A \cup B$) - p($A \cap B$) = 
 \{pAunionB} - \{pAinterB} = \{pAxorB}.\\%
@@ -1247,65 +1247,114 @@ des deux à la fois soit p($A \cup B$) - p($A \cap B$) =
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
-def probaGateaux(fileExercices, fileCorrections):
-    """Exercice sur les probabilités nécessitants un arbre. Basé sur une boulangerie."""
-
+def probasViennoiseries(fileExercices, fileCorrections):
+    """Exercice sur les probabilités nécessitants un arbre. Basé sur une usine de viennoiseries."""
+    
     # Définition des variables.
-
+    listeViennoiseries = ['pains au chocolat',
+                          'chocolatines',
+                          'pains aux raisinx',
+                          'croissants',
+                          'chouquettes',
+                          'chaussons aux pommes',
+                          'brioches au chocolat',
+                          'brioches tressées',
+                          'croissants aux amandes',
+                          'fougasses',
+                          'muffins',
+                          'pains aux céréales',
+                          ]
+    
+    vienA = np.random.choice(listeViennoiseries)
+    listeViennoiseries.remove(vienA)
+    vienB = np.random.choice(listeViennoiseries)
+    pApercent = random.randint(61, 90)
+    pBpercent = 100 - pApercent
+    pDaPercent = random.randint(2, 4)
+    pDbPercent = random.randint(pDaPercent+1, 8)
+    pA = round(pApercent/100, 2)
+    pB = round(pBpercent/100, 2)
+    pDa = round(pDaPercent/100, 2)
+    pDb = round(pDbPercent/100, 2)
+    pDaBar = round(1 - pDa, 2)
+    pDbBar = round(1 - pDb, 2)
+    pAandD = round(pA*pDa, 4)
+    pAandDbar = round(pA*(1 - pDa), 4)
+    pBandD = round(pB*pDb, 4)
+    pBandDbar = round(pB * (1 - pDb), 4)
+    pD = round(pAandD + pBandD, 4)
     # Fin des variables.
-
+    
     # Enoncé de l'exercice.
-    main = r'''\exo{Nom de l'exercice}
-Une grande entreprise produit deux types de produit à destination des grandes surfaces : 
-des charlottes aux fraises et des amandines aux poires.\\%
-Elle comporte deux unités de production. Lorsque un employé, décorant un de ces gâteaux, 
-constate un défaut, il a pour consigne de jeter l'article incriminé. (Malgré le gâchis que cela implique).
+    main = r'''\exo{Un gâchis monstre...}
+Une grande entreprise produit deux types de viennoiseries : des \{vienA} et des \{vienB}.\\%
+Les employés travaillants à l'empaquetage de ces viennoiseries sont chargés de contrôler la perfection
+de ces dernières. Si elles ne le sont pas, elles devront alors être jetées. (Malgré le gâchis que cela implique).\\%
+On sait que \{pApercent}\% de la production vient d'une partie rénovée de l'usine,
+le reste vient de la vieille partie de l'usine (avec son lot de défauts !)\\%
+On sait que, statistiquement, seulement \{pDaPercent}\% des gâteaux venant de la partie rénovée de l'usine
+ont un défaut, alors qu'il y en a \{pDbPercent}\% en provenance de la vielle partie de l'usine.\\%
+On choisit un gâteau au hasard dans la production.\\%
+On considère les événements :\\%
+A : "la viennoiserie vient de la partie rénovée de l'usine"\\%
+B : "la viennoiserie vient de la vieille partie de l'usine"\\%
+D : "la viennoiserie a un défaut".\\%
 
-On sait que 70 % de la production vient le l'unité A , le reste vient d'une unité B plus ancienne,
-
-En outre, on sait que 2 % des gâteaux venant de l'unité A ont un défaut, alors qu'il y en a 6 % parmi ceux venant de l'unité B .
-
-On choisit un gâteau au hasard dans la production .
-
-On considère les événements :
+\begin{enumerate}[label=\alph*)]%
+    \item Faire un arbre de choix modélisant la situation de l'énoncé.%
+    \item Déterminer la probabilité pour que la viennoiserie vienne de la partie rénovée de l'usine et ait un défaut.%
+    \item Quelle est la probabilité pour la viennoiserie soit rejetée ?%
+\end{enumerate}%
 '''
     # Fin de l'énoncé.
-
+    
     # Fichier texte de la correction.
-    mainC = r'''\cor{Nom de l'exercice}
-    
-    
+    mainC = r'''\cor{Un gâchis monstre...}
 \begin{center}
 \begin{tikzpicture}
-\tikzstyle{level 1}=[level distance=6cm, sibling distance=5cm]
-\tikzstyle{level 2}=[level distance=6cm, sibling distance=3.5cm]
-\node{}[grow=right]
-child{node{$A$}
-child{node{$A\cap S$}                     edge from parent node[below]{$p_A(S)=\cdots{}$}}
-child{node{$A\cap \overline S$}           edge from parent node[above]{$p_A(\overline S)=\cdots{}$}}
-edge from parent node[below]{$p( A)=\cdots{}$}}
-child{node{$\overline A$}
-child{node{$\overline A\cap S$}           edge from parent node[below]{$p_{\overline A}( S)=\cdots{}$}}
-child{node{$\overline A\cap \overline S$} edge from parent node[above]{$p_{\overline A}(\overline S)=\cdots{}$}}
-edge from parent node[above]{$p(\overline A)=\cdots{}$}};
+    \tikzstyle{level 1}=[level distance=6cm, sibling distance=5cm]
+    \tikzstyle{level 2}=[level distance=6cm, sibling distance=3.5cm]
+    \node{}[grow=right]
+    child{node{$B$}
+      child{node{$B\cap \overline D$} edge from parent node[below]{\textcolor{red}{$\{pDbBar}$}}}
+      child{node{\textcolor{blue}{$B\cap D$}}           edge from parent node[above]{\textcolor{red}{$\{pDb}$}}}
+      edge from parent node[below]{\textcolor{red}{\textcolor{red}{$\{pB}$}}}}
+    child{node{$A$}
+      child{node{$A\cap \overline D$} edge from parent node[below]{\textcolor{red}{$\{pDaBar}$}}}
+      child{node{\textcolor{blue}{$A\cap D$}} edge from parent node[above]{\textcolor{red}{$\{pDa}$}}}
+      edge from parent node[above]{\textcolor{red}{$\{pA}$}}};
 \end{tikzpicture}
 \end{center}
+\begin{enumerate}[label=\alph*)]%
+\item Le problème peut être modélisé par l'arbre ci-dessus.
+\item La probabilité que la viennoiserie vienne de la partie rénovée de l'usine et ait un défaut est la
+probabilité de l'événement \textcolor{blue}{$A \cap D$} qui vaut : p(\textcolor{blue}{$A \cap D$}) =
+$\{pA} \times \{pDa}$ = \{pAandD}.\\%
+La probabilité que la partie rénovée vienne de la partie rénovée de l'usine et ait un défaut est de \{pAandD}.\\%
+\item  La probabilité pour la viennoiserie d'être rejetée correspond à la première et troisième branche de l'arbre. C'est
+à dire aux évènements \textcolor{blue}{$A \cap D$} et \textcolor{blue}{$B \cap D$}.
+La probabilité de l'événement \textcolor{blue}{$A \cap D$} a déjà été calculé. La probabilité de l'événement
+\textcolor{blue}{$B \cap D$} vaut quant à elle p(\textcolor{blue}{$B \cap D$}) = $\{pB} \times \{pDb}$ = \{pBandD}.\\%
+On a donc, finalement, p(D) = p(\textcolor{blue}{$A \cap D$})
++ p(\textcolor{blue}{$B \cap D$}) = \{pAandD} + \{pBandD} = \{pD}.\\%
+La probabilité que la viennoiserie soit rejetée est donc de \{pD}.\\%
+\end{enumerate}
 '''
     return endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def exercice(fileExercices, fileCorrections):
     """Description de l'exercice."""
-
+    
     # Définition des variables.
-
+    
     # Fin des variables.
-
+    
     # Enoncé de l'exercice.
     main = r'''\exo{Nom de l'exercice}
 '''
     # Fin de l'énoncé.
-
+    
     # Fichier texte de la correction.
     mainC = r'''\cor{Nom de l'exercice}
 '''
