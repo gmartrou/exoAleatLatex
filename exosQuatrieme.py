@@ -5,8 +5,8 @@
 import random
 import numpy as np
 from math import *
-from fonctionsSupplementaires import *
-from fonctionsSimplifiantes import *
+import fonctionsSupplementaires
+import fonctionsSimplifiantes
 
 
 def pythagore1(fileExercices, fileCorrections):
@@ -46,7 +46,7 @@ AB = $\sqrt{\{di}}$ cm\\%
     else:
         mainC += r'''AB $\simeq$ \{ro} cm\\%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def pythagore2(fileExercices, fileCorrections):
@@ -87,7 +87,7 @@ BC = $\sqrt{\{sumSq}}$ cm\\%
         mainC += r'''BC $\simeq$ \{sqSum} cm\\%
 '''
     localV = locals()
-    return endExercice(main, mainC, fileExercices, fileCorrections, localV)
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, localV)
 
 
 def pythagore3(fileExercices, fileCorrections):
@@ -128,7 +128,7 @@ AC = $\sqrt{\{di}}$ cm\\%
     else:
         mainC += r'''AC $\simeq$ \{ro} cm\\%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def pythagore4(fileExercices, fileCorrections):
@@ -163,7 +163,7 @@ AB$^2$ + AC$^2$ = \{sumSq}\\%
     mainC += r'''BC$^2$ = AB$^2$ + AC$^2$\\%
 Donc, d'après la réciproque du théorème de Pythagore ABC est rectangle en B.\\%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def pythagore5(fileExercices, fileCorrections):
@@ -207,7 +207,7 @@ Donc, d'après la réciproque du théorème de Pythagore ABC est rectangle en B.
 BC$^2$ $\neq$ AB$^2$ + AC$^2$\\%
 Donc, d'après la contraposée du théorème de Pythagore ABC n'est pas rectangle.\\%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
     
 
 def equation1(fileExercices, fileCorrections):
@@ -305,7 +305,7 @@ On divise par \{aMc} de chaque côté : $x = \dfrac{\{dMb}}{\{aMc}}$\\%'
         if a != c:
             mainC += r'''$x \simeq \{roSolution}$\\%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def equation2(fileExercices, fileCorrections):
@@ -378,7 +378,7 @@ $y = \{a}$\\%
 \{nomB} a \{a} ans.\\%
 Et donc, \{nomA} a \{b} ans.\\%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def equation3(fileExercices, fileCorrections):
@@ -422,7 +422,7 @@ On divise par \{peMpa} de chaque côté : $x = \dfrac{\{totMtota}}{\{peMpa}}$\\%
 $x = \{nE}$\\%
 Il y avait \{nE} enfants présents.\\%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def puissance1(fileExercices, fileCorrections):
@@ -446,7 +446,7 @@ $(10^{\{a}})^{\{b}} =$\\%
 $(10^{\{a}})^{\{b}} = 10^{\{a} \times \{bText}} = 10^{\{aTb}}$
 \end{center}%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def puissance2(fileExercices, fileCorrections):
@@ -470,7 +470,7 @@ $10^{\{a}} \times 10^{\{b}} =$\\%
 $10^{\{a}} \times 10^{\{b}} = 10^{\{a} + \{bText}} = 10^{\{aPb}}$
 \end{center}%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def puissance3(fileExercices, fileCorrections):
@@ -494,7 +494,7 @@ $\dfrac{10^{\{a}}}{10^{\{b}}}=$\\%
 $\dfrac{10^{\{a}}}{10^{\{b}}}= 10^{\{a} - \{bText}} = 10^{\{aMb}}$
 \end{center}%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def cosinus1(fileExercices, fileCorrections):
@@ -522,7 +522,7 @@ cos($\alpha$)=$\dfrac{AC}{AB}$\\%
 Donc, AC = AB $\times$ cos($\alpha$)\\%
 AC $\simeq$ \{c} cm\\%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def cosinus2(fileExercices, fileCorrections):
@@ -550,7 +550,7 @@ cos($\alpha$)=$\dfrac{AC}{AB}$\\%
 Donc, AC = $\dfrac{AB}{cos(\alpha)}$\\%
 AC $\simeq$ \{c} cm\\%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def cosinus3(fileExercices, fileCorrections):
@@ -578,7 +578,7 @@ cos($\beta$)=$\dfrac{BC}{AB}$\\%
 Donc, AC = AB $\times$ cos($\beta$)\\%
 AC $\simeq$ \{c} cm\\%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def cosinus4(fileExercices, fileCorrections):
@@ -606,7 +606,7 @@ cos($\beta$)=$\dfrac{BC}{AB}$\\%
 Donc, AC = $\dfrac{AB}{cos(\beta)}$\\%
 AC $\simeq$ \{c} cm\\%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def cosinus5(fileExercices, fileCorrections):
@@ -642,7 +642,7 @@ Donc, AC = $\dfrac{CH}{cos(\theta)} \simeq$ \{AC} cm\\%
 cos($\alpha$)=$\dfrac{AH}{AC}$\\%
 Donc, AH = AC $\times$ cos($\alpha$) $\simeq$ \{AH} cm\\%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def cosinus6(fileExercices, fileCorrections):
@@ -677,7 +677,7 @@ Donc, BC = $\dfrac{CH}{cos(\theta)} \simeq$ \{BC} cm\\%
 cos($\theta$)=$\dfrac{BC}{BH}$\\%
 Donc, BH = $\dfrac{BC}{cos(\theta)} \simeq$ \{BH} cm\\%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def fraction1(fileExercices, fileCorrections):
@@ -730,7 +730,7 @@ $A='''
                 signs[i] = r' + '
         dens[i] = abs(dens[i])
         nums[i] = abs(nums[i])
-    ppcmVal = PPCM(dens)
+    ppcmVal = fonctionsSupplementaires.PPCM(dens)
     mainC += r'\begin{center}%' + '\n'
     mainC += r'$A = '
     for i in range(nbrTerms):
@@ -785,7 +785,7 @@ $A='''
     mainC += r'$A = \dfrac{' + str(int(numerator))
     mainC += r'}{' + str(int(ppcmVal)) + r'}$%' + '\n'
     mainC += r'\end{center}%' + '\n'
-    pgcdVal = PGCD([numerator, ppcmVal])
+    pgcdVal = fonctionsSupplementaires.PGCD([numerator, ppcmVal])
     if pgcdVal == 1:
         if numerator < 0:
             mainC += r'\begin{center}%' + '\n'
@@ -805,7 +805,7 @@ $A='''
             mainC += r'\end{center}%' + '\n'
     mainC += '\n'
     
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def doubleDeveloppement(fileExercices, fileCorrections):
@@ -888,7 +888,7 @@ $A = \{ac}x \{signAD} \{absAD} x^2 \{signBC} \{absBC} \{signBD} \{absBD} x$\\
 $A = \{ad} x^2 \{signAcpbd} \{absAcpbd} x \{signBC} \{absBC}$\\
 \end{center}%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def pileOuFace(fileExercices, fileCorrections):
@@ -945,4 +945,4 @@ théorique.
 test
 \end{center}%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())

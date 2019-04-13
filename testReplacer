@@ -1,0 +1,49 @@
+
+
+a = 2
+b = 3
+c = 4
+xA = 5
+xB = 6
+text = r'''J'ai \{a} pommes et \{b} poires donc \{a+b} fruits.
+$\dfrac{\{xA}}{\{xB}}$
+'''
+
+A = locals()
+
+# def varRepl(texte, tableau):
+#     for element in tableau:
+#         texte = texte.replace('\{' + element + '}', str(tableau[element]))
+#     return texte
+
+
+def varRepl(text, tableau):
+    newText = ''
+    locals().update(tableau)
+    for line in text.split():
+        for mot in line.split():
+            if mot.startswith('\{'):
+                debut = mot.find("\{")
+                fin = mot.find("}", debut+2)
+                mot2 = mot[debut+2:fin]
+                # mot2 = mot[2:len(mot) - 1]
+                mot = str(eval(mot2))
+            newText += mot + ' '
+    return newText
+
+
+def varRepl(text, tableau):
+    locals().update(tableau)
+    encore = True
+    while encore:
+        debut = text.find("\{")
+        fin = text.find("}", debut + 2)
+        mySubString = text[debut + 2:fin]
+        text = text.replace("\{" + mySubString + "}", str(eval(mySubString)))
+        if "\{" not in text:
+            encore = False
+    return text
+
+
+print(varRepl(text, A))
+

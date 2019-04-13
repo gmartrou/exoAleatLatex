@@ -36,15 +36,28 @@ def repereFin(main):
     return main
 
 
-def varReplacer(texte, tableau):
+def varReplacerOld(texte, tableau):
     for element in tableau:
         texte = texte.replace('\{' + element + '}', str(tableau[element]))
     return texte
 
 
+def varReplacer(text, tableau):
+    locals().update(tableau)
+    encore = True
+    while encore:
+        debut = text.find("\{")
+        fin = text.find("}", debut + 2)
+        mySubString = text[debut + 2:fin]
+        text = text.replace("\{" + mySubString + "}", str(eval(mySubString)))
+        if "\{" not in text:
+            encore = False
+    return text
+
+
 def endExercice(main, mainC, fileExercices, fileCorrections, localV):
-    main += '\n'
-    mainC += '\n'
+    main += '\n' + '\n'
+    mainC += '\n' + '\n'
     main = varReplacer(main, localV)
     mainC = varReplacer(mainC, localV)
     fileExercices += main

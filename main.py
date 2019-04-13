@@ -1,12 +1,16 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+
+
 import os
 import subprocess
 import numpy as np
 
 import exosQuatrieme
 import exosSeconde
+import seconde.probas
+
 
 headerBase = r'''\documentclass[10pt, a4paper]{article}
 \usepackage[utf8x]{inputenc}
@@ -157,11 +161,16 @@ for j in range(1, nombreDevoirs+1):
 # exo = np.random.choice([exosQuatrieme.cosinus6])
     # main, mainC = exo(main, mainC)
     # main += r'\vspace{3 cm}'
-    for i in range(10):
-        chapitre = vecteurs
-        for exo in chapitre:
-            # exo = np.random.choice([exosSeconde.probaViennoiseries])
-            main, mainC = exo(main, mainC)
+    for i in range(1):
+        #chapitre = vecteurs
+        # exo = np.random.choice(chapitre)
+        # main, mainC = exo(main, mainC)
+        # chapitre = probabilites
+        # exo = np.random.choice(chapitre)
+        # main, mainC = exo(main, mainC)
+        # #for exo in chapitre:
+        exo = np.random.choice([seconde.probas.probasViennoiseriesTest])
+        main, mainC = exo(main, mainC)
 
     contentExercices = header + main + footer
 

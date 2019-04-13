@@ -3,7 +3,7 @@
 
 import random
 import numpy as np
-from fonctionsSimplifiantes import *
+import fonctionsSimplifiantes
 
 
 def fonctionsAffineIntersection(fileExercices, fileCorrections):
@@ -73,7 +73,7 @@ $g(x) = \{c} x \{signD} \{absD}$.
 \item Les courbes représentantes des fonctions $f$ et $g$ sont sur le graphique ci-après :
 \end{enumerate}
 '''
-    mainC = repereDebut(mainC, xmin, ymin, xmax, ymax)
+    mainC = fonctionsSimplifiantes.repereDebut(mainC, xmin, ymin, xmax, ymax)
     mainC += r'''\addplot[color=red,domain=-10:10, samples=300]{\{a}*x + \{b}};
 \addplot[color=blue,domain=-10:10, samples=300]{\{c}*x + \{d}};\\
 \node[text=red] at (7, 9) {$f(x)$};\\
@@ -81,7 +81,7 @@ $g(x) = \{c} x \{signD} \{absD}$.
 \node[text=black, cross=3pt] at (\{xA}, \{yA}) {};\\
 \node[text=black, right] at (\{xA}, \{yA}) {A};\\
 '''
-    mainC = repereFin(mainC)
+    mainC = fonctionsSimplifiantes.repereFin(mainC)
     mainC += r'''\begin{enumerate}[resume]
 \item À l'intersection des deux droites, on a $f(x)=g(x)$. Soit, $\{a} x \{signB} \{absB} = 
 \{c} x \{signD} \{absD}$\\
@@ -90,7 +90,7 @@ Et donc $y=f(\{xA}) \{egOrAprY} \{yA}$ ou $y = g(\{xA}) \{egOrAprY} \{yA}$\\
 Le point d'intersection est donc le point A(\{xA}, \{yA}).
 \end{enumerate}
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def tableauDeSigneUn1(fileExercices, fileCorrections):
@@ -155,7 +155,7 @@ On a donc le tableau de signes suivant :\\%
 '''
     mainC += r'''\end{enumerate}%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def tableauDeSigneUn2(fileExercices, fileCorrections):
@@ -220,7 +220,7 @@ On a donc le tableau de signes suivant :\\%
 '''
     mainC += r'''\end{enumerate}%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def tableauDeSigneUn3(fileExercices, fileCorrections):
@@ -285,7 +285,7 @@ On a donc le tableau de signes suivant :\\%
 '''
     mainC += r'''\end{enumerate}%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def tableauDeSigneUn4(fileExercices, fileCorrections):
@@ -350,7 +350,7 @@ On a donc le tableau de signes suivant :\\%
 '''
     mainC += r'''\end{enumerate}%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def tableauDeSigneDeux1(fileExercices, fileCorrections):
@@ -491,7 +491,7 @@ $\{c}x\{signD}\{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul1}$, $+\infty$}%
 '''
     mainC += r'''\end{enumerate}%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def tableauDeSigneDeux2(fileExercices, fileCorrections):
@@ -632,7 +632,7 @@ $\{c}x\{signD}\{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul1}$, $+\infty$}%
 '''
     mainC += r'''\end{enumerate}%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def tableauDeSigneDeux3(fileExercices, fileCorrections):
@@ -773,7 +773,7 @@ $\{c}x\{signD}\{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul1}$, $+\infty$}%
 '''
     mainC += r'''\end{enumerate}%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def tableauDeSigneDeux4(fileExercices, fileCorrections):
@@ -914,7 +914,7 @@ $\{c}x\{signD}\{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul1}$, $+\infty$}%
 '''
     mainC += r'''\end{enumerate}%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def vecteursParall1(fileExercices, fileCorrections):
@@ -941,12 +941,12 @@ Le quadrilatère ABCD est-il un parallèlogramme ?%
 '''
     mainC = r'''\cor{Vecteurs et parallèlogrammes.}%
 '''
-    mainC = repereDebut(mainC, -6, -8, 9, 6)
+    mainC = fonctionsSimplifiantes.repereDebut(mainC, -6, -8, 9, 6)
     mainC += r'''\path[draw, red] (\{xA}, \{yA})  coordinate [label= left:$A$] (A) -- 
 (\{xB}, \{yB})  coordinate [label=above:$B$] (B) -- (\{xC}, \{yC})  coordinate [label=right:$C$] (C) -- 
 (\{xD}, \{yD})  coordinate [label=right:$D$] (D) -- cycle;%
 '''
-    mainC = repereFin(mainC)
+    mainC = fonctionsSimplifiantes.repereFin(mainC)
     mainC += r'''$\coordv{BA}{x_A - x_B}{y_A - y_B}$. Donc, $\coordv{BA}{\{xA} - (\{xB})}{\{yA} - \{yB}}$. 
 Ainsi, $\coordv{BA}{\{xBA}}{\{yBA}}$\\%
 
@@ -955,7 +955,7 @@ Ainsi, $\coordv{CD}{\{xCD}}{\{yCD}}$\\%
 
 $\vv{BA}=\vv{CD}$, donc, ABCD est un parallèlogramme.
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def vecteursParall2(fileExercices, fileCorrections):
@@ -987,12 +987,12 @@ Le quadrilatère ABCD est-il un parallèlogramme ?%
 '''
     mainC = r'''\cor{Vecteurs et parallèlogrammes.}%
 '''
-    mainC = repereDebut(mainC, -6, -8, 9, 6)
+    mainC = fonctionsSimplifiantes.repereDebut(mainC, -6, -8, 9, 6)
     mainC += r'''\path[draw, red] (\{xA}, \{yA})  coordinate [label= left:$A$] (A) -- 
 (\{xB}, \{yB})  coordinate [label=above:$B$] (B) -- (\{xC}, \{yC})  coordinate [label=right:$C$] (C) -- 
 (\{xD}, \{yD})  coordinate [label=right:$D$] (D) -- cycle;%
 '''
-    mainC = repereFin(mainC)
+    mainC = fonctionsSimplifiantes.repereFin(mainC)
     mainC += r'''$\coordv{BA}{x_A - x_B}{y_A - y_B}$. Donc, $\coordv{BA}{\{xA} - (\{xB})}{\{yA} - \{yB}}$. 
 Ainsi, $\coordv{BA}{\{xBA}}{\{yBA}}$\\%
 
@@ -1001,7 +1001,7 @@ Ainsi, $\coordv{CD}{\{xCD}}{\{yCD}}$\\%
 
 $\vv{BA} \neq \vv{CD}$, donc, ABCD n'est pas un parallèlogramme.%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def vecteursCalculCoord1(fileExercices, fileCorrections):
@@ -1083,7 +1083,7 @@ Donc $\coord{D}{\{xB} \{signdX} \{absdX}}{\{yB} \{signdY} \{absdY}}$\\%
 Et, finalement, $\coord{D}{\{xD}}{\{yD}}$%
 \end{enumerate}%
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def vecteursDroitesColineaires(fileExercices, fileCorrections):
@@ -1141,12 +1141,12 @@ Les points A, B et C sont-ils alignés ?%
 '''
     mainC = r'''\cor{Vecteurs et colinéarité.}%
 '''
-    mainC = repereDebut(mainC, xA - 1, yA - 1, max(xC + 1, 1), max(yC + 1, 1))
+    mainC = fonctionsSimplifiantes.repereDebut(mainC, xA - 1, yA - 1, max(xC + 1, 1), max(yC + 1, 1))
     mainC += r'''\node[text=red, cross=3pt, label=right:\textcolor{red}{A}] at (\{xA}, \{yA}) {};\\
 \node[text=red, cross=3pt, label=right:\textcolor{red}{B}] at (\{xB}, \{yB}) {};\\
 \node[text=red, cross=3pt, label=right:\textcolor{red}{C}] at (\{xC}, \{yC}) {};\\
 '''
-    mainC = repereFin(mainC)
+    mainC = fonctionsSimplifiantes.repereFin(mainC)
     mainC += r'''\begin{enumerate}%
 \item On calcule les coordonnées des vecteurs $\vv{AB}$ et $\vv{CB}$\\%
 $\coordv{AB}{x_B - x_A}{y_B - y_A}$. 
@@ -1159,7 +1159,7 @@ det($\vv{AB}$, $\vv{CB}$)=$x_{AB} \times y_{CB} - y_{AB} \times x_{CB}$=\{xAB} $
 Le déterminant de ces deux vecteurs étant nul, ils sont colinéaires.%
 \end{enumerate}
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def probasMaladies(fileExercices, fileCorrections):
@@ -1196,9 +1196,9 @@ def probasMaladies(fileExercices, fileCorrections):
 En \{annee}, les habitants de \{ville} subissent une épidémie. Les deux maladies décimants la ville sont
 \{malA} et \{malB}.\\%
 
-On estime que  \{pApercent}\% des habitants sont atteints de \{malA}, \{pBpercent}\% 
-des animaux sont atteints de \{malB}
-et \{pTpercent}\% des animaux sont atteints des deux maladies à la fois.\\%
+On estime que \{pApercent}\% des habitants sont atteints de la \{malA}, \{pBpercent}\%
+des habitants sont atteints de la \{malB}
+et \{pTpercent}\% des habitants sont atteints des deux maladies à la fois.\\%
 
 On prend un habitant au hasard dans la ville.\\%
 
@@ -1244,7 +1244,7 @@ des deux à la fois soit p($A \cup B$) - p($A \cap B$) =
 \{pAunionB} - \{pAinterB} = \{pAxorB}.\\%
 \end{enumerate}
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def probasViennoiseries(fileExercices, fileCorrections):
@@ -1286,7 +1286,7 @@ def probasViennoiseries(fileExercices, fileCorrections):
     # Fin des variables.
     
     # Enoncé de l'exercice.
-    main = r'''\exo{Un gâchis monstre...}
+    main = r'''\exo{Un gâchis monstre...}%
 Une grande entreprise produit deux types de viennoiseries : des \{vienA} et des \{vienB}.\\%
 Les employés travaillants à l'empaquetage de ces viennoiseries sont chargés de contrôler la perfection
 de ces dernières. Si elles ne le sont pas, elles devront alors être jetées. (Malgré le gâchis que cela implique).\\%
@@ -1309,7 +1309,7 @@ D : "la viennoiserie a un défaut".\\%
     # Fin de l'énoncé.
     
     # Fichier texte de la correction.
-    mainC = r'''\cor{Un gâchis monstre...}
+    mainC = r'''\cor{Un gâchis monstre...}%
 \begin{center}
 \begin{tikzpicture}
     \tikzstyle{level 1}=[level distance=6cm, sibling distance=5cm]
@@ -1331,8 +1331,8 @@ D : "la viennoiserie a un défaut".\\%
 probabilité de l'événement \textcolor{blue}{$A \cap D$} qui vaut : p(\textcolor{blue}{$A \cap D$}) =
 $\{pA} \times \{pDa}$ = \{pAandD}.\\%
 La probabilité que la partie rénovée vienne de la partie rénovée de l'usine et ait un défaut est de \{pAandD}.\\%
-\item  La probabilité pour la viennoiserie d'être rejetée correspond à la première et troisième branche de l'arbre. C'est
-à dire aux évènements \textcolor{blue}{$A \cap D$} et \textcolor{blue}{$B \cap D$}.
+\item  La probabilité pour la viennoiserie d'être rejetée correspond à la première et troisième branche de l'arbre.
+C'est à dire aux évènements \textcolor{blue}{$A \cap D$} et \textcolor{blue}{$B \cap D$}.
 La probabilité de l'événement \textcolor{blue}{$A \cap D$} a déjà été calculé. La probabilité de l'événement
 \textcolor{blue}{$B \cap D$} vaut quant à elle p(\textcolor{blue}{$B \cap D$}) = $\{pB} \times \{pDb}$ = \{pBandD}.\\%
 On a donc, finalement, p(D) = p(\textcolor{blue}{$A \cap D$})
@@ -1340,7 +1340,29 @@ On a donc, finalement, p(D) = p(\textcolor{blue}{$A \cap D$})
 La probabilité que la viennoiserie soit rejetée est donc de \{pD}.\\%
 \end{enumerate}
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
+
+
+def exerciceDemo(fileExercices, fileCorrections):
+    """Description de l'exercice."""
+    
+    # Définition des variables.
+    a = 2
+    b = 3
+    # Fin des variables.
+    
+    # Enoncé de l'exercice.
+    main = r'''\exo{Exo démo}
+J'ai achété \{a} pommes et\{b} poires.
+Combien ai-je acheté de fruits ?
+'''
+    # Fin de l'énoncé.
+    
+    # Fichier texte de la correction.
+    mainC = r'''\cor{Nom de l'exercice}
+J'ai acheté \{a}+\{b} = \{a+b} fruits.
+'''
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
 def exercice(fileExercices, fileCorrections):
@@ -1358,4 +1380,4 @@ def exercice(fileExercices, fileCorrections):
     # Fichier texte de la correction.
     mainC = r'''\cor{Nom de l'exercice}
 '''
-    return endExercice(main, mainC, fileExercices, fileCorrections, locals())
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
