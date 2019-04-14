@@ -6,13 +6,98 @@ import numpy as np
 import fonctionsSimplifiantes
 
 
+def probasMaladies(fileExercices, fileCorrections):
+    """Exercice de probabilité utilisant un schéma de probabilité afin de résoudre le problème."""
+    
+    # Définition des variables.
+    annee = random.randint(1700, 1850)
+    ville = np.random.choice(['Berlin', 'Pékin', 'Paris', 'Stokholm', 'Bucarest', 'Rome', 'Madrid',
+                              'Brest', 'Londres', 'Rouen', 'Gênes'])
+    listeMaladies = ['lèpre', 'peste', 'diphtérie', 'pneumonie', 'rage',
+                     'rougeole', 'tuberculose', 'méningite']
+    malA = np.random.choice(listeMaladies)
+    listeMaladies.remove(malA)
+    malB = np.random.choice(listeMaladies)
+    pApercent = pBpercent = 0
+    while pApercent == pBpercent:
+        pApercent = random.randint(3, 40)
+        pBpercent = random.randint(3, 40)
+    pTpercent = random.randint(1, min(pApercent, pBpercent) - 1)
+    pA = round(pApercent / 100, 2)
+    pB = round(pBpercent / 100, 2)
+    pAinterB = round(pTpercent / 100, 2)
+    pAinterBBar = round(1 - pAinterB, 2)
+    pAunionB = round(pA + pB - pAinterB, 2)
+    pAunionBBar = round(1 - pAunionB, 2)
+    pAonly = round(pA - pAinterB, 2)
+    pAonlyBar = round(1 - pAonly, 2)
+    pBonly = round(pB - pAinterB, 2)
+    pAxorB = round(pAunionB - pAinterB, 2)
+    # Fin des variables.
+    
+    # Enoncé de l'exercice.
+    main = r'''\exo{Des maladies dangereuses}%
+En \{annee}, les habitants de \{ville} subissent une épidémie. Les deux maladies décimants la ville sont
+\{malA} et \{malB}.\\%
+
+On estime que \{pApercent}\% des habitants sont atteints de la \{malA}, \{pBpercent}\%
+des habitants sont atteints de la \{malB}
+et \{pTpercent}\% des habitants sont atteints des deux maladies à la fois.\\%
+
+On prend un habitant au hasard dans la ville.\\%
+
+\begin{enumerate}[label=\alph*)]%
+    \item Calculer la probabilité qu'il soit atteint seulement de \{malA}.%
+    \item Calculer la probabilité qu'il ne soit pas malade.%
+    \item Calculer la probabilité qu'il soit malade mais seulement atteint d'une des deux maladies%
+\end{enumerate}%
+'''
+    # Fin de l'énoncé.
+    
+    # Fichier texte de la correction.
+    mainC = r'''\cor{Des maladies dangereuses}%
+Notons A : "L'habitant de \{ville} est atteint de \{malA}"\\%
+Notons B : "L'habitant de \{ville} est atteint de \{malB}"\\%
+
+Les données de l'énoncé nous disent que :\\%
+p(A) = \{pA}\\%
+p(B) = \{pB}\\%
+p(A $\cap$ B) = \{pAinterB}\\%
+Afin de bien se représenter le problème, on peut faire les schémas suivants :\\%
+\begin{center}
+\begin{minipage}{0.3\textwidth}%
+\includegraphics[width = \textwidth]{images/proba13.png}%
+\end{minipage}%
+\begin{minipage}{0.32\textwidth}%
+\includegraphics[width = \textwidth]{images/proba23.png}%
+\end{minipage}%
+\begin{minipage}{0.32\textwidth}%
+\includegraphics[width = \textwidth]{images/proba3.png}%
+\end{minipage}%
+\end{center}
+\begin{enumerate}[label=\alph*)]%
+\item La probabilité que l'on cherche est la probabilité qu'il soit atteint de \{malA} ET pas de \{malB}.\\%
+On cherche donc p($A \cap \bar{B}$).\\%
+En observant les schémas on observe que p(A $\cap$ $\bar{B}$) = p(A) - p(A $\cap$ B) =
+\{pA} - \{pAinterB} = \{pAonly}.\\%
+\item La probabilité cherchée est p($\overline{A \cup B}$) = 1 - p($A \cup B$).\\%
+Or, p($A \cup B$) = p(A) + p(B) - p($A \cap B$) = \{pA} + \{pB} - \{pAinterB} = \{pAunionB}.\\%
+Donc, p($\overline{A \cup B}$) = 1 - \{pAunionB} = \{pAunionBBar}.\\%
+\item La probabilité recherchée est la probabilité qu'il soit malade moins la probabilité qu'il soit atteint
+des deux à la fois soit p($A \cup B$) - p($A \cap B$) =
+\{pAunionB} - \{pAinterB} = \{pAxorB}.\\%
+\end{enumerate}
+'''
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
+
+
 def probasViennoiseriesTest(fileExercices, fileCorrections):
     """Exercice sur les probabilités nécessitants un arbre. Basé sur une usine de viennoiseries."""
     
     # Définition des variables.
     listeViennoiseries = ['pains au chocolat',
                           'chocolatines',
-                          'pains aux raisinx',
+                          'pains aux raisins',
                           'croissants',
                           'chouquettes',
                           'chaussons aux pommes',

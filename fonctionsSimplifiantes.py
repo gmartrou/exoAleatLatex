@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 
 
+import numpy as np
+
+
 def repereDebut(main, xmin, ymin, xmax, ymax):
     taille = 0.4*(xmax - xmin)/(ymax - ymin)
     main += r'''\begin{adjustbox}{width='''+str(taille)+r'''\textwidth,center}
@@ -34,6 +37,21 @@ def repereFin(main):
     \end{adjustbox}\\
     '''
     return main
+
+
+def signT(x):
+    if np.signbit(x):
+        return ' - '
+    else:
+        return ' + '
+    
+    
+def signOpT(x):
+    print('banane')
+    if np.signbit(x):
+        return ' - '
+    else:
+        return ' + '
 
 
 def varReplacerOld(texte, tableau):
