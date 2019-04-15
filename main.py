@@ -105,7 +105,7 @@ for j in range(1, nombreDevoirs + 1):
         # main, mainC = exo(main, mainC)
         # #for exo in chapitre:
         # exo = np.random.choice([seconde.probas.probasViennoiseriesTest])
-        main, mainC = seconde.tableauxDeSignes.problemesSimples.tableauDeSigneUn1(main, mainC)
+        main, mainC = seconde.tableauxDeSignes.problemesSimples.tableauDeSigneBasique(main, mainC)
         ##main, mainC = exo(main, mainC)
     
     contentExercices = header + main + footer

@@ -6,6 +6,7 @@ import numpy as np
 import fonctionsSimplifiantes
 from fonctionsSimplifiantes import signT
 from seconde.tableauxDeSignes.traceurDeTableau import tableauSigneAffine
+from seconde.tableauxDeSignes.traceurDeTableau import tableauSigne
 
 
 def tableauDeSigneUn1(fileExercices, fileCorrections):
@@ -790,4 +791,12 @@ $\{c}x\{signD}\{absD}$ /1, $f(x)$ / 1}{$-\infty$, $\{VAnnul1}$, $+\infty$}%
 '''
     mainC += r'''\end{enumerate}%
 '''
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
+
+
+def tableauDeSigneBasique(fileExercices, fileCorrections):
+    main = r'''Tracez le tableau de signe de :
+'''
+    # mainC = tableauSigne(3, [(2, 3), (-2, 2), (1, -1), (7, -2), (1, 7), (-3, 4), (6, -1), (12, 1), (-9, 2)])
+    mainC = tableauSigne(3, [(2, 3), (-2, 2), (1, -1)])
     return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())

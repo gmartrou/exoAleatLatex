@@ -62,7 +62,9 @@ def varReplacerOld(texte, tableau):
 
 def varReplacer(text, tableau):
     locals().update(tableau)
-    encore = True
+    encore = False
+    if text.find("\{") != -1:
+        encore = True
     while encore:
         debut = text.find("\{")
         fin = text.find("}", debut + 2)
