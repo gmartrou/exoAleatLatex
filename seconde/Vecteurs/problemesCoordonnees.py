@@ -107,8 +107,9 @@ def vecteursCalculCoord1(fileExercices, fileCorrections):
     while coeff1 in [-1, 0, 1] or coeff2 in [-1, 0, 1]:
         coeff1 = random.randint(-5, 5)
         coeff2 = random.randint(-5, 5)
-        if coeff2 >= 0:
-            signC2 = ' + '
+    if coeff2 >= 0:
+        signC2 = ' + '
+
     absC2 = abs(coeff2)
     
     xAB = xB - xA
@@ -116,8 +117,6 @@ def vecteursCalculCoord1(fileExercices, fileCorrections):
     
     xCA = xA - xC
     yCA = yA - yC
-    
-    absC2 = abs(coeff2)
     
     dX = coeff1 * (xB - xA) + coeff2 * (xA - xC)
     dY = coeff1 * (yB - yA) + coeff2 * (yA - yC)

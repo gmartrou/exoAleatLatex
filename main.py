@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from preambule import *
-
+import seconde.Vecteurs.problemesCoordonnees
 
 # # Chapitres 4ème
 # cosinus = [exosQuatrieme.cosinus1,
@@ -96,7 +96,7 @@ for j in range(1, nombreDevoirs + 1):
     # exo = np.random.choice([exosQuatrieme.cosinus6])
     # main, mainC = exo(main, mainC)
     # main += r'\vspace{3 cm}'
-    for i in range(1):
+    for i in range(10):
         # chapitre = vecteurs
         # exo = np.random.choice(chapitre)
         # main, mainC = exo(main, mainC)
@@ -105,7 +105,7 @@ for j in range(1, nombreDevoirs + 1):
         # main, mainC = exo(main, mainC)
         # #for exo in chapitre:
         # exo = np.random.choice([seconde.probas.probasViennoiseriesTest])
-        main, mainC = seconde.tableauxDeSignes.problemesSimples.tableauDeSigneBasique(main, mainC)
+        main, mainC = seconde.Vecteurs.problemesCoordonnees.vecteursCalculCoord1(main, mainC)
         ##main, mainC = exo(main, mainC)
     
     contentExercices = header + main + footer
