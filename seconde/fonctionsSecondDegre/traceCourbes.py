@@ -63,35 +63,47 @@ def fonctionsSecondDegreTrace(fileExercices, fileCorrections):
         signBe = r' - '
         absBe = abs(be)
 
-    main = r'''\exo{Tracé de fonction de degré 2}%
+    main = r'''\exo{Tracé d'une fonction de degré 2}%
 Soit $f$ la fonction définie sur $\R$ par $f(x) = \{a}x^2 \{signB} \{absB}x \{signC} \{absC}$.
 \medskip%
 \begin{enumerate}%
 \item Tracer la courbe représentative de $f$ dans le plan muni d'un repère.%
 \end{enumerate}%
 '''
-    mainC = r'''\cor{Tracé de fonction de degré 2}
+    mainC = r'''\cor{Tracé d'une fonction de degré 2}
 \medskip%
 \begin{enumerate}%
 \item $f(x) = \{a}x^2 \{signE(b)}x \{signE(c)}$.\\
 On factorise par \{a} : $f(x) = \{a}[x^2 \{signE(b/a)} x \{signE(c/a)}]$\\
-On remarque que $\{int(b/a)} = 2 \times (\{int(b/(2*a))})$.
-Donc $x^2 \{signE(b/a)} x \{signE(c/a)}$ est une expression proche de $(x \{signOpE(al)})^2$.\\
+'''
+    if b/a > 0:
+        mainC += r'''On remarque que $\{int(b/a)} = 2 \times \{int(b/(2*a))}$.
+'''
+    else:
+        mainC += r'''On remarque que $\{int(b/a)} = 2 \times (\{int(b/(2*a))})$.
+'''
+    mainC += r'''Donc $x^2 \{signE(b/a)} x \{signE(c/a)}$ est une expression proche de $(x \{signOpE(al)})^2$.\\
 En développant, on remarque que $(x \{signOpE(al)})^2 = x^2 \{signOpE(2*al)}x \{signE(al**2)}$.\\
 Donc $(x \{signOpE(al)})^2 \{signE(c/a - al**2)} = x^2 \{signE(b/a)} x \{signE(c/a)}$.\\
 Ainsi, $f(x) = \{a}[(x \{signOpE(al)})^2 \{signE(c/a - al**2)}] = \{a}(x \{signMAl} \{absAl})^2 \{signBe} \{absBe}$.\\
-La forme canonique de $f(x)$ est donc $f(x) = \{a}(x \{signMAl} \textcolor{red}{\{absAl}})^2
-\textcolor{red}{\{signBe} \{absBe}}$.\\
-\textcolor{red}{Le sommet de la parabole est donc le point S(\{al}; \{be}).}\\
+'''
+    if al > 0:
+        mainC += r'''La forme canonique de $f(x)$ est donc $f(x) = \{a}(x \{signMAl} \textcolor{red}{\{absAl}})^2
+\textcolor{red}{\{signBe} \{absBe}}$.\\'''
+    else:
+        mainC += r'''La forme canonique de $f(x)$ est donc $f(x) = \{a}(x \{signMAl} \{absAl})^2 \{signBe} \{absBe} =
+\{a}(x - (\textcolor{red}{- \{absAl}}))^2 \textcolor{red}{\{signBe} \{absBe}}$.\\
+'''
+    mainC += r'''Le sommet de la parabole est donc le point S(\textcolor{red}{\{al}}; \textcolor{red}{\{be}}).\\
 
 On remarque que $\{-beSa} = \{sBeSa}^2$, on peut donc utiliser l'identité remarquable $a^2 - b^2 = (a-b)(a+b)$.\\
 Soit, $f(x) = \{a}[(x \{signOpE(al)})^2 \{signE(beSa)}] = \{a}[(x \{signOpE(al)})^2 - \{sBeSa}^2] =
 \{a}(x \{signOpE(al)} \{signOpE(sBeSa)})(x \{signOpE(al)} \{signE(sBeSa)}) =
 \{a}(x \{signOpE(al+sBeSa)})(x \{signOpE(al-sBeSa)})$.\\
 La forme factorisée de f(x) est donc $f(x) = \{a}(x \{signMDe} \{absDe})(x \{signMGa} \{absGa})$.\\
-La fonction f \textcolor{green}{s'annule} donc en $x = \textcolor{blue}{\{de}}$ et en $x = \textcolor{blue}{\{ga}}$.\\
-La parabole passe donc par les points A(\textcolor{blue}{\{de}}; \textcolor{green}{0})
- et B(\textcolor{blue}{\{ga}}; \textcolor{green}{0}).\\
+La fonction f \textcolor{red}{s'annule} donc en $x = \textcolor{blue}{\{de}}$ et en $x = \textcolor{blue}{\{ga}}$.\\
+La parabole passe donc par les points A(\textcolor{blue}{\{de}}; \textcolor{red}{0})
+ et B(\textcolor{blue}{\{ga}}; \textcolor{red}{0}).\\
 '''
     if a>0:
         mainC += r'''Comme $\{a}>0$, la parabole est "contente", elle sera décroissante puis croissante.\\
@@ -132,6 +144,7 @@ def fonctionsHomographiqueTrace(fileExercices, fileCorrections):
         a = np.random.choice([a1, a2])
         b1 = random.randint(1, 6)
         b2 = random.randint(-6, -1)
+        b = np.random.choice([b1, b2])
         c1 = random.randint(2, 6)
         c2 = random.randint(-6, -2)
         c = np.random.choice([c1, c2])
@@ -139,25 +152,26 @@ def fonctionsHomographiqueTrace(fileExercices, fileCorrections):
         d2 = random.randint(-6, -1)
         d = np.random.choice([d1, d2])
     
-    main = r'''\exo{Tracé de fonction de degré 2}%
+    main = r'''\exo{Tracé d'une fonction homographique}%
 Soit $f$ la fonction définie sur $\R$ par $f(x) = \dfrac{\{a}x \{signE(b)}}{\{c}x \{signE(d)}}$.
 \medskip%
 \begin{enumerate}%
-\item Justifier que f est une fonction homographique.%
-\item Quel est l'ensemble de définition de f ?%
+\item Justifier que $f$ est une fonction homographique.%
+\item Quel est l'ensemble de définition de $f$ ?%
 \item Tracer la courbe représentative de $f$ dans le plan muni d'un repère.%
 \end{enumerate}%
 '''
-    mainC = r'''\cor{Intersection de fonctions affines}
+    mainC = r'''\cor{Tracé d'une fonction homographique}
 \medskip%
 \begin{enumerate}%
-\item La fonction f est une fonction du type $f(x) = \dfrac{a x + b}{c x + d}$ avec a = \{a}, b = \{b}, c = \{c} et
+\item $f(x) = \dfrac{\{a}x \{signE(b)}}{\{c}x \{signE(d)}}$.
+La fonction $f$ est une fonction du type $f(x) = \dfrac{a x + b}{c x + d}$ avec a = \{a}, b = \{b}, c = \{c} et
 d = \{d} et $ad - bc = \{a*d - b*c} \neq 0$ donc $f$ est bien une fonction homographique.%
 \item La fonction n'est pas définie lorsque le dénominateur s'annule car il est interdit de diviser par 0.\\
 Or, $\{c} x \{signE(d)} = 0 => x = \{-d/c}$. $f$ est donc définie sur $\R \setminus \lbrace{\{-d/c}}\rbrace$.
 \item $f$ est donc définie sur $\R \setminus \lbrace{\{-d/c}}\rbrace$, on sait donc que la fonction aura pour
 tangente verticale la droite d'équation $x = \{-d/c}$.\\
-Pour des valeurs "très grandes" ou "très petites" de x, les coefficients "b" et "d" n'auront pas d'impact
+Pour des valeurs "très grandes" ou "très petites" de $x$, les coefficients "b" et "d" n'auront pas d'impact
 sur la valeur de la fonction et celle-ci tendra vers une valeur constante, $\dfrac{a}{c} = \dfrac{\{a}}{\{c}} = \{a/c}$.\\
 La fonction aura donc pour tangente horizontale la droite d'équation $y = \{a/c}$.\\
 '''
