@@ -38,7 +38,7 @@ def probasMaladies(fileExercices, fileCorrections):
     # Enoncé de l'exercice.
     main = r'''\exo{Des maladies dangereuses}%
 En \{annee}, les habitants de \{ville} subissent une épidémie. Les deux maladies décimants la ville sont
-\{malA} et \{malB}.\\%
+la \{malA} et la \{malB}.\\%
 
 On estime que \{pApercent}\% des habitants sont atteints de la \{malA}, \{pBpercent}\%
 des habitants sont atteints de la \{malB}
@@ -66,13 +66,13 @@ p(A $\cap$ B) = \{pAinterB}\\%
 Afin de bien se représenter le problème, on peut faire les schémas suivants :\\%
 \begin{center}
 \begin{minipage}{0.3\textwidth}%
-\includegraphics[width = \textwidth]{images/proba13.png}%
+\includegraphics[width = \textwidth]{seconde/probas/images/proba13.png}%
 \end{minipage}%
 \begin{minipage}{0.32\textwidth}%
-\includegraphics[width = \textwidth]{images/proba23.png}%
+\includegraphics[width = \textwidth]{seconde/probas/images/proba23.png}%
 \end{minipage}%
 \begin{minipage}{0.32\textwidth}%
-\includegraphics[width = \textwidth]{images/proba3.png}%
+\includegraphics[width = \textwidth]{seconde/probas/images/proba3.png}%
 \end{minipage}%
 \end{center}
 \begin{enumerate}[label=\alph*)]%
@@ -91,7 +91,7 @@ des deux à la fois soit p($A \cup B$) - p($A \cap B$) =
     return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
 
 
-def probasViennoiseriesTest(fileExercices, fileCorrections):
+def probasViennoiseries(fileExercices, fileCorrections):
     """Exercice sur les probabilités nécessitants un arbre. Basé sur une usine de viennoiseries."""
     
     # Définition des variables.

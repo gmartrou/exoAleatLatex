@@ -623,7 +623,7 @@ def cosinus5(fileExercices, fileCorrections):
     AH = AC*cos(alphaR)
     
     main = r'''
-\exo{Longueur à trouver}%
+\exo{Mesures manquantes}%
 \begin{minipage}{0.6\textwidth}%
 ABC est le triangle ci-contre.\\%
 BC = \{a} cm et l'angle $\theta$ mesure \{beta}°\\%
@@ -633,7 +633,7 @@ Combien mesure AH ?\\%
 \includegraphics[width = \textwidth]{imagesQuatrieme/PythagoreDoubleTriangleA.png}%
 \end{minipage}\\%
 '''
-    mainC = r'''\cor{Longueur à trouver}%
+    mainC = r'''\cor{Mesures manquantes}%
 La somme des angles dans un triangle mesurant 180°, l'angle $\alpha$ mesure \{alpha}°\\%
 cos($\alpha$)=$\dfrac{CH}{BC}$\\%
 Donc, CH = AB $\times$ cos($\alpha$) $\simeq$ \{CH} cm\\%
@@ -658,7 +658,7 @@ def cosinus6(fileExercices, fileCorrections):
     BH = BC * cos(thetaR)
     
     main = r'''
-\exo{Longueur à trouver}%
+\exo{Mesures manquantes}%
 \begin{minipage}{0.6\textwidth}%
 ABC est le triangle ci-contre.\\%
 AC = \{AC} cm et l'angle $\alpha$ mesure \{alpha}°\\%
@@ -668,7 +668,7 @@ Combien mesure BH ?\\%
 \includegraphics[width = \textwidth]{imagesQuatrieme/PythagoreDoubleTriangleA.png}%
 \end{minipage}\\%
 '''
-    mainC = r'''\cor{Longueur à trouver}%
+    mainC = r'''\cor{Mesures manquantes}%
 La somme des angles dans un triangle mesurant 180°, l'angle $\theta$ mesure \{theta}°\\%
 cos($\theta$)=$\dfrac{CH}{AC}$\\%
 Donc, CH = AC $\times$ cos($\theta$) $\simeq$ \{CH} cm\\%

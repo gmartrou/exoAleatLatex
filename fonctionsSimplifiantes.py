@@ -47,11 +47,36 @@ def signT(x):
     
     
 def signOpT(x):
-    print('banane')
     if np.signbit(x):
         return ' - '
     else:
         return ' + '
+
+
+def signE(x):
+    if np.signbit(x):
+        if x == int(x):
+            return ' - ' + str(int(abs(x)))
+        else:
+            return ' - ' + str(abs(x))
+    else:
+        if x == int(x):
+            return ' + ' + str(int(abs(x)))
+        else:
+            return ' + ' + str(abs(x))
+
+
+def signOpE(x):
+    if np.signbit(x):
+        if x == int(x):
+            return ' + ' + str(int(abs(x)))
+        else:
+            return ' + ' + str(abs(x))
+    else:
+        if x == int(x):
+            return ' - ' + str(int(abs(x)))
+        else:
+            return ' - ' + str(abs(x))
 
 
 def varReplacerOld(texte, tableau):

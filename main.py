@@ -3,6 +3,12 @@
 
 from preambule import *
 
+import seconde.tableauxDeSignes.problemesSimples
+import seconde.probas.problemes
+import seconde.Vecteurs.problemesCoordonnees
+import seconde.Vecteurs.applicationFormules
+import seconde.Vecteurs.problemesChasles
+import seconde.fonctionsSecondDegre.traceCourbes
 
 # # Chapitres 4ème
 # cosinus = [exosQuatrieme.cosinus1,
@@ -43,14 +49,18 @@ from preambule import *
 #                   exosSeconde.tableauDeSigneDeux3,
 #                   exosSeconde.tableauDeSigneDeux4,
 #                   ]
-# vecteurs = [exosSeconde.vecteursParall1,
-#             exosSeconde.vecteursParall2,
-#             exosSeconde.vecteursCalculCoord1,
-#             exosSeconde.vecteursDroitesColineaires,
-#             ]
-#
-# probabilites = [exosSeconde.probasMaladies,
-#                 exosSeconde.probasViennoiseries]
+vecteurs = [seconde.Vecteurs.problemesCoordonnees.vecteursParall1,
+            seconde.Vecteurs.problemesCoordonnees.vecteursParall2,
+            seconde.Vecteurs.problemesCoordonnees.vecteursCalculCoord1,
+            seconde.Vecteurs.problemesCoordonnees.vecteursDroitesColineaires,
+            ]
+
+probabilites = [seconde.probas.problemes.probasMaladies,
+                seconde.probas.problemes.probasViennoiseries]
+
+fonctions = [
+             seconde.fonctionsSecondDegre.traceCourbes.fonctionsSecondDegreTrace,
+             seconde.fonctionsSecondDegre.traceCourbes.fonctionsHomographiqueTrace]
 #
 # # Niveaux
 # quatrieme = [cosinus,
@@ -61,16 +71,18 @@ from preambule import *
 #              calculLitteral,
 #              ]
 #
-# chapitresSeconde = [tableauDeSigne,
-#                     vecteurs,
+chapitresSeconde = [
+#                    tableauDeSigne,
+ #                    vecteurs,
 #                     fonctionsAffines,
 #                     probabilites,
-#                     ]
+                     fonctions,
+                     ]
 #
-# niveau = quatrieme
+niveau = chapitresSeconde
 
 # nombreExercices = 6
-nombreDevoirs = 1
+nombreDevoirs = 2
 
 for j in range(1, nombreDevoirs + 1):
     if j < 10:
@@ -81,22 +93,25 @@ for j in range(1, nombreDevoirs + 1):
     headerC = headerBase
     main = ''
     mainC = ''
-    header += r'''\enteteLSMI{\today}{Exercices d'entrainement sur les vecteurs}%''' + '\n\n'
-    headerC += r'''\enteteLSMI{\today}{Correction des exercices d'entrainement sur les vecteurs}%''' + '\n\n'
+    header += r'''\enteteLSMI{\today}{Entrainement Interrogation fonctions}%''' + '\n\n'
+    headerC += r'''\enteteLSMI{\today}{Correction entrainement Interrogation fonctions}%''' + '\n\n'
     
     nomFichierExo = 'exercices' + str(j)
     nomFichierCor = 'corrections' + str(j)
-    # for chapitre in niveau:
+    for chapitre in niveau:
+        for i in range(20):
+            for exo in chapitre:
+                main, mainC = exo(main, mainC)
+        
     #     exo = np.random.choice(chapitre)
     #     main, mainC = exo(main, mainC)
     # for exo in [exosQuatrieme.cosinus2,
     #             exosQuatrieme.cosinus3,
     #             exosQuatrieme.cosinus4,
     #             exosQuatrieme.cosinus6]:
-    # exo = np.random.choice([exosQuatrieme.cosinus6])
-    # main, mainC = exo(main, mainC)
-    # main += r'\vspace{3 cm}'
-    for i in range(1):
+            #exo = np.random.choice([exosQuatrieme.cosinus6])
+            
+    #for i in range(10):
         # chapitre = vecteurs
         # exo = np.random.choice(chapitre)
         # main, mainC = exo(main, mainC)
@@ -104,9 +119,9 @@ for j in range(1, nombreDevoirs + 1):
         # exo = np.random.choice(chapitre)
         # main, mainC = exo(main, mainC)
         # #for exo in chapitre:
-        # exo = np.random.choice([seconde.probas.probasViennoiseriesTest])
-        main, mainC = seconde.tableauxDeSignes.problemesSimples.tableauDeSigneBasique(main, mainC)
-        ##main, mainC = exo(main, mainC)
+        # exo = np.random.choice([exosQuatrieme.cosinus5, exosQuatrieme.cosinus6])
+        # main, mainC = seconde.tableauxDeSignes.problemesSimples.tableauDeSigneBasique(main, mainC)
+        # main, mainC = exo(main, mainC)
     
     contentExercices = header + main + footer
     

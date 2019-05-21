@@ -11,8 +11,7 @@ import numpy as np
 
 import exosQuatrieme
 import exosSeconde
-import seconde.tableauxDeSignes.problemesSimples
-import seconde.probas.problemes
+
 
 headerBase = r'''\documentclass[10pt, a4paper]{article}
 \usepackage[utf8x]{inputenc}
@@ -47,7 +46,7 @@ headerBase = r'''\documentclass[10pt, a4paper]{article}
 \newcommand{\R}{\mathds {R}}
 \usepackage{tikz,tkz-tab}
 \usetikzlibrary{shapes.misc}
-\tikzset{cross/.style={cross out, draw=red, minimum size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt},
+\tikzset{cross/.style={cross out, draw=blue, minimum size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt},
 %default radius will be 1pt.
 cross/.default={1pt}}
 \usepackage{pgfplots}
