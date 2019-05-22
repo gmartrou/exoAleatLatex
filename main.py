@@ -31,6 +31,10 @@ import seconde.fonctionsSecondDegre.traceCourbes
 #              ]
 # fractions = [exosQuatrieme.fraction1,
 #              ]
+
+statistiques = [exosQuatrieme.statsClasse,
+                exosQuatrieme.pileOuFace,
+                ]
 #
 # calculLitteral = [exosQuatrieme.doubleDeveloppement,
 #                   ]
@@ -63,13 +67,15 @@ fonctions = [
              seconde.fonctionsSecondDegre.traceCourbes.fonctionsHomographiqueTrace]
 #
 # # Niveaux
-# quatrieme = [cosinus,
+quatrieme = [statistiques,
+
+               #cosinus,
 #              pythagore,
 #              equations,
 #              puissances,
 #              fractions,
 #              calculLitteral,
-#              ]
+              ]
 #
 chapitresSeconde = [
 #                    tableauDeSigne,
@@ -79,10 +85,11 @@ chapitresSeconde = [
                      fonctions,
                      ]
 #
-niveau = chapitresSeconde
+#niveau = chapitresSeconde
+niveau = quatrieme
 
 # nombreExercices = 6
-nombreDevoirs = 2
+nombreDevoirs = 1
 
 for j in range(1, nombreDevoirs + 1):
     if j < 10:
@@ -93,8 +100,8 @@ for j in range(1, nombreDevoirs + 1):
     headerC = headerBase
     main = ''
     mainC = ''
-    header += r'''\enteteLSMI{\today}{Entrainement Interrogation fonctions}%''' + '\n\n'
-    headerC += r'''\enteteLSMI{\today}{Correction entrainement Interrogation fonctions}%''' + '\n\n'
+    header += r'''\enteteLSMI{\today}{Entrainement Interrogation statistiques/probabilités}%''' + '\n\n'
+    headerC += r'''\enteteLSMI{\today}{Correction entrainement Interrogation statistiques/probabilités}%''' + '\n\n'
     
     nomFichierExo = 'exercices' + str(j)
     nomFichierCor = 'corrections' + str(j)

@@ -892,17 +892,17 @@ $A = \{ad} x^2 \{signAcpbd} \{absAcpbd} x \{signBC} \{absBC}$\\
 
 
 def pileOuFace(fileExercices, fileCorrections):
-    """Exercice type de calcul litteral. Développer et réduire (ax + b)(cx + d)"""
+    """Exercice type de statistique/probabilité"""
 
     elPerLign = 10
-    n = random.randint(10, 50)
+    n = random.randint(20, 50)
     nLign = (n - 1) // elPerLign + 1
     listePrenoms = ['Paul', 'Pierre', 'Marie', 'Margot', 'Fanny',
                     'Jean', 'Julie', 'Adrien', 'Thomas', 'Suzanne', 'Philippe']
     nomA = np.random.choice(listePrenoms)
     listePrenoms.remove(nomA)
     nomB = np.random.choice(listePrenoms)
-
+    fP = 0
     nP = 0
     nF = 0
     compteur = 0
@@ -910,18 +910,18 @@ def pileOuFace(fileExercices, fileCorrections):
     main = r'''\exo{Pile ou Face ?}%
 Deux amis, \{nomA} et \{nomB} jouent à "Pile ou Face". Ils ont effectué les \{n} lancers suivants :\\%
 \begin{center}
-\begin{tabular}{|*{10}{c|}}
+\begin{tabular}{|*{\{elPerLign}}{c|}}
 '''
     for i in range(nLign):
         main += r'''\hline
 '''
-        for j in range(i*10, min((i+1)*10, n)):
+        for j in range(i*elPerLign, min((i+1)*elPerLign, n)):
             pOf = np.random.choice([r'pile', r'face'])
             if pOf == 'pile':
                 nP += 1
             else:
                 nF += 1
-            if (j+1) % 10 == 0:
+            if (j+1) % elPerLign == 0:
                 pOf += r'''\\%
 '''
             else:
@@ -929,20 +929,285 @@ Deux amis, \{nomA} et \{nomB} jouent à "Pile ou Face". Ils ont effectué les \{
             main += pOf
         fP = nP/n   # Fréquence d'apparition des piles
         fF = nF/n   # Fréquence d'apparition des faces
-    for j in range((10 - 1) - (n % 10)):
-        main += r'&'
-    main += r'''\\
+        pP = n/2
+    if (j + 1) % elPerLign != 0:
+        for j in range((elPerLign - 1) - (n % elPerLign)):
+            main += r'&'
+        main += r'''\\
+'''
+    main += r'''
 \hline%
 '''
     main += r'''\end{tabular}
 \end{center}
 \{nomA} affirme que le fréquence statistique d'apparition des piles est plus importantes que la probabilité 
-théorique.
+théorique. Est-ce vrai ?
+'''
+    eq = '='
+    if fP != round(fP, 3):
+        fP = round(fP, 3)
+        eq = '\simeq'
+    mainC = r'''\cor{Pile ou Face ?}%
+\{nomA} a effectué \{n} lancés. Comme pour chaque lancé il y a une chance sur deux que ce soit un pile, le 
+nombre de piles théorique est de 0.5. Cependant, la fréquence statististique d'apparition est  
+de $\dfrac{\{nP}}{\{n}} \{eq} \{fP}$.\\
+'''
+    if fP > 0.5:
+        mainC += r'''$\{fP} > 0.5$, on a donc bien une fréquence statistique supérieure à la probabilité théorique.\\
+\{nomA} a bien raison.
+'''
+    else:
+        mainC += r'''$\{fP} \leq 0.5$, on a donc une fréquence statistique inférieure ou égale à la probabilité théorique.\\
+\{nomA} a tord.
 '''
 
-    mainC = r'''\cor{Double développement}%
-\begin{center}%
-test
-\end{center}%
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
+
+
+def statsClasse(fileExercices, fileCorrections):
+    """Exercice type de statistique/probabilité en comparant 2 classes"""
+
+    elPerLign = 10
+    n = random.randint(20, 30)
+    nLign = (n - 1) // elPerLign + 1
+    fP = 0
+    nP = 0
+    nF = 0
+    compteur = 0
+
+    main = r'''\exo{Homogénéité des classes.}%
+Deux classes, A et B, composées chacune de \{n} élèves ont effectué un devoir de Mathématiques. Les notes obtenues 
+sont les suivantes.\\%
+
+\begin{minipage}{0.45\textwidth}
+\begin{center}
+Classe A :\\
+\medskip
+\begin{tabular}{|*{\{elPerLign}}{c|}}
+'''
+    notes1 = []
+    for i in range(nLign):
+        main += r'''\hline
+'''
+        for j in range(i*elPerLign, min((i+1)*elPerLign, n)):
+            note = random.randint(0, 10)
+            notes1.append(note)
+            note = str(note)
+            if (j+1) % elPerLign == 0:
+                note += r'''\\%
+'''
+            else:
+                note += r'&'
+            main += note
+        moyenne1 = np.mean(notes1)   # Fréquence d'apparition des piles
+        mediane1 = np.median(notes1)   # Fréquence d'apparition des faces
+        etendue1 = np.max(notes1) - np.min(notes1)
+    if (j + 1) % elPerLign != 0:
+        for j in range((elPerLign - 1) - (n % elPerLign)):
+            main += r'&'
+        main += r'''\\
+'''
+    main += r'''
+\hline%
+'''
+    main += r'''\end{tabular}
+\end{center}
+\end{minipage}%
+\begin{minipage}{0.45\textwidth}
+\begin{center}
+Classe B :\\
+\medskip
+\begin{tabular}{|*{\{elPerLign}}{c|}}
+'''
+    notes2 = []
+    for i in range(nLign):
+        main += r'''\hline
+'''
+        for j in range(i*elPerLign, min((i+1)*elPerLign, n)):
+            note = random.randint(0, 10)
+            notes2.append(note)
+            note = str(note)
+            if (j+1) % elPerLign == 0:
+                note += r'''\\%
+'''
+            else:
+                note += r'&'
+            main += note
+        moyenne2 = np.mean(notes2)   # Fréquence d'apparition des piles
+        mediane2 = np.median(notes2)   # Fréquence d'apparition des faces
+        etendue2 = np.max(notes2) - np.min(notes2)
+    if (j + 1) % elPerLign != 0:
+        for j in range((elPerLign - 1) - (n % elPerLign)):
+            main += r'&'
+        main += r'''\\
+'''
+    main += r'''
+\hline%
+'''
+    main += r'''\end{tabular}
+\end{center}
+\end{minipage}%
+\medskip
+\begin{enumerate}
+\item Calculer la moyenne, médiane et étendue de la classe A.
+\item Calculer la moyenne, médiane et étendue de la classe B.
+\item Comparez, si possible, les classes A et B.
+\end{enumerate}
+'''
+    moy1, med1, et1, moy2, med2, et2 = moyenne1, mediane1, etendue1, moyenne2, mediane2, etendue2
+    if moy1 == round(moy1, 3):
+        moy1 = ' = ' + str(moy1)
+    else:
+        moy1 = ' \simeq ' + str(round(moy1, 3))
+    if moy2 == round(moy2, 3):
+        moy2 = ' = ' + str(moy2)
+    else:
+        moy2 = ' \simeq ' + str(round(moy2, 3))
+    if med1 == round(med1, 3):
+        med1 = ' = ' + str(med1)
+    else:
+        med1 = ' \simeq ' + str(round(med1, 3))
+    if med2 == round(med2, 3):
+        med2 = ' = ' + str(med2)
+    else:
+        med2 = ' \simeq ' + str(round(med2, 3))
+    if et1 == round(et1, 3):
+        et1 = ' = ' + str(et1)
+    else:
+        et1 = ' \simeq ' + str(round(et1, 3))
+    if et2 == round(et2, 3):
+        et2 = ' = ' + str(et2)
+    else:
+        et2 = ' \simeq ' + str(round(et2, 3))
+    moyenne1, moyenne2 = round(moyenne1, 3), round(moyenne2, 3)
+    mediane1, mediane2 = round(mediane1, 3), round(mediane2, 3)
+    etendue1, etendue2 = round(etendue1, 3), round(etendue2, 3)
+
+    mainC = r'''\cor{Homogénéité des classes.}%
+\begin{enumerate}
+\item Pour la classe A, la moyenne vaut $m_A \{moy1}$, la médiane $med_A \{med1}$ et l'étendue $E_A \{et1}$.\\ 
+L'écart entre la moyenne et la médiane est \{abs(round(moyenne1 - mediane1, 3))}.
+\item Pour la classe B, la moyenne vaut $m_B \{moy2}$, la médiane $med_B \{med2}$ et l'étendue $E_B \{et2}$.\\
+L'écart entre la moyenne et la médiane est \{abs(round(moyenne2 - mediane2, 3))}.
+'''
+    if abs(moyenne1 - mediane1) < abs(moyenne2 - mediane2):
+        if etendue1 < etendue2:
+            mainC += r'''\item L'écart moyenne/médiane de la classe A est inférieur à celui de la classe B et 
+l'étendue de la classe A est inférieure à celle de la classe B donc la classe A est plus homogène que la classe B.
+'''
+        elif etendue1 > etendue2:
+            mainC += r'''\item L'écart moyenne/médiane de la classe A est inférieur à celui de la classe B mais 
+l'étendue de la classe A est supérieure à celle de la classe B donc on ne peut pas comparer les classes.
+'''
+        else:
+            mainC += r'''\item L'écart moyenne/médiane de la classe A est inférieur à celui de la classe B et 
+l'étendue de la classe A est égale à celle de la classe B donc la classe A est plus homogène que la B.
+'''
+    elif abs(moyenne1 - mediane1) > abs(moyenne2 - mediane2):
+        if etendue1 > etendue2:
+            mainC += r'''\item L'écart moyenne/médiane de la classe A est supérieur à celui de la classe B et 
+l'étendue de la classe A est supérieure à celle de la classe B donc la classe A est moins homogène que 
+la classe B.
+'''
+        elif etendue1 < etendue2:
+            mainC += r'''\item L'écart moyenne/médiane de la classe A est supérieur à celui de la classe B mais 
+l'étendue de la classe A est inférieure à celle de la classe B donc on ne peut pas comparer les classes.
+'''
+        else:
+            mainC += r'''\item L'écart moyenne/médiane de la classe A est supérieur à celui de la classe B et 
+l'étendue de la classe A est égale à celle de la classe B donc la classe B est plus homogène que la A.
+'''
+    else :
+        if etendue1 > etendue2:
+            mainC += r'''\item L'écart moyenne/médiane de la classe A est égal à celui de la classe B et 
+l'étendue de la classe A est supérieure à celle de la classe B donc la classe A est moins homogène que 
+la classe B.
+'''
+        elif etendue1 < etendue2:
+            mainC += r'''\item L'écart moyenne/médiane de la classe A est égal à celui de la classe B mais 
+l'étendue de la classe A est inférieure à celle de la classe B donc la classe A est plus homogène 
+que la classe B.
+'''
+        else:
+            mainC += r'''\item L'écart moyenne/médiane de la classe A est égal à celui de la classe B et 
+l'étendue de la classe A est égale à celle de la classe B donc les classes ne sont pas comparables.
+'''
+    mainC += r'''
+\end{enumerate}
+'''
+
+    return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
+
+
+def probasRoueSac(fileExercices, fileCorrections):
+    """Exercice sur les probabilités nécessitants un arbre. Basé sur une roue et un sac."""
+
+    pA = round(pApercent / 100, 2)
+    pB = round(pBpercent / 100, 2)
+    pDa = round(pDaPercent / 100, 2)
+    pDb = round(pDbPercent / 100, 2)
+    pDaBar = round(1 - pDa, 2)
+    pDbBar = round(1 - pDb, 2)
+    pAandD = round(pA * pDa, 4)
+    pAandDbar = round(pA * (1 - pDa), 4)
+    pBandD = round(pB * pDb, 4)
+    pBandDbar = round(pB * (1 - pDb), 4)
+    pD = round(pAandD + pBandD, 4)
+    # Fin des variables.
+
+    # Enoncé de l'exercice.
+    main = r'''\exo{Un gâchis monstre...}%
+Une grande entreprise produit deux types de viennoiseries : des \{vienA} et des \{vienB}.\\%
+Les employés travaillants à l'empaquetage de ces viennoiseries sont chargés de contrôler la perfection
+de ces dernières. Si elles ne le sont pas, elles devront alors être jetées. (Malgré le gâchis que cela implique).\\%
+On sait que \{pApercent}\% de la production vient d'une partie rénovée de l'usine,
+le reste vient de la vieille partie de l'usine (avec son lot de défauts !)\\%
+On sait que, statistiquement, seulement \{pDaPercent}\% des gâteaux venant de la partie rénovée de l'usine
+ont un défaut, alors qu'il y en a \{pDbPercent}\% en provenance de la vielle partie de l'usine.\\%
+On choisit un gâteau au hasard dans la production.\\%
+On considère les événements :\\%
+A : "la viennoiserie vient de la partie rénovée de l'usine"\\%
+B : "la viennoiserie vient de la vieille partie de l'usine"\\%
+D : "la viennoiserie a un défaut".\\%
+
+\begin{enumerate}[label=\alph*)]%
+    \item Faire un arbre de choix modélisant la situation de l'énoncé.%
+    \item Déterminer la probabilité pour que la viennoiserie vienne de la partie rénovée de l'usine et ait un défaut.%
+    \item Quelle est la probabilité pour la viennoiserie soit rejetée ?%
+\end{enumerate}%
+'''
+    # Fin de l'énoncé.
+
+    # Fichier texte de la correction.
+    mainC = r'''\cor{Un gâchis monstre...}%
+\begin{center}
+\begin{tikzpicture}
+    \tikzstyle{level 1}=[level distance=6cm, sibling distance=5cm]
+    \tikzstyle{level 2}=[level distance=6cm, sibling distance=3.5cm]
+    \node{}[grow=right]
+    child{node{$B$}
+      child{node{$B\cap \overline D$} edge from parent node[below]{\textcolor{red}{$\{pDbBar}$}}}
+      child{node{\textcolor{blue}{$B\cap D$}}           edge from parent node[above]{\textcolor{red}{$\{pDb}$}}}
+      edge from parent node[below]{\textcolor{red}{\textcolor{red}{$\{pB}$}}}}
+    child{node{$A$}
+      child{node{$A\cap \overline D$} edge from parent node[below]{\textcolor{red}{$\{pDaBar}$}}}
+      child{node{\textcolor{blue}{$A\cap D$}} edge from parent node[above]{\textcolor{red}{$\{pDa}$}}}
+      edge from parent node[above]{\textcolor{red}{$\{pA}$}}};
+\end{tikzpicture}
+\end{center}
+\begin{enumerate}[label=\alph*)]%
+\item Le problème peut être modélisé par l'arbre ci-dessus.
+\item La probabilité que la viennoiserie vienne de la partie rénovée de l'usine et ait un défaut est la
+probabilité de l'événement \textcolor{blue}{$A \cap D$} qui vaut : p(\textcolor{blue}{$A \cap D$}) =
+$\{pA} \times \{pDa}$ = \{pAandD}.\\%
+La probabilité que la partie rénovée vienne de la partie rénovée de l'usine et ait un défaut est de \{pAandD}.\\%
+\item  La probabilité pour la viennoiserie d'être rejetée correspond à la première et troisième branche de l'arbre.
+C'est à dire aux évènements \textcolor{blue}{$A \cap D$} et \textcolor{blue}{$B \cap D$}.
+La probabilité de l'événement \textcolor{blue}{$A \cap D$} a déjà été calculé. La probabilité de l'événement
+\textcolor{blue}{$B \cap D$} vaut quant à elle p(\textcolor{blue}{$B \cap D$}) = $\{pB} \times \{pDb}$ = \{pBandD}.\\%
+On a donc, finalement, p(D) = p(\textcolor{blue}{$A \cap D$})
++ p(\textcolor{blue}{$B \cap D$}) = \{pAandD} + \{pBandD} = \{pD}.\\%
+La probabilité que la viennoiserie soit rejetée est donc de \{pD}.\\%
+\end{enumerate}
 '''
     return fonctionsSimplifiantes.endExercice(main, mainC, fileExercices, fileCorrections, locals())
