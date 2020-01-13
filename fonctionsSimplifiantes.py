@@ -4,6 +4,10 @@
 
 import numpy as np
 
+def notation_scientifique(nombre, chiffres_apres_virgule):
+    s = str(int(nombre))
+    exposant = len(s) - 1
+    return '%c,%s \\times 10^{%d}' % (s[0], s[1:chiffres_apres_virgule + 1], exposant)
 
 def repereDebut(main, xmin, ymin, xmax, ymax):
     taille = 0.4*(xmax - xmin)/(ymax - ymin)
