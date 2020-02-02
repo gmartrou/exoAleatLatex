@@ -6,10 +6,12 @@ from preambule import *
 import random
 
 import enseignementScientifique1ere.LeSoleil.exosLeSoleil
+import enseignementScientifique1ere.LaFormeDeLaTerre.exosFormeTerre
+import cinquiemes.Energie.exosEnergie
 import cinquiemes.Mouvement.exosMouvement
-# import enseignementScientifique1ere.Mouvement.exosMouvement.py
+# import enseignementScientifique1ere.Mouvement.exosEnergie.py
 # nombreExercices = 6
-nombreDevoirs = 16
+nombreDevoirs = 5
 
 for j in range(1, nombreDevoirs + 1):
     if j < 10:
@@ -20,7 +22,8 @@ for j in range(1, nombreDevoirs + 1):
     headerC = headerBase
     main = ''
     mainC = ''
-    header += r'''\enteteLFMCompetences{5$^{\text{ème}}$}{Chapitres 14 et 15 : Les mouvements}%''' + '\n\n'
+    header += r'''\enteteLFMCompetences{5$^{\text{ème}}$}{Chapitres 16 à 21 : Énergie et électricité.}%''' + '\n\n'
+    # header += r'''\enteteLFM{Chapitre 8 : La forme de la Terre}%''' + '\n\n'
     header += r'''\begin{questions}
 '''
     nomFichierExo = 'exercices' + str(j)
@@ -32,18 +35,23 @@ for j in range(1, nombreDevoirs + 1):
         
     #     exo = np.random.choice(chapitre)
     #     main, mainC = exo(main, mainC)
-    # for exo in [exosMouvement.py.EnergieOuPuissance,
+    # for exo in [exosEnergie.py.EnergieOuPuissance,
     #             exosQuatrieme.cosinus3,
     #             exosQuatrieme.cosinus4,
     #             exosQuatrieme.cosinus6
     #                                          ]:
     for i in range(1):
-        exo = np.random.choice([cinquiemes.Mouvement.exosMouvement.positionPlanetes])
+        exo = np.random.choice([cinquiemes.Energie.exosEnergie.centraleElectrique])
         main, mainC = exo(main, mainC)
-        exo = np.random.choice([cinquiemes.Mouvement.exosMouvement.vitessePlanete])
+        exo = np.random.choice([cinquiemes.Energie.exosEnergie.conducteurIsolant])
         main, mainC = exo(main, mainC)
-        exo = np.random.choice([cinquiemes.Mouvement.exosMouvement.phasesLune])
+        main += r'''
+\newpage
+'''
+        exo = np.random.choice([cinquiemes.Energie.exosEnergie.circuitSerieDerivation])
         main, mainC = exo(main, mainC)
+        # exo = np.random.choice([enseignementScientifique1ere.LaFormeDeLaTerre.exosFormeTerre.triangulation])
+        # main, mainC = exo(main, mainC)
             
     #for i in range(10):
         # chapitre = vecteurs

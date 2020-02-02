@@ -151,6 +151,7 @@ headerBase = r'''\documentclass[a4paper,12pt, answers]{exam}
 }
 
 \usepackage{siunitx}
+\usepackage{amsmath}
 \renewcommand{\solutiontitle}{}
 '''
 headerBase += r'\begin{document}%' + '\n\n'
@@ -167,3 +168,5 @@ main = ''
 footerC = r'''\end{questions}
 \end{document}'''
 mainC = ''
+
+
