@@ -56,10 +56,10 @@ Soit $\Delta m \simeq \{notation_scientifique((P*t)/(3*10**8),1)}~\si{\kilogram}
 def tempEtoile(fileExercices, fileCorrections):
     etoile = random.choice(
         ['Sirius', 'Achernar', 'Rigal', ' Mira', 'Crucis', 'Altair', 'Beltelgeux', 'Vega', 'Antares', 'R. Hydrae',
-         'Canopus', 'Arcturus', 'Capella'])
+         'Canopus', 'Arcturus'])
     main = r'''
 \titledquestion{Température d'une étoile : }
-Dans les documents ci-après, les sept premiers graphiques donnent l'émission énergétique émise en fonction de la longueur d'onde (en \si{\nm}) pour des corps noirs à différentes températures. Le huitième graphique représente irradiance spectrale en fonction de la longueur d'onde (en \si{\um}) de différentes étoiles.\\
+Dans les documents ci-après, les sept premiers graphiques donnent l'émission énergétique émise en fonction de la longueur d'onde (en \si{\nm}) pour des corps noirs à différentes températures. Le huitième graphique représente l'irradiance spectrale en fonction de la longueur d'onde (en \si{\um}) de différentes étoiles.\\
 \textbf{\underline{DONNEE} :} 1 \si{\um} = 1 000 \si{\nm}
 
 \includegraphics[width=\textwidth]{enseignementScientifique1ere/LeSoleil/plankLaw/4k5k.pdf}\\
@@ -80,7 +80,7 @@ En se basant sur le cinquième graphique, on remarque que cela correspond à un 
 
 \part[5] En utilisant la loi de Wien, calculer la température de l'étoile \{etoile}. Comparez ces deux valeurs. \\
 \textbf{Rappel :} $\lambda_{max} = \dfrac{k}{T}$ avec $k = 2,898 \times 10^{-3}~\si{\meter \kelvin}$.\\
-\begin{solutionordottedlines}[5cm]
+\begin{solutionordottedlines}[4cm]
 On sait que $\lambda_{max} \simeq 1 500~\si{\nm}$ et, d'après la loi de Wien $k = \lambda_{max} \times T$ que l'on peut aussi écrire $T = \dfrac{k}{\lambda_{max}} \simeq \dfrac{2,898 \times 10^{-3}~\si{\meter \kelvin}}{1 500~\si{\nm}} \simeq \dfrac{2,898 \times 10^{-3}~\si{\meter \kelvin}}{1 500 \times 10^{-9}~\si{\meter}} \simeq 2415~\si{\kelvin}$. On a une valeur proche de ce que l'on a trouvé grâce au graphique.
 \end{solutionordottedlines}
 \end{parts}

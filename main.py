@@ -14,7 +14,7 @@ import cinquiemes.Mouvement.exosMouvement
 
 # nombreExercices = 6   # Le nombre d'exercices que tu veux par devoir. Dans le cas où tu as un nombre variable d'exo
                         # (C'est pas le cas dans la suite, raison pour laquelle c'est commenté).
-nombreDevoirs = 2       # Max 99 mais en modifiant le code on peut aller plus loin.
+nombreDevoirs = 19       # Max 99 mais en modifiant le code on peut aller plus loin.
 
 for j in range(1, nombreDevoirs + 1):
     if j < 10:
