@@ -67,6 +67,40 @@ headerBase = r'''\documentclass[a4paper,12pt, answers]{exam}
 	\qformat{\underline{\textbf{Exercice \thequestion : \thequestiontitle}}\\
 }
 
+\newcommand{\enteteLFMCompetencesNotes}[3]{
+		\begin{minipage}{0.25\textwidth}
+		%\includegraphics[width=\textwidth]{logoPDF.pdf}\\
+		\includegraphics[width=\textwidth]{Logo.ps}\\
+		\end{minipage}%
+		\begin{minipage}{0.05\textwidth}
+			~
+		\end{minipage}%
+		\begin{minipage}{0.7\textwidth}
+		\begin{flushright}
+			\begin{tabular}{|l|c|c|}
+				\multicolumn{3}{l}{\textbf{Compétences évaluées :}}\\
+				\hline
+				D1.1 & Écrire. & ~~~\\
+				\hline
+				D4 & Connaître, restituter et mobiliser des connaissances. & ~~~ \\
+				\hline
+				D4 & Mener une démarche scientifique, résoudre un problème. & ~~~\\
+				\hline
+			\end{tabular}
+		\end{flushright}
+		\end{minipage}
+		
+		\vspace*{0.25cm}
+		\textbf{Nom :} \makebox[0.7\textwidth]{\dotfill} \textbf{#1}....  \hfill \fbox{..../#3}\\
+		\vspace*{0.25cm}
+  	\hrule%
+  	\begin{center} \textbf{\textsf{\Large #2 }} \end{center}\vspace*{-0.12cm}
+  		\hrule
+  		\vspace*{0.25cm}
+	}
+	\qformat{\underline{\textbf{Exercice \thequestion : \thequestiontitle}}\\
+}
+
 \newcommand{\enteteLFMCompetences}[2]{
 		\begin{minipage}{0.25\textwidth}
 		%\includegraphics[width=\textwidth]{logoPDF.pdf}\\
@@ -91,7 +125,7 @@ headerBase = r'''\documentclass[a4paper,12pt, answers]{exam}
 		\end{minipage}
 		
 		\vspace*{0.25cm}
-		\textbf{Nom :} \makebox[0.8\textwidth]{\dotfill} \hfill 				\textbf{#1}....\\
+		\textbf{Nom :} \makebox[0.8\textwidth]{\dotfill} \hfill \textbf{#1}....\\
 		\vspace*{0.25cm}
   	\hrule%
   	\begin{center} \textbf{\textsf{\Large #2 }} \end{center}\vspace*{-0.12cm}
@@ -100,6 +134,7 @@ headerBase = r'''\documentclass[a4paper,12pt, answers]{exam}
 	}
 	\qformat{\underline{\textbf{Exercice \thequestion : \thequestiontitle}}\\
 }
+
 
 \renewcommand{\thepartno}{\arabic{partno}}
 \renewcommand{\partlabel}{\thepartno.}

@@ -5,13 +5,16 @@ from preambule import *
 
 import random
 
+# On importe les dossiers contenants les exercices en Python
 import enseignementScientifique1ere.LeSoleil.exosLeSoleil
 import enseignementScientifique1ere.LaFormeDeLaTerre.exosFormeTerre
 import cinquiemes.Energie.exosEnergie
 import cinquiemes.Mouvement.exosMouvement
 # import enseignementScientifique1ere.Mouvement.exosEnergie.py
-# nombreExercices = 6
-nombreDevoirs = 5
+
+# nombreExercices = 6   # Le nombre d'exercices que tu veux par devoir. Dans le cas où tu as un nombre variable d'exo
+                        # (C'est pas le cas dans la suite, raison pour laquelle c'est commenté).
+nombreDevoirs = 2       # Max 99 mais en modifiant le code on peut aller plus loin.
 
 for j in range(1, nombreDevoirs + 1):
     if j < 10:
@@ -22,48 +25,26 @@ for j in range(1, nombreDevoirs + 1):
     headerC = headerBase
     main = ''
     mainC = ''
-    header += r'''\enteteLFMCompetences{5$^{\text{ème}}$}{Chapitres 16 à 21 : Énergie et électricité.}%''' + '\n\n'
+
+    # 3 types d'entêtes, explicites je pense.
+    # header += r'''\enteteLFMCompetencesNotes{5$^{\text{ème}}$}{Chapitres 16 à 21 : Énergie et électricité.}{20}%''' + '\n\n'
+    # header += r'''\enteteLFMCompetences{5$^{\text{ème}}$}{Chapitres 16 à 21 : Énergie et électricité.}%''' + '\n\n'
     # header += r'''\enteteLFM{Chapitre 8 : La forme de la Terre}%''' + '\n\n'
+    header += r'''\enteteLFM{Thème 1 : Chapitre 1 : Le rayonnement solaire}%''' + '\n\n'
     header += r'''\begin{questions}
 '''
-    nomFichierExo = 'exercices' + str(j)
-    nomFichierCor = 'corrections' + str(j)
-    # for chapitre in niveau:
-    #     for i in range(20):
-    #         for exo in chapitre:
-    #             main, mainC = exo(main, mainC)
-        
-    #     exo = np.random.choice(chapitre)
-    #     main, mainC = exo(main, mainC)
-    # for exo in [exosEnergie.py.EnergieOuPuissance,
-    #             exosQuatrieme.cosinus3,
-    #             exosQuatrieme.cosinus4,
-    #             exosQuatrieme.cosinus6
-    #                                          ]:
-    for i in range(1):
-        exo = np.random.choice([cinquiemes.Energie.exosEnergie.centraleElectrique])
-        main, mainC = exo(main, mainC)
-        exo = np.random.choice([cinquiemes.Energie.exosEnergie.conducteurIsolant])
-        main, mainC = exo(main, mainC)
-        main += r'''
-\newpage
-'''
-        exo = np.random.choice([cinquiemes.Energie.exosEnergie.circuitSerieDerivation])
-        main, mainC = exo(main, mainC)
-        # exo = np.random.choice([enseignementScientifique1ere.LaFormeDeLaTerre.exosFormeTerre.triangulation])
-        # main, mainC = exo(main, mainC)
-            
-    #for i in range(10):
-        # chapitre = vecteurs
-        # exo = np.random.choice(chapitre)
-        # main, mainC = exo(main, mainC)
-        # chapitre = probabilites
-        # exo = np.random.choice(chapitre)
-        # main, mainC = exo(main, mainC)
-        # #for exo in chapitre:
-        # exo = np.random.choice([exosQuatrieme.cosinus5, exosQuatrieme.cosinus6])
-        # main, mainC = seconde.tableauxDeSignes.problemesSimples.tableauDeSigneBasique(main, mainC)
-        # main, mainC = exo(main, mainC)
+    nomFichierExo = 'devoir' + str(j)
+    nomFichierCor = 'correction' + str(j)
+
+    """Exemple d'exos dans le fichier. Il y a 2 exos, je change ensuite de page avec \newpage puis un dernier exo"""
+    exo = enseignementScientifique1ere.LeSoleil.exosLeSoleil.EnergieOuPuissance
+    main, mainC = exo(main, mainC)
+    exo = enseignementScientifique1ere.LeSoleil.exosLeSoleil.tempEtoile
+    main, mainC = exo(main, mainC)
+
+    """Tout ce qui est à la suite correspond à la compilation, une première fois avec la commande \noprintanswers qui
+    n'affiche donc pas la correction (c'est à dire l'énoncé) et une seconde fois sans ça. Si tu as bien mis les
+    corrections comme il faut elles seront affichées dans ce deuxième fichier."""
 
     contentExercices = header + r'''\noprintanswers
     ''' + main + footer
